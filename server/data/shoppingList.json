@@ -1,0 +1,37 @@
+{
+    "sunday" : {
+        "meal" : "string",
+        "mealId" : "string",
+        "mealCooked" : false
+    },
+    "monday" : {
+        "meal" : "string",
+        "mealId" : "string",
+        "mealCooked" : false
+    },
+    "tuesday" : {
+        "meal" : "string",
+        "mealId" : "string",
+        "mealCooked" : false
+    },
+    "wednesday" : {
+        "meal" : "string",
+        "mealId" : "string",
+        "mealCooked" : false
+    },
+    "thursday" : {
+        "meal" : "string",
+        "mealId" : "string",
+        "mealCooked" : false
+    },
+    "friday" : {
+        "meal" : "string",
+        "mealId" : "string",
+        "mealCooked" : false
+    },
+    "saturday" : {
+        "meal" : "string",
+        "mealId" : "string",
+        "mealCooked" : false
+    }
+}
