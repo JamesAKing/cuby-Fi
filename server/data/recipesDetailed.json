@@ -1,9 +1,11 @@
-[
-    {
+{
+    "recipeId" : {
         "recipeName" : "string", 
         "recipeId" : "string",
         "image" : "URL",
         "imageType" : "string",
+        "ingredients" : [],
+        "instructions" : "string - maybe list",
         "userRating" : "string - maybe int?"
     }
-]
+} 

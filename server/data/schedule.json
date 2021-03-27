@@ -1,37 +1,44 @@
 {
     "sunday" : {
-        "mealName" : "string",
-        "mealId" : "string",
-        "mealCooked" : false
+        "recipeName" : "string",
+        "recipeId" : "string",
+        "gotIngredients" : false,
+        "recipeCooked" : false
     },
     "monday" : {
-        "mealName" : "string",
-        "mealId" : "string",
-        "mealCooked" : false
+        "recipeName" : "string",
+        "recipeId" : "string",
+        "gotIngredients" : false,
+        "recipeCooked" : false
     },
     "tuesday" : {
-        "mealName" : "string",
-        "mealId" : "string",
-        "mealCooked" : false
+        "recipeName" : "string",
+        "recipeId" : "string",
+        "gotIngredients" : false,
+        "recipeCooked" : false
     },
     "wednesday" : {
-        "mealName" : "string",
-        "mealId" : "string",
-        "mealCooked" : false
+        "recipeName" : "string",
+        "recipeId" : "string",
+        "gotIngredients" : false,
+        "recipeCooked" : false
     },
     "thursday" : {
-        "mealName" : "string",
-        "mealId" : "string",
-        "mealCooked" : false
+        "recipeName" : "string",
+        "recipeId" : "string",
+        "gotIngredients" : false,
+        "recipeCooked" : false
     },
     "friday" : {
-        "mealName" : "string",
-        "mealId" : "string",
-        "mealCooked" : false
+        "recipeName" : "string",
+        "recipeId" : "string",
+        "gotIngredients" : false,
+        "recipeCooked" : false
     },
     "saturday" : {
-        "mealName" : "string",
-        "mealId" : "string",
-        "mealCooked" : false
+        "recipeName" : "string",
+        "recipeId" : "string",
+        "gotIngredients" : false,
+        "recipeCooked" : false
     }
 }
