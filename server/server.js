@@ -10,18 +10,20 @@ app.use(express.json());
 
 // Variables
 const port = process.env.PORT || 8080;
-const cupboardURL = './data/cupboard.json';
-const recipesURL = './data/recipes.json';
-const recipesDetailedURL = './data/recipesDetailed.json';
-const scheduleURL = './data/schedule.json';
-const shoppingListURL = './data/shoppingList.json';
-
 
 // ROUTE IMPORTS
-const cupboarRoutes = require('./routes/cupboardRoutes.js');
-app.use('/cupboard', cupboarRoutes);
+const cupboardRoutes = require('./routes/cupboardRoutes');
+const shoppingListRoutes = require('./routes/shoppingListRoutes');
+const recipeRoutes = require('./routes/recipeRoutes');
+const scheduleRoutes = require('./routes/schedule');
 
+// INITIATED ROUTES
+app.use('/cupboard', cupboardRoutes);
+app.use('/shopping-list', shoppingListRoutes);
+app.use('/recipes', recipeRoutes);
+app.use('/schedule', scheduleRoutes);
 
+// 
 app.listen(port, () => {
     console.log(`Server Active\nPort: ${port}`)
 })

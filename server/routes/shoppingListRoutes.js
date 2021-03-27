@@ -12,33 +12,33 @@ const writeData = (url, data) => {
 };
 
 // VARIABLES
-const cupboardURL = './data/cupboard.json';
+const shoppingListURL = './data/shoppingList.json';
 
 // ROUTES
 
 router
     .route('/')
-    // see all items in the cupboard
+    // see all items in the shoppingList
     .get((req, res) => {
-        const result = getData(cupboardURL);
+        const result = getData(shoppingListURL);
         res.json(result);
     })
-    // Add an item(s) to the cupboard
+    // Add an item(s) to the shoppingList
     .post((req, res) => {
         res.json('added');
     })
 
 router
     .route('/:itemId')
-    // check if specific item is in the cupboard
+    // check if specific item is in the shoppingList
     .get((req, res) => {
         res.json("connected");
     })
-    // Edit an item in the cupboard
+    // Edit an item in the shoppingList
     .put((erq, res) => {
         res.json('updated');
     })
-    // Delete an item(s) from the cupboard
+    // Delete an item(s) from the shoppingList
     .delete((req, res) => {
         res.json("deleted");
     })

@@ -2,6 +2,8 @@ const express = require('express');
 const fs = require('fs');
 const router = express.Router();
 
+// Consider condensing deatiled and quick view JSON
+
 // FUNCTIONS
 const getData = (url) => {
     return JSON.parse(fs.readFileSync(url))
@@ -12,33 +14,35 @@ const writeData = (url, data) => {
 };
 
 // VARIABLES
-const cupboardURL = './data/cupboard.json';
+const recipesURL = './data/recipes.json';
+const recipesDetailedURL = './data/recipesDetailed.json';
 
 // ROUTES
 
 router
     .route('/')
-    // see all items in the cupboard
+    // see all recipes - non detailed view
     .get((req, res) => {
-        const result = getData(cupboardURL);
+        const result = getData(recipesURL);
         res.json(result);
     })
-    // Add an item(s) to the cupboard
+    // Add a recipe to recipe Book - must add to both detailed and non-detailed
     .post((req, res) => {
         res.json('added');
     })
 
 router
-    .route('/:itemId')
-    // check if specific item is in the cupboard
+    // Specific/detailed view of Recipes will use recipesDetailed.json
+    .route('/:recipeId')
+    // get a specific recipe
     .get((req, res) => {
         res.json("connected");
     })
-    // Edit an item in the cupboard
-    .put((erq, res) => {
+    // Edit a recipe
+    .put((req, res) => {
         res.json('updated');
     })
-    // Delete an item(s) from the cupboard
+    // Delete a recipe
     .delete((req, res) => {
         res.json("deleted");
     })

@@ -1,7 +1,9 @@
 import './App.scss';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import { about, contactUs, cupboard, recipeBook, schedule, shoppingList } from "./utilities/URLs";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import Home from './pages/Home';
 
 
 function App() {
@@ -12,13 +14,13 @@ function App() {
       <Header />
 
       <Switch>
-        <Route to="/" exact component={null}/>
-        <Route to="/about" component={null}/>
-        <Route to="/contact-us" component={null}/>
-        <Route to="/cupboard" component={null}/>
-        <Route to="/recipe-book" component={null}/>
-        <Route to="/schedule" component={null}/>
-        <Route to="/shopping-list" component={null}/>
+        <Route path="/" exact component={Home}/>
+        <Route path={about} component={null}/>
+        <Route path={contactUs} component={null}/>
+        <Route path={cupboard} component={null}/>
+        <Route path={recipeBook} component={null}/>
+        <Route path={schedule} component={null}/>
+        <Route path={shoppingList} component={null}/>
       </Switch>
 
       <Footer />

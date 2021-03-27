@@ -1,0 +1,21 @@
+@use '../../styles/mixins' as *;
+
+.menu {
+
+    &__icon {
+        @include header-circle;
+        border: 3px solid white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__line {
+        width: 60%;
+        height: 3px;
+        margin: 4px 0;
+        background-color: white;
+        border-radius: 20px;
+    }
+}
