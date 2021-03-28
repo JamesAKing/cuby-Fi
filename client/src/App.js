@@ -4,6 +4,7 @@ import { about, contactUs, cupboard, recipeBook, schedule, shoppingList } from "
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Home from './pages/Home';
+import CupboardPage from "./pages/Cupboard";
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
         <Route path="/" exact component={Home}/>
         <Route path={about} component={null}/>
         <Route path={contactUs} component={null}/>
-        <Route path={cupboard} component={null}/>
+        <Route path={cupboard} component={CupboardPage}/>
         <Route path={recipeBook} component={null}/>
         <Route path={schedule} component={null}/>
         <Route path={shoppingList} component={null}/>
