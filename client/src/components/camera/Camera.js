@@ -11,15 +11,23 @@ function Camera() {
     const videoPlayPause = () => {
         const video = document.querySelector('.camera');
         if (!playing) {
-            navigator.getUserMedia({
-                video : true
-            },
-            (stream) => {
-                if (video) {
-                    video.srcObject = stream;
+            navigator.mediaDevices.getUserMedia({
+                // video: {
+                //     width : 500,
+                //     height : 500
+                // }
+                video: {
+                    width : 320,
+                    height : 320
                 }
-            },
-            (err) => console.log(err))
+            })
+            .then(mediaStream => {
+                console.log(mediaStream);
+                video.srcObject = mediaStream;
+            })
+            .catch(err => {
+                console.log(err);
+            });
         } else if (playing) {
             video.srcObject.getTracks()[0].stop();
         }
@@ -30,8 +38,6 @@ function Camera() {
         <div className="camera__container">
             <video
                 className="camera"
-                height={HEIGHT}
-                with={WIDTH}
                 autoPlay
                 muted
             ></video>
