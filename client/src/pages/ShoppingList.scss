@@ -1,0 +1,16 @@
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
+
+
+.shopping-list {
+
+    &__header {
+        width: 100%;
+        height: 100px;
+        background-color: $color-secondary;
+
+        @include tablet {
+            height: 80px;
+        }
+    }
+}

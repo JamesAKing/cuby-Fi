@@ -1,0 +1,16 @@
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
+
+
+.food-plan {
+
+    &__header {
+        width: 100%;
+        height: 100px;
+        background-color: $color-three;
+
+        @include tablet {
+            height: 80px;
+        }
+    }
+}

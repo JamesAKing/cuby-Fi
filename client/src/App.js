@@ -4,6 +4,9 @@ import { about, contactUs, cupboard, recipeBook, schedule, shoppingList } from "
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Home from './pages/Home';
+import ShoppingList from "./pages/ShoppingList";
+import FoodPlan from "./pages/Schedule";
+import RecipeBook from "./pages/RecipeBook";
 import CupboardPage from "./pages/Cupboard";
 
 
@@ -19,9 +22,9 @@ function App() {
         <Route path={about} component={null}/>
         <Route path={contactUs} component={null}/>
         <Route path={cupboard} component={CupboardPage}/>
-        <Route path={recipeBook} component={null}/>
-        <Route path={schedule} component={null}/>
-        <Route path={shoppingList} component={null}/>
+        <Route path={recipeBook} component={RecipeBook}/>
+        <Route path={schedule} component={FoodPlan}/>
+        <Route path={shoppingList} component={ShoppingList}/>
       </Switch>
 
       <Footer />

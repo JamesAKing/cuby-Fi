@@ -1,0 +1,16 @@
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
+
+
+.recipes {
+
+    &__header {
+        width: 100%;
+        height: 100px;
+        background-color: $color-four;
+
+        @include tablet {
+            height: 80px;
+        }
+    }
+}

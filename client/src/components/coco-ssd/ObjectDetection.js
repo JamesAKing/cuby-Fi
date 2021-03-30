@@ -1,5 +1,6 @@
 import './ObjectDetection.scss';
 import React, {useRef, useState, useEffect } from 'react';
+import axios from 'axios';
 import * as tf from "@tensorflow/tfjs";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 
@@ -8,74 +9,92 @@ import Webcam from 'react-webcam';
 function ObjectDetection(props) {
 
   const [videoPaused, setVideoPaused] = useState(true)
-  const [objects, setObjects] = useState(null);
+  const [items, setItems] = useState(null);
 
   const webCamRef = useRef(null);
-//   const canvasRef = useRef(null);
-
-  const videoPlayPause = () => {
-    setObjects(null);
+  
+  const scanItem = () => {
+    resetItems();
     if (!videoPaused) {
       console.log('Playing')
       runCoco()
     };
     if (videoPaused) {
       console.log('paused');
-      // cocoSsd.stop();
     };
     setVideoPaused(!videoPaused);
   }
 
+  const resetItems = () => {
+    setItems(null);
+  }
+
+  const addToCupboard = (e) => {
+    e.preventDefault();
+    if (!items) {
+      console.log("No Item to Add")
+    } else {
+      const newItems = items.map(item => item.class);
+      // Add Quantity have/needed
+      console.log(newItems);
+      axios
+        .post('http://localhost:8080/cupboard', {newItems})
+        .then(resp => {
+          console.log(resp);
+          resetItems();
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    }
+  }
+
   const runCoco = async () => {
 
-    const net = await cocoSsd.load();
+    const model = await cocoSsd.load();
 
-    detect(net);
+    detect(model);
     // Is one image enough for accurate results?
   };
 
-  const detect = async (net) => {
+  const detect = async (model) => {
     if (
       typeof webCamRef.current !== "undefined" &&
       webCamRef.current !== null &&
       webCamRef.current.video.readyState === 4
     ) {
       const video = webCamRef.current.video;
-      const videoWidth = webCamRef.current.video.videoWidth;
-      const videoHeight = webCamRef.current.video.videoHeight; 
-      
-      webCamRef.current.width = videoWidth;
-      webCamRef.current.height = videoHeight;
 
       // Make Detections
-      await net.detect(video)
+      await model.detect(video)
       .then(response => {
-        console.log("response: ", response);
-        setObjects(response);
+        setItems(response);
       })
     };
   };
-
-  console.log("OBJECTS in state: ", objects);
 
   return (
 
     <div className="web-cam__page">
       <ul>
-          {!objects ?
+          {!items ?
             <li><h2>LOADING...</h2></li> :
-            objects.map(object => <li><h2>{object.class}</h2></li>)    
+            items.map(object => <li><h2>{object.class}</h2></li>)    
         } 
       </ul>
       <div className="web-cam__container">
         <Webcam
-          onClick={videoPlayPause}
           ref={webCamRef}
           muted={true} 
           className="web-cam"
         />
       </div>
-      
+      <div className="web-cam__buttons">
+        <button className="web-cam__button" type="button" onClick={scanItem}>SCAN ITEM</button>
+        <button className="web-cam__button" type="button" onClick={resetItems}>RESET ITEM</button>
+        <button className="web-cam__button" type="submit" onClick={addToCupboard}>ADD ITEM TO CUPBOARD</button>
+      </div>
+
     </div>
   );
 }
