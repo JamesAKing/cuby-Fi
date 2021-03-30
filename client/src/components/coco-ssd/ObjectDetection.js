@@ -30,20 +30,8 @@ function ObjectDetection(props) {
 
     const net = await cocoSsd.load();
 
-    let results = [];
-
     detect(net);
-    // for (let i = 0;i < 5; i++) {
-    //   results.push(detect(net));
-    // }
-
-    // console.log('result: ', results);
-
-    // setInterval(() => {
-    //   detect(net);
-    // }, 10);
-
-    // results.forEach(result => console.log(result));
+    // Is one image enough for accurate results?
   };
 
   const detect = async (net) => {
@@ -71,37 +59,24 @@ function ObjectDetection(props) {
   console.log("OBJECTS in state: ", objects);
 
   return (
-    <div className="App">
-    <header className="App-header">
+
+    <div className="web-cam__page">
       <ul>
           {!objects ?
             <li><h2>LOADING...</h2></li> :
             objects.map(object => <li><h2>{object.class}</h2></li>)    
         } 
       </ul>
-      <Webcam
-        onClick={videoPlayPause}
-        ref={webCamRef}
-        muted={true} 
-        className="web-cam"
-      />
-
-      {/* <canvas
-        ref={canvasRef}
-        style={{
-          position: "absolute",
-          marginLeft: "auto",
-          marginRight: "auto",
-          left: 0,
-          right: 0,
-          textAlign: "center",
-          zindex: 8,
-          width: 640,
-          height: 480,
-        }}
-      /> */}
-    </header>
-  </div>
+      <div className="web-cam__container">
+        <Webcam
+          onClick={videoPlayPause}
+          ref={webCamRef}
+          muted={true} 
+          className="web-cam"
+        />
+      </div>
+      
+    </div>
   );
 }
 
