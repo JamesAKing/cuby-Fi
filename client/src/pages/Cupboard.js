@@ -6,7 +6,6 @@ function CupboardPage() {
     return (
         <main>
             <ObjectDetection />
-            {/* <Camera /> */}
         </main>
     );
 }
