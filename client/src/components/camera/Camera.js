@@ -12,10 +12,6 @@ function Camera() {
         const video = document.querySelector('.camera');
         if (!playing) {
             navigator.mediaDevices.getUserMedia({
-                // video: {
-                //     width : 500,
-                //     height : 500
-                // }
                 video: {
                     width : 320,
                     height : 320
