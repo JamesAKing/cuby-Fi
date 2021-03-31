@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const router = express.Router();
+const { v4: uuidv4 } = require('uuid');
 
 // FUNCTIONS
 const getData = (url) => {
@@ -25,7 +26,16 @@ router
     })
     // Add an item(s) to the cupboard
     .post((req, res) => {
-        res.json('added');
+        let cupboardItems = getData(cupboardURL);
+        const newItem = {
+            "item" : req.body.item,
+            "itemId" : uuidv4(),
+            "category" : req.body.category,
+            "qty" : req.body.qty
+        }
+        cupboardItems.push(newItem)
+        // writeData(cupboardURL, cupboardItems)
+        res.status(200).json(newItem);
     })
 
 router

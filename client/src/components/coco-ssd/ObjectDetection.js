@@ -1,7 +1,7 @@
 import './ObjectDetection.scss';
 import React, {useRef, useState, useEffect } from 'react';
 import axios from 'axios';
-import * as tf from "@tensorflow/tfjs";
+// import * as tf from "@tensorflow/tfjs";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 
 import Webcam from 'react-webcam';
@@ -14,6 +14,7 @@ function ObjectDetection(props) {
   const webCamRef = useRef(null);
   
   const scanItem = () => {
+    // Add check to ensure only food items are scanned (no person/chair/etc.)
     resetItems();
     if (!videoPaused) {
       console.log('Playing')
