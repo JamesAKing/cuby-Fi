@@ -1,6 +1,6 @@
 import "./Home.scss";
 import { Link } from 'react-router-dom';
-import { about, contactUs, cupboard, recipeBook, schedule, shoppingList } from "../utilities/URLs";
+import { about, contactUs, cupboard, recipeBook, mealPlan, shoppingList } from "../utilities/URLs";
 // IMAGES/ICONS NEEDED - all in white
 // SHopping List = List/Notepad
 // Recipe Book - Book
@@ -16,8 +16,8 @@ function Home(props) {
                     <Link to={shoppingList}><img src={null} alt="Shopping List" /></Link>
                 </li>
                 <li className="home__item home__item--reverse home__item--two">
-                    <h2 className="home__title">Schedule</h2>
-                    <Link to={schedule}><img src={null} alt="Schedule" /></Link>
+                    <h2 className="home__title">Weekly Meal Plan</h2>
+                    <Link to={mealPlan}><img src={null} alt="mealPlan" /></Link>
                 </li>
                 <li className="home__item home__item--three">
                     <h2 className="home__title">Recipe Book</h2>

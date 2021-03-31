@@ -1,6 +1,8 @@
 import './MealPlan.scss';
 import { MealPlanDB_URL } from '../utilities/APIEndPoints';
+import { recipeBook } from '../utilities/URLs';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import MealCard from "../components/meal-card/MealCard";
 
@@ -29,11 +31,16 @@ function MealPlan() {
                 {!mealPlan ?
                     <li>Getting your Meal Plan...</li> :
                     mealPlan.map((meal, i) => {
-                        
                         return (
-                            <MealCard key={meal.recipeId} day={days[i].toUpperCase()} recipeName={meal.recipeName} />
+                            <Link className="food-plan__link" to={`${recipeBook}/${meal.recipeId}`} >
+                                <MealCard
+                                    key={meal.recipeId}
+                                    day={days[i].toUpperCase()}
+                                    recipeName={meal.recipeName}
+                                />
+                            </Link>
+                            
                         )
-
                     })
                 }
             </ul>
