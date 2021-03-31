@@ -11,6 +11,21 @@ const writeData = (url, data) => {
     fs.writeFileSync(url, JSON.stringify(data));
 };
 
+const createShoppingListItem = (req) => {
+    const { item, itemId, recipeFor, recipeId, category, recipeQty, qtyNeeded } = req.body;
+
+        return {
+            "item" : item,
+            "itemId" : itemId,
+            "recipeFor" : recipeFor,
+            "recipeId" : recipeId,
+            "category" : category,
+            "recipeQty" : recipeQty,
+            "qtyNeeded" : qtyNeeded,
+            "inCart" : false
+        }
+}
+
 // VARIABLES
 const shoppingListURL = './data/shoppingList.json';
 
@@ -28,18 +43,7 @@ router
 
         let shoppingListData = getData(shoppingListURL);
 
-        const { item, itemId, recipeFor, recipeId, category, recipeQty, qtyNeeded } = req.body;
-
-        const newListItem = {
-                "item" : item,
-                "itemId" : itemId,
-                "recipeFor" : recipeFor,
-                "recipeId" : recipeId,
-                "category" : category,
-                "recipeQty" : recipeQty,
-                "qtyNeeded" : qtyNeeded,
-                "inCart" : false
-        }
+        const newListItem = createShoppingListItem(req);
 
         shoppingListData.push(newListItem);
         // writeData(shoppingListURL, shoppingListData);
@@ -63,8 +67,19 @@ router
         
     })
     // Edit an item in the shoppingList
-    .put((erq, res) => {
-        res.json('updated');
+    .put((req, res) => {
+        let shoppingListData = getData(shoppingListURL);
+        const { itemId } = req.params;
+
+        let newListItem = createShoppingListItem(req)
+
+        let newShoppingList = shoppingListData.map(item => {
+            return itemId === item.itemId ? newListItem : item
+        })
+
+        writeData(shoppingListData, newShoppingList);
+
+        res.status(200).json(`item with ID ${itemId} updated`);
     })
     // Delete an item(s) from the shoppingList
     .delete((req, res) => {
