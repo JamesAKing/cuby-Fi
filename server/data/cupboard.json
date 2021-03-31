@@ -1,8 +1,26 @@
 [
     {
-        "item" : "string",
-        "itemId" : "string",
-        "category" : "string",
-        "qty" : "string"
+        "item" : "gravy",
+        "itemId" : "1",
+        "category" : "sauce",
+        "qty" : "500g"
+    },
+    {
+        "item" : "wraps",
+        "itemId" : "2",
+        "category" : "bakery",
+        "qty" : "8"
+    },
+    {
+        "item" : "tomato sauce",
+        "itemId" : "3",
+        "category" : "sauce",
+        "qty" : "780g"
+    },
+    {
+        "item" : "macaroni pasta",
+        "itemId" : "4",
+        "category" : "pasta",
+        "qty" : "1kg"
     }
 ]

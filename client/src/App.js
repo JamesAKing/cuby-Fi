@@ -5,7 +5,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Home from './pages/Home';
 import ShoppingList from "./pages/ShoppingList";
-import FoodPlan from "./pages/Schedule";
+import FoodPlan from "./pages/MealPlan";
 import RecipeBook from "./pages/RecipeBook";
 import CupboardPage from "./pages/Cupboard";
 

@@ -21,7 +21,7 @@ const foodPlanRoutes = require('./routes/foodPlanRoutes');
 app.use('/cupboard', cupboardRoutes);
 app.use('/shopping-list', shoppingListRoutes);
 app.use('/recipes', recipeRoutes);
-app.use('/food-plan', foodPlanRoutes);
+app.use('/meal-plan', foodPlanRoutes);
 
 // 
 app.listen(port, () => {
