@@ -25,14 +25,42 @@ router
     })
     // Add an item(s) to the shoppingList
     .post((req, res) => {
-        res.json('added');
+
+        let shoppingListData = getData(shoppingListURL);
+
+        const { item, itemId, recipeFor, recipeId, category, recipeQty, qtyNeeded } = req.body;
+
+        const newListItem = {
+                "item" : item,
+                "itemId" : itemId,
+                "recipeFor" : recipeFor,
+                "recipeId" : recipeId,
+                "category" : category,
+                "recipeQty" : recipeQty,
+                "qtyNeeded" : qtyNeeded,
+                "inCart" : false
+        }
+
+        shoppingListData.push(newListItem);
+        // writeData(shoppingListURL, shoppingListData);
+
+        res.status(200).json(newListItem);
     })
 
 router
     .route('/:itemId')
     // check if specific item is in the shoppingList
     .get((req, res) => {
-        res.json("connected");
+        const shoppingListData = getData(shoppingListURL);
+        const { itemId } = req.params;
+
+        const result =shoppingListData.filter(item => {
+            return itemId === item.itemId;
+        });
+
+        if (result.length > 0) res.status(200).json(result);
+        else res.status(404).json('Cannot find item.');
+        
     })
     // Edit an item in the shoppingList
     .put((erq, res) => {

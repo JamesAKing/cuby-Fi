@@ -15,13 +15,13 @@ const port = process.env.PORT || 8080;
 const cupboardRoutes = require('./routes/cupboardRoutes');
 const shoppingListRoutes = require('./routes/shoppingListRoutes');
 const recipeRoutes = require('./routes/recipeRoutes');
-const scheduleRoutes = require('./routes/schedule');
+const foodPlanRoutes = require('./routes/foodPlanRoutes');
 
 // INITIATED ROUTES
 app.use('/cupboard', cupboardRoutes);
 app.use('/shopping-list', shoppingListRoutes);
 app.use('/recipes', recipeRoutes);
-app.use('/schedule', scheduleRoutes);
+app.use('/food-plan', foodPlanRoutes);
 
 // 
 app.listen(port, () => {
