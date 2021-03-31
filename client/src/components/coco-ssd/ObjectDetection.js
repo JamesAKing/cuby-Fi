@@ -1,7 +1,7 @@
 import './ObjectDetection.scss';
 import React, {useRef, useState, useEffect } from 'react';
 import axios from 'axios';
-// import * as tf from "@tensorflow/tfjs";
+import * as tf from "@tensorflow/tfjs";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 
 import Webcam from 'react-webcam';
@@ -89,6 +89,7 @@ function ObjectDetection(props) {
           muted={true} 
           className="web-cam"
         />
+        <button type="button" className="web-cam__button-mobile" onClick={scanItem}></button>
       </div>
       <div className="web-cam__buttons">
         <button className="web-cam__button" type="button" onClick={scanItem}>SCAN ITEM</button>

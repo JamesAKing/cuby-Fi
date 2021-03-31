@@ -74,11 +74,9 @@ router
         // Ensure itemId is not modified during edit
 
         let newListItem = createShoppingListItem(req)
-
         let newShoppingList = shoppingListData.map(item => {
             return itemId === item.itemId ? newListItem : item
         })
-
         // writeData(shoppingListUrl, newShoppingList);
         res.status(200).json(`item with ID ${itemId} updated`);
     })
@@ -86,14 +84,15 @@ router
     .delete((req, res) => {
         let shoppingListData = getData(shoppingListURL);
         const { itemId } = req.params;
+
         const newShoppingList = shoppingListData.filter(item => {
             return itemId !== item.itemId;
         });
+        
         // writeData(shoppingListURL, newShoppingList);
         if (newShoppingList.length === (shoppingListData.length - 1)) res.status(204).json();
         else res.status(404).json("No Item Found");
     })
-
 
 // EXPORTS
 module.exports = router;
