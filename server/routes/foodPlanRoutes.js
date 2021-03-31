@@ -14,7 +14,7 @@ const writeData = (url, data) => {
 };
 
 // VARIABLES
-const scheduleURL = './data/schedule.json';
+const scheduleURL = './data/mealPlan.json';
 
 // ROUTES
 
