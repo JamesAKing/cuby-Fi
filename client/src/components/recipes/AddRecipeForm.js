@@ -1,12 +1,15 @@
 import './AddRecipeForm.scss';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { RecipesDB_URL } from '../../utilities/APIEndPoints';
 
 function AddRecipeForm() {
     
-    const [ingredients ,setIngredients] = useState([]);
-    const [instructions ,setInstructions] = useState([]);
+    // const [ingredients , _setIngredients] = useState([]);
+    // const [instructions , _setInstructions] = useState([]);
+
+    const [ingredients ] = useState([]);
+    const [instructions ] = useState([]);
 
 
     const addRecipetoDB = (e) => {

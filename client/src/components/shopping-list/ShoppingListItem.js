@@ -2,14 +2,8 @@ import './ShoppingListItem.scss';
 
 function ShoppingListItem({ item, itemInCart }) {
 
-    const { itemId, itemName, qtyNeeded, recipeName, inCart} = item;
-
-    // const itemInCart = (e) => {
-    //     console.log(e.target.id);
-    //     // search shopping list for id
-    //     // set item in Cart to true
-    //     // activate a visual clue to confirm item isn't still needed
-    // }
+    // const { itemId, itemName, qtyNeeded, recipeName, inCart} = item;
+    const { itemId, itemName, qtyNeeded, recipeName } = item;    
 
     return (
         <li className="shopping__item">

@@ -15,7 +15,7 @@ function MealPlan() {
         axios
             .get(MealPlanDB_URL)
             .then(resp => {
-                if (!mealPlan) setMealPlan(resp.data);
+                setMealPlan(resp.data);
             })
             .catch(err => {
                 console.log(err);

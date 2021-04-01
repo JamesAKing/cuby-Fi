@@ -1,6 +1,6 @@
 import "./Home.scss";
 import { Link } from 'react-router-dom';
-import { about, contactUs, cupboard, recipeBook, mealPlan, shoppingList } from "../utilities/URLs";
+import { cupboard, recipeBook, mealPlan, shoppingList } from "../utilities/URLs";
 // IMAGES/ICONS NEEDED - all in white
 // SHopping List = List/Notepad
 // Recipe Book - Book
