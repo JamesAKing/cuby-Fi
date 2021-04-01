@@ -8,6 +8,7 @@ import ShoppingList from "./pages/ShoppingList";
 import mealPlanPage from "./pages/MealPlan";
 import RecipeBookPage from "./pages/RecipeBook";
 import RecipePage from "./pages/Recipe";
+import AddRecipeForm from './components/recipes/AddRecipeForm';
 import CupboardPage from "./pages/Cupboard";
 
 
@@ -23,7 +24,8 @@ function App() {
         <Route path={about} component={null}/>
         <Route path={contactUs} component={null}/>
         <Route path={cupboard} component={CupboardPage}/>
-        <Route path={recipeBook} component={RecipeBookPage}/>
+        <Route path={recipeBook} exact component={RecipeBookPage}/>
+        <Route path={`${recipeBook}/add-recipe`} component={AddRecipeForm}/>
         <Route path={`${recipeBook}/:recipeId`} component={RecipePage} />
         <Route path={mealPlan} component={mealPlanPage}/>
         <Route path={shoppingList} component={ShoppingList}/>

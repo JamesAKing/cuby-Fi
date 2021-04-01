@@ -5,7 +5,7 @@
         "image" : "URL",
         "imageType" : "string",
         "ingredients" : [],
-        "instructions" : "string - maybe list",
+        "instructions" : [],
         "userRating" : "string - maybe int?"
     }
 } 
