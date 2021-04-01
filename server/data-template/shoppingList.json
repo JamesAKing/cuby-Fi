@@ -1,8 +1,8 @@
 [
     {
-        "item" : "string",
+        "itemName" : "string",
         "itemId" : "string",
-        "recipeFor" : "string",
+        "recipeName" : "string",
         "recipeId" : "string",
         "category" : "string",
         "recipeQty" : "string",

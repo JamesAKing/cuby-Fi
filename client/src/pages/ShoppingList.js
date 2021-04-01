@@ -1,7 +1,7 @@
 import './ShoppingList.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { ShoppingListDB_URL } from '../utilities/APIEndPoints';
+import { ShoppingListDB_URL, CupboardDB_URL } from '../utilities/APIEndPoints';
 import ColumnHeader from "../components/global/ColumnHeader";
 import ShoppingListItem from "../components/shopping-list/ShoppingListItem";
 
@@ -13,13 +13,37 @@ function ShoppingListPage() {
         axios
             .get(ShoppingListDB_URL)
             .then(resp => {
-                console.log("Shopping List: ", resp.data);
                 setShoppingListData(resp.data);
             })
             .catch(err => {
                 console.log(err);
             });
     }, []);
+
+    const itemInCart = (e) => {
+        console.log('item addedd to cart');
+    }
+
+    const updateCupboard = (e) => {
+        e.preventDefault();
+        const purchasedItems = shoppingListData.filter(item => item.inCart)
+        console.log(purchasedItems);
+
+        if (purchasedItems.length > 0) {
+            axios
+                .post(CupboardDB_URL, {
+                    purchasedItems
+                })
+                .then(resp => [
+                    console.log(resp)
+                ])
+                .catch(err => {
+                    console.log(err)
+                });
+        } else {
+            console.log('No items to add to cupboard');
+        }
+    }
 
 
     return (
@@ -38,11 +62,16 @@ function ShoppingListPage() {
                     <p>Loading your Shopping List</p>:
                     shoppingListData.map(item => {
                         return(
-                            <ShoppingListItem />
+                            <ShoppingListItem
+                                item={item}
+                                itemInCart={itemInCart}
+                            />
                         )
                     })
                 }
             </ul>
+
+            <button type="submit" onClick={updateCupboard}>ADD ITEMS TO CUPBOARD</button>
         </main>
     );
 }
