@@ -26,6 +26,18 @@
     }
 }
 
+@mixin content-margins {
+    margin: 0 $margin-mobile;
+
+    @include tablet {
+        margin: 0 $margin-tablet;
+    }
+
+    @include desktop {
+        margin: 0 $margin-desktop;
+    }
+}
+
 // Header Circle
 @mixin header-circle {
     width: 60px;
