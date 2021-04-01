@@ -59,7 +59,16 @@ router
     })
     // Delete an item(s) from the cupboard
     .delete((req, res) => {
-        res.json("deleted");
+        const cupboardData = getData(cupboardURL);
+        const itemId = req.params.itemId;
+        const updatedCupboardData = cupboardData.filter(item => item.itemId !== itemId);
+
+        if (updatedCupboardData.length === (cupboardData.length - 1)) {
+            // writeData(cupboardURL, updatedCupboardData);
+            return res.status(204).send('deleted');
+        }
+
+        res.status(404).json('Item not found');
     })
 
 
