@@ -21,17 +21,12 @@ function AddRecipeForm() {
             // setIngredients(recipeIngredients.split('\n'))
             // setInstructions(recipeInstructions.split('\n'))
 
-            const newRecipe = {
-                recipeName : recipeName, 
-                image : "an image URL",
-                imageType : "string",
-                ingredients : recipeIngredients.split('\n'),
-                instructions : recipeInstructions.split('\n'),
-            }
-
             axios
                 .post(RecipesDB_URL, {
-                    newRecipe
+                    recipeName : recipeName, 
+                    image : "an image URL",
+                    ingredients : recipeIngredients.split('\n'),
+                    instructions : recipeInstructions.split('\n'),
                 })
                 .then(resp => {
                     console.log(resp);

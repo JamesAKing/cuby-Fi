@@ -1,11 +1,9 @@
-{
-    "recipeId" : {
-        "recipeName" : "string", 
-        "recipeId" : "string",
+[
+    {
+        "recipeName" : "Sausage and Mash", 
+        "recipeId" : "917445a8-6508-4152-b016-28affa2030c0",
         "image" : "URL",
-        "imageType" : "string",
-        "ingredients" : [],
-        "instructions" : [],
-        "userRating" : "string - maybe int?"
+        "ingredients" : ["sausages", "potatos", "gravy", "mushrooms", "onions"],
+        "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
     }
-} 
+]

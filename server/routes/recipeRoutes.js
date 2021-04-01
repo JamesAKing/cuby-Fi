@@ -1,6 +1,8 @@
 const express = require('express');
 const fs = require('fs');
 const router = express.Router();
+const { v4: uuidv4 } = require('uuid');
+
 
 // Consider condensing deatiled and quick view JSON
 
@@ -28,7 +30,28 @@ router
     })
     // Add a recipe to recipe Book - must add to both detailed and non-detailed
     .post((req, res) => {
-        res.json('added');
+        const recipeData = getData(recipesDetailedURL);
+        const recipeId = uuidv4();
+        const { recipeName, image, ingredients, instructions } = req.body;
+
+        for (let i = 0; i < recipeData.length; i++) {
+            if (recipeData[i].recipeName.toLowerCase() === recipeName.toLowerCase()) {
+                return res.status(409).json('Recipe Already Exists');
+            }
+        }
+        
+        const newRecipe = {
+            "recipeName" : recipeName, 
+            "recipeId" : recipeId,
+            "image" : image,
+            "ingredients" : ingredients,
+            "instructions" : instructions,
+        }
+
+        recipeData.push(newRecipe);
+        // writeData(recipesDetailedURL, recipeData);
+
+        res.status(200).json(newRecipe);
     })
 
 router
