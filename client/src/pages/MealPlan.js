@@ -9,7 +9,7 @@ import MealCard from "../components/meal-card/MealCard";
 function MealPlan() {
 
     const [mealPlan, setMealPlan] = useState(null);
-    const [days, setDays] = useState(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])
+    const [days] = useState(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])
 
     useEffect(() => {
         axios
@@ -39,7 +39,6 @@ function MealPlan() {
                                     recipeName={meal.recipeName}
                                 />
                             </Link>
-                            
                         )
                     })
                 }
