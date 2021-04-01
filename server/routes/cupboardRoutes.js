@@ -54,7 +54,7 @@ router
         res.json("connected");
     })
     // Edit an item in the cupboard
-    .put((erq, res) => {
+    .put((req, res) => {
         res.json('updated');
     })
     // Delete an item(s) from the cupboard

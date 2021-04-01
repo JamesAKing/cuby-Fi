@@ -1,0 +1,22 @@
+@use '../../styles/mixins' as *;
+
+.edit-item {
+    @include modal;
+
+    &__card {
+        width: 100%;
+        height: 100vh;
+        background-color: white;
+
+        @include tablet {
+            width: 80%;
+            height: 500px;
+            border-radius: 1.25rem;
+        }
+        
+        @include desktop {
+            width: 60%;
+        }
+    }
+
+}
