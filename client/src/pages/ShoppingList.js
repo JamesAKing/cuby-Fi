@@ -1,5 +1,6 @@
 import './ShoppingList.scss';
-import ShoppingList from "../components/shopping-list/ShoppingList";
+import ColumnHeader from "../components/global/ColumnHeader";
+import ShoppingListItem from "../components/shopping-list/ShoppingListItem";
 
 function ShoppingListPage() {
     return (
@@ -7,13 +8,13 @@ function ShoppingListPage() {
             <header className="shopping-list__header">
                 <h1 className="shopping-list__title">SHOPPING LIST</h1>
             </header>
-            <div className="column-header">
-                <p className="column-header__text column-header__column">ITEM</p>
-                <p className="column-header__text column-header__column">QTY</p>
-                <p className="column-header__text column-header__column">RECIPE</p>
-                <p className="column-header__text column-header__column">ACTION</p>
-            </div>
-            <ShoppingList />
+            <ColumnHeader
+                columnOne ="ITEM"
+                columnTwo ="QTY"
+                columnThree ="RECIPE"
+                columnFour ="ACTIONS"
+            />
+            <ShoppingListItem />
         </main>
     );
 }
