@@ -1,0 +1,46 @@
+@use '../../styles/mixins' as *;
+
+.list {
+    @include content-padding;
+
+    &__item {
+        list-style: none;
+    }
+
+    &__details {
+        display: flex;
+    }
+
+    &__heading {
+        color: grey;
+
+        @include tablet {
+            display: none;
+        }
+    }
+}
+
+.column-header {
+    @include content-padding;
+    display: none;
+
+    @include tablet {
+        display: block;
+        width: 100%;
+        height: 40px;
+        background-color: lightgrey;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &__text {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    &__column {
+        width: 25%;
+    }
+    
+}
