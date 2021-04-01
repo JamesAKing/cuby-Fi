@@ -27,15 +27,24 @@ router
     // Add an item(s) to the cupboard
     .post((req, res) => {
         let cupboardItems = getData(cupboardURL);
-        const newItem = {
-            "item" : req.body.item,
-            "itemId" : uuidv4(),
-            "category" : req.body.category,
-            "qty" : req.body.qty
-        }
-        cupboardItems.push(newItem)
+        let newItems = req.body.newItems;
+        
+        const convertednewItems = newItems.map(item => {
+            return ({
+                "item" : item.itemName,
+                // "itemId" : uuidv4(),
+                "itemId" : "5",
+                "category" : item.category,
+                "qty" : item.qtyNeeded
+            })
+        });
+
+        convertednewItems.forEach(item => {
+            cupboardItems.push(item)
+        })
+        console.log(cupboardItems)
         // writeData(cupboardURL, cupboardItems)
-        res.status(200).json(newItem);
+        res.status(204).json();
     })
 
 router

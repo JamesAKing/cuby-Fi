@@ -35,7 +35,13 @@ function ObjectDetection(props) {
     if (!items) {
       console.log("No Item to Add")
     } else {
-      const newItems = items.map(item => item.class);
+      const newItems = items.map(item => {
+        return ({
+          itemName : "item.class",
+          category : "Human",
+          qtyNeeded : "1"
+        })
+      });
       // Add Quantity have/needed
       console.log(newItems);
       axios

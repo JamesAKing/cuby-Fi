@@ -26,13 +26,12 @@ function ShoppingListPage() {
 
     const updateCupboard = (e) => {
         e.preventDefault();
-        const purchasedItems = shoppingListData.filter(item => item.inCart)
-        console.log(purchasedItems);
+        const newItems = shoppingListData.filter(item => item.inCart)
 
-        if (purchasedItems.length > 0) {
+        if (newItems.length > 0) {
             axios
                 .post(CupboardDB_URL, {
-                    purchasedItems
+                    newItems
                 })
                 .then(resp => [
                     console.log(resp)
