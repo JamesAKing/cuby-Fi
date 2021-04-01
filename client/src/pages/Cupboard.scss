@@ -5,12 +5,22 @@
 .cupboard {
 
     &__header {
+        @include content-padding;
         width: 100%;
-        height: 100px;
-        background-color: $color-five;
+        margin-bottom: 1rem;
+        border-top: 0.5rem solid $color-five;
+        display: flex;
+        align-items: center;
+    }
+
+    &__title {
+        display: inline;
+        padding: 1rem 0;
+        border-bottom: 0.3rem solid $color-five;
 
         @include tablet {
-            height: 80px;
+            font-size: 3rem;
         }
     }
+
 }
