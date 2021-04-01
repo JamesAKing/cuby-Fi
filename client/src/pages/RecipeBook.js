@@ -2,17 +2,17 @@ import './RecipeBook.scss';
 import { useEffect, useState } from 'react';
 import { RecipesDB_URL } from "../utilities/APIEndPoints";
 import axios from 'axios';
-import RecipeCard from '../components/recipe-card/RecipeCard';
+import Recipes from "../components/recipes/Recipes";
 
 function RecipeBook() {
 
-    const [recipes, setRecipes] = useState([]);
+    const [recipesData, setRecipesData] = useState([]);
 
     useEffect(() => {
         axios
             .get(RecipesDB_URL)
             .then(resp => (
-                setRecipes(resp.data)
+                setRecipesData(resp.data)
             ))
             .catch(err => {
                 console.log(err)
@@ -25,19 +25,7 @@ function RecipeBook() {
             <header className="recipes__header">
                 <h1>RECIPE BOOK</h1>
             </header>
-            <ul className="recipes__list">
-                {recipes.length === 0?
-                    <p>Getting your Recipes...</p>:
-                    recipes.map(recipe => {
-                        return (
-                            <RecipeCard
-                                recipeId={recipe.recipeId}
-                                recipeName={recipe.recipeName}
-                            />
-                        )
-                    })
-                }
-            </ul>
+            <Recipes recipesData={recipesData} />
         </main>
     )     
 }

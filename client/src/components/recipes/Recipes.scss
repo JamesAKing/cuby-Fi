@@ -1,0 +1,12 @@
+@use '../../styles/mixins' as *;
+
+.recipe-list {
+    @include content-padding;
+
+    @include tablet {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}
