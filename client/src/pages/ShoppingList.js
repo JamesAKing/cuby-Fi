@@ -2,6 +2,7 @@ import './ShoppingList.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ShoppingListDB_URL, CupboardDB_URL } from '../utilities/APIEndPoints';
+import { createItem } from '../utilities/functions';
 import ColumnHeader from "../components/global/ColumnHeader";
 import ShoppingListItem from "../components/shopping-list/ShoppingListItem";
 
@@ -26,19 +27,16 @@ function ShoppingListPage() {
 
     const updateCupboard = (e) => {
         e.preventDefault();
-        const newItems = shoppingListData.filter(item => item.inCart)
+        const addedItems = shoppingListData.filter(item => item.inCart)
 
-        if (newItems.length > 0) {
+        const formattedItems = addedItems.map(item => item = createItem(item))
+
+
+        if (formattedItems.length > 0) {
             axios
-                .post(CupboardDB_URL, {
-                    newItems
-                })
-                .then(resp => [
-                    console.log(resp)
-                ])
-                .catch(err => {
-                    console.log(err)
-                });
+                .post(CupboardDB_URL, formattedItems)
+                .then(resp => console.log(resp))
+                .catch(err =>  console.log(err));
         } else {
             console.log('No items to add to cupboard');
         }
