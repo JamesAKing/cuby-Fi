@@ -4,12 +4,13 @@ import axios from 'axios';
 import { CupboardDB_URL } from '../utilities/APIEndPoints';
 // import { cupboard } from '../utilities/URLs';
 import EditCupboardItem from '../components/edit-cupboard-item/EditCupboardItem';
+import CupboardItem from '../components/cupboard-item/CupboardItem';
 // import ObjectDetection from "../components/coco-ssd/ObjectDetection";
 
 function CupboardPage() {
 
     const [ cupboardData, setCupboardData ] = useState([]);
-    const [ showEditModal, setShowEditModal ] = useState(false);
+    const [ showEditModal, setShowEditModal ] = useState(true);
 
     useEffect(() => {
         axios
@@ -33,7 +34,12 @@ function CupboardPage() {
     const toggleEditItemModal = () => {
         // const itemId = e.target.parentNode.parentNode.id;
         setShowEditModal(!showEditModal);
+    }
 
+    const submitEdittedItem = (e) => {
+        e.preventDefault();
+        const updatedItem = e.target;
+        console.log(updatedItem);
     }
 
     const deleteCupboardItem = (e) => {
@@ -47,7 +53,7 @@ function CupboardPage() {
 
     return (
         <main>
-            {showEditModal ? <EditCupboardItem toggleEditItemModal={toggleEditItemModal}/> : null}
+            {showEditModal && <EditCupboardItem submitEdittedItem={submitEdittedItem} toggleEditItemModal={toggleEditItemModal}/>}
             <header className="cupboard__header">
                 <h1 className="cupboard__title">CUPBOARD</h1>
             </header>
@@ -61,17 +67,19 @@ function CupboardPage() {
                         <li><p>Checking the contents of your Cupboard</p></li>:
                         cupboardData.map(item => {
                             return (
-                                <li key={item.itemId} id={item.itemId}>
-                                    <p>{item.item}</p>
-                                    <div>
-                                        <button type="button" onClick={toggleEditItemModal}>EDIT</button>
-                                        <button type="button" onClick={deleteCupboardItem}>DELETE</button>
-                                    </div>
-                                </li>
+                                <CupboardItem 
+                                    itemId={item.itemId}
+                                    itemName={item.item}
+                                    toggleEditItemModal={toggleEditItemModal}
+                                    deleteCupboardItem={deleteCupboardItem}
+                                />
                             )
                         })
                     }
                 </ul>
+                <div>
+                    <button>Add Item</button>
+                </div>
             </section>
         </main>
     );
