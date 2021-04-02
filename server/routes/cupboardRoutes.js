@@ -27,22 +27,22 @@ router
     // Add an item(s) to the cupboard
     .post((req, res) => {
         let cupboardItems = getData(cupboardURL);
-        let newItems = req.body.newItems;
 
-        // [{item, itemId || uuidv4, category, amount, unit}]
+        // DEPRECIATED
+        // let newItems = req.body.newItems;
+
+        let newItems = req.body
         
-        const convertednewItems = newItems.map(item => {
+        const formattedItems = newItems.map(item => {
             return ({
                 "item" : item.itemName,
-                "itemId" : uuidv4(),
-                // "itemId" : "5",
+                "itemId" : item.itemId || uuidv4(),
                 "category" : item.category,
-                "qty" : item.qtyNeeded
-                // "qty" : {"amount" : 0, "unit" : "cup"}
+                "qty" : {"amount" : item.qtyAmount, "unit" : item.qtyUnit}
             })
         });
 
-        convertednewItems.forEach(item => {
+        formattedItems.forEach(item => {
             cupboardItems.push(item)
         })
         console.log(cupboardItems)

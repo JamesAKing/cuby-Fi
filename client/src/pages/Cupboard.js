@@ -51,11 +51,11 @@ function CupboardPage() {
     const submitItem = (e) => {
         e.preventDefault();
         if (formValid(inputValues)) {
-        console.log(createItem(inputValues))            
-            // axios
-            //     .post(CupboardDB_URL, inputValues)
-            //     .then(resp => console.log(resp))
-            //     .catch(err => console.log(err));
+            const newItems = [createItem(inputValues)];
+            axios
+                .post(CupboardDB_URL, newItems)
+                .then(resp => console.log(resp))
+                .catch(err => console.log(err));
         }
         
     }
