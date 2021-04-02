@@ -60,6 +60,7 @@ function ShoppingListPage() {
                     shoppingListData.map(item => {
                         return(
                             <ShoppingListItem
+                                key={item.cartId}
                                 item={item}
                                 itemInCart={itemInCart}
                             />
