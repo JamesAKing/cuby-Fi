@@ -19,12 +19,12 @@ const cupboardURL = './data/cupboard.json';
 
 router
     .route('/')
-    // see all items in the cupboard
+    // get items in the cupboard
     .get((req, res) => {
         const result = getData(cupboardURL);
         res.json(result);
     })
-    // Add an item(s) to the cupboard
+    // Add item(s) to the cupboard
     .post((req, res) => {
         let cupboardItems = getData(cupboardURL);
 
@@ -42,8 +42,6 @@ router
             })
         });
 
-        
-
         formattedItems.forEach(newItem => {
             const itemIndex = cupboardItems.findIndex((cupboardItem => {
                 if (newItem.itemName === cupboardItem.itemName) {
@@ -54,8 +52,6 @@ router
             if (itemIndex === -1) cupboardItems.push(newItem); 
         })
     
-
-        console.log(cupboardItems)
         // writeData(cupboardURL, cupboardItems)
         res.status(204).json();
     })
