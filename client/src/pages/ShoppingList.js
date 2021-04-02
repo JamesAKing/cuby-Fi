@@ -28,12 +28,16 @@ function ShoppingListPage() {
     const updateCupboard = (e) => {
         e.preventDefault();
         const addedItems = shoppingListData.filter(item => item.inCart)
-
         const formattedItems = addedItems.map(item => item = createItem(item))
 
         if (formattedItems.length > 0) {
             axios
                 .post(CupboardDB_URL, formattedItems)
+                .then(resp => console.log(resp))
+                .catch(err =>  console.log(err));
+            
+            axios
+                .delete(ShoppingListDB_URL, { data : addedItems})
                 .then(resp => console.log(resp))
                 .catch(err =>  console.log(err));
             
@@ -45,7 +49,6 @@ function ShoppingListPage() {
             console.log('No items to add to cupboard');
         }
     }
-
 
     return (
         <main className="shopping-list">

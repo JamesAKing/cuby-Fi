@@ -38,17 +38,32 @@ router
         const result = getData(shoppingListURL);
         res.json(result);
     })
-    // Add an item(s) to the shoppingList
+    // Add/Remove an item(s) to/from the shoppingList
     .post((req, res) => {
-
         let shoppingListData = getData(shoppingListURL);
-
         const newListItem = createShoppingListItem(req);
-
         shoppingListData.push(newListItem);
         // writeData(shoppingListURL, shoppingListData);
 
         res.status(200).json(newListItem);
+    })
+    .delete((req, res) => {
+        const shoppingListData = getData(shoppingListURL);
+        const addedItems = req.body;
+        let updatedShoppingList = []
+
+        addedItems.forEach(addedItem => {
+            shoppingListData.forEach(shoppingListItem => {
+                if (addedItem.itemName !== shoppingListItem.itemName) {
+                    updatedShoppingList.push(shoppingListItem)
+                }
+            })
+        });
+
+        // writeData(shoppingListURL, updatedShoppingList);
+        updatedShoppingList.length < shoppingListData.length ?
+            res.status(204).send():
+            res.status(400).json('No items removd from shopping list');
     })
 
 router
@@ -64,7 +79,6 @@ router
 
         if (result.length > 0) res.status(200).json(result);
         else res.status(404).json('Cannot find item.');
-        
     })
     // Edit an item in the shoppingList
     .put((req, res) => {
@@ -89,9 +103,10 @@ router
             return itemId !== item.itemId;
         });
         
-        // writeData(shoppingListURL, newShoppingList);
-        if (newShoppingList.length === (shoppingListData.length - 1)) res.status(204).json();
-        else res.status(404).json("No Item Found");
+        if (newShoppingList.length === (shoppingListData.length - 1)) {
+            // writeData(shoppingListURL, newShoppingList);
+            res.status(204).json()
+        } else res.status(404).json("No Item Found");
     })
 
 // EXPORTS
