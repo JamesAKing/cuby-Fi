@@ -79,11 +79,25 @@ function CupboardPage() {
         }
     }
 
+    const updateItem = (e) => {
+        e.preventDefault();
+        const itemId = e.target.id
+        if (formValid(inputValues)) {
+            const newItems = [createItem(inputValues)];
+            console.log(newItems);
+            axios
+                .put(`${CupboardDB_URL}/${itemId}`, newItems)
+                .then(resp => console.log(resp))
+                .catch(err => console.log(err));
+        }
+    }
+
     const formValid = (formObj) => {
         let objKeys = Object.keys(formObj)
-
+        
         for (let i = 0; i < objKeys.length; i++ ) {
-            if (!formObj[objKeys[i]]) {
+            if (!formObj[objKeys[i]] && objKeys[i] !== 'itemId') {
+                console.log('Error with ', objKeys[i])
                 return false
             }
         }
@@ -103,7 +117,7 @@ function CupboardPage() {
     return (
         <main>
             {showAddModal && <AddCupboardItem submitItem={submitItem} handleFormChange={handleFormChange} toggleAddItemModal={toggleAddItemModal}/>}
-            {showEditModal && <EditCupboardItem submitItem={submitItem} handleFormChange={handleFormChange} toggleEditItemModal={toggleEditItemModal} inputValues={inputValues}/>}
+            {showEditModal && <EditCupboardItem updateItem={updateItem} handleFormChange={handleFormChange} toggleEditItemModal={toggleEditItemModal} inputValues={inputValues}/>}
 
             <header className="cupboard__header">
                 <h1 className="cupboard__title">CUPBOARD</h1>

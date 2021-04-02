@@ -1,13 +1,13 @@
 import './EditItemForm.scss';
 
-function EditItemForm({ submitItem, toggleEditItemModal, inputValues, handleFormChange }) {
+function EditItemForm({ updateItem, toggleEditItemModal, inputValues, handleFormChange }) {
 
-    const { itemName, category, qtyAmount, qtyUnit } = inputValues;
+    const { itemName, category, qtyAmount, qtyUnit, itemId } = inputValues;
     // const { amount, unit } = inputValues.qty;
 
     console.log('inside:', inputValues)
     return (
-        <form onSubmit={submitItem} onChange={handleFormChange}>
+        <form id={itemId} onSubmit={updateItem} onChange={handleFormChange}>
             <label htmlFor="itemName">
                 <h3>Item</h3>
                 <input type='text' name="itemName" value={itemName} onChange={handleFormChange}/>
