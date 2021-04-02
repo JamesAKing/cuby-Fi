@@ -42,9 +42,19 @@ router
             })
         });
 
-        formattedItems.forEach(item => {
-            cupboardItems.push(item)
+        
+
+        formattedItems.forEach(newItem => {
+            const itemIndex = cupboardItems.findIndex((cupboardItem => {
+                if (newItem.itemName === cupboardItem.itemName) {
+                    cupboardItem.qty.amount += newItem.qty.amount
+                }
+                return newItem.itemName === cupboardItem.itemName
+            }))
+            if (itemIndex === -1) cupboardItems.push(newItem); 
         })
+    
+
         console.log(cupboardItems)
         // writeData(cupboardURL, cupboardItems)
         res.status(204).json();
