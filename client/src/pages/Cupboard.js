@@ -44,20 +44,13 @@ function CupboardPage() {
                 category: item[0].category
             })
         } else {
-            setInputValues({
-                itemName : '',
-                itemId : null,
-                qtyAmount : 0,
-                qtyUnit : '',
-                category: ''
-            })
+            clearInputValues();
         }
-
         setShowEditModal(!showEditModal);
     }
 
     const toggleAddItemModal = () => {
-        // const itemId = e.target.parentNode.parentNode.id;
+        clearInputValues();
         setShowAddModal(!showAddModal);
     }
 
@@ -75,6 +68,10 @@ function CupboardPage() {
             axios
                 .post(CupboardDB_URL, newItems)
                 .then(resp => console.log(resp))
+                .then(() => {
+                    clearInputValues();
+                    toggleAddItemModal();
+                })
                 .catch(err => console.log(err));
         }
     }
@@ -102,6 +99,16 @@ function CupboardPage() {
             }
         }
         return true 
+    }
+
+    const clearInputValues = () => {
+        setInputValues({
+            itemName : '',
+            itemId : null,
+            qtyAmount : 0,
+            qtyUnit : '',
+            category: ''
+        })
     }
 
     const deleteCupboardItem = (e) => {
