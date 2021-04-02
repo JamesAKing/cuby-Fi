@@ -12,8 +12,13 @@ function CupboardPage() {
 
     const [ cupboardData, setCupboardData ] = useState([]);
     const [ showEditModal, setShowEditModal ] = useState(false);
-    const [ showAddModal, setShowAddModal ] = useState(false);
-
+    const [ showAddModal, setShowAddModal ] = useState(true);
+    const [ inputValues, setInputValues ] = useState({
+        itemName : '',
+        qty : 0,
+        qtyUnits : '',
+        category: ''
+    });
 
     useEffect(() => {
         axios
@@ -37,11 +42,26 @@ function CupboardPage() {
         setShowAddModal(!showAddModal);
     }
 
+    const handleFormChange =(e) => {
+        const item = e.target;
+        setInputValues({...inputValues, [item.name] : item.value})
+    }
+
     const submitItem = (e) => {
         e.preventDefault();
-        console.log('added')
-        const updatedItem = e.target;
-        console.log(updatedItem);
+        if (formValid(inputValues)) {}
+        
+    }
+
+    const formValid = (formObj) => {
+        let objKeys = Object.keys(formObj)
+
+        for (let i = 0; i < objKeys.length; i++ ) {
+            if (!formObj[objKeys[i]]) {
+                return false
+            }
+        }
+        return true 
     }
 
     const deleteCupboardItem = (e) => {
@@ -52,9 +72,11 @@ function CupboardPage() {
             .catch(err => console.log(err));
     }
 
+    console.log(inputValues);
+
     return (
         <main>
-            {showAddModal && <AddCupboardItem submitItem={submitItem} toggleAddItemModal={toggleAddItemModal}/>}
+            {showAddModal && <AddCupboardItem submitItem={submitItem} handleFormChange={handleFormChange} toggleAddItemModal={toggleAddItemModal}/>}
             {showEditModal && <EditCupboardItem submitItem={submitItem} toggleEditItemModal={toggleEditItemModal}/>}
             <header className="cupboard__header">
                 <h1 className="cupboard__title">CUPBOARD</h1>

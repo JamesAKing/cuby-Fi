@@ -1,7 +1,7 @@
 import './AddCupboardItem.scss';
 import AddItemForm from '../forms/AddItemForm';
 
-function AddCupboardItem({ submitItem, toggleAddItemModal }) {
+function AddCupboardItem({ submitItem, toggleAddItemModal, handleFormChange }) {
 
     return (
         <section className="add-item">
@@ -10,6 +10,7 @@ function AddCupboardItem({ submitItem, toggleAddItemModal }) {
                 <AddItemForm
                     submitItem={submitItem}
                     toggleAddItemModal={toggleAddItemModal}
+                    handleFormChange={handleFormChange}
                 />
             </div>
         </section>

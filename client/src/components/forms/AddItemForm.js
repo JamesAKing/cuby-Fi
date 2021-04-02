@@ -1,31 +1,37 @@
 import './AddItemForm.scss';
 
-function AddItemForm({ submitItem, toggleAddItemModal }) {
+function AddItemForm({ submitItem, toggleAddItemModal, handleFormChange }) {
     return (
-        <form onSubmit={submitItem}>
-            <label>
+        <form onSubmit={submitItem} onChange={handleFormChange}>
+            <label htmlFor="itemName">
                 <h3>Item</h3>
-                <input type='text' />
+                <input type='text' name="itemName" />
             </label>
-            <label>
+            <div >
                 <h3>QTY</h3>
                 <div>
-                    <input type='number' />
-                    <select>
-                        <option>cup(s)</option>
-                        <option>gram(s)</option>
-                        <option>unit(s)</option>
-                    </select>
+                    <label htmlFor="qty">
+                        <input type='number' name="qty" />
+                    </label>
+                    <label htmlFor="qtyUnits">
+                        <select name="qtyUnits">
+                            <option selected disabled value="cup">---Please Select One---</option>
+                            <option value="cup">cup(s)</option>
+                            <option value="gram">gram(s)</option>
+                            <option value="unit">unit(s)</option>
+                        </select>
+                    </label>
                 </div>
-                <label>
+                <label htmlFor="category">
                     <h3>CATEGORY</h3>
-                    <select>
-                        <option>MEAT</option>
-                        <option>VEGETABLE</option>
-                        <option>SAUCE</option>
+                    <select name="category">
+                        <option selected disabled value="cup">---Please Select One---</option>
+                        <option value="meat">MEAT</option>
+                        <option value="vegetable">VEGETABLE</option>
+                        <option value="sauce">SAUCE</option>
                     </select>
                 </label>
-            </label>
+            </div>
             <div>
                 <button type="submit">Add ITEM</button>
                 <button type="button" onClick={toggleAddItemModal}>X</button>
