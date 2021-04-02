@@ -10,11 +10,11 @@ function AddItemForm({ submitItem, toggleAddItemModal, handleFormChange }) {
             <div >
                 <h3>QTY</h3>
                 <div>
-                    <label htmlFor="qty">
-                        <input type='number' name="qty" />
+                    <label htmlFor="qtyAmount">
+                        <input type='number' name="qtyAmount" />
                     </label>
-                    <label htmlFor="qtyUnits">
-                        <select name="qtyUnits">
+                    <label htmlFor="qtyUnit">
+                        <select name="qtyUnit">
                             <option selected disabled value="cup">---Please Select One---</option>
                             <option value="cup">cup(s)</option>
                             <option value="gram">gram(s)</option>

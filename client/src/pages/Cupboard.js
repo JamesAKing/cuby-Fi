@@ -2,6 +2,7 @@ import './Cupboard.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CupboardDB_URL } from '../utilities/APIEndPoints';
+import { createItem } from '../utilities/functions';
 // import { cupboard } from '../utilities/URLs';
 import AddCupboardItem from '../components/add-cupboard-item/AddCupboardItem';
 import EditCupboardItem from '../components/edit-cupboard-item/EditCupboardItem';
@@ -15,8 +16,8 @@ function CupboardPage() {
     const [ showAddModal, setShowAddModal ] = useState(true);
     const [ inputValues, setInputValues ] = useState({
         itemName : '',
-        qty : 0,
-        qtyUnits : '',
+        qtyAmount : 0,
+        qtyUnit : '',
         category: ''
     });
 
@@ -49,7 +50,13 @@ function CupboardPage() {
 
     const submitItem = (e) => {
         e.preventDefault();
-        if (formValid(inputValues)) {}
+        if (formValid(inputValues)) {
+        console.log(createItem(inputValues))            
+            // axios
+            //     .post(CupboardDB_URL, inputValues)
+            //     .then(resp => console.log(resp))
+            //     .catch(err => console.log(err));
+        }
         
     }
 

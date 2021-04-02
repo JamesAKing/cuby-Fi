@@ -28,14 +28,17 @@ router
     .post((req, res) => {
         let cupboardItems = getData(cupboardURL);
         let newItems = req.body.newItems;
+
+        // [{item, itemId || uuidv4, category, amount, unit}]
         
         const convertednewItems = newItems.map(item => {
             return ({
                 "item" : item.itemName,
-                // "itemId" : uuidv4(),
-                "itemId" : "5",
+                "itemId" : uuidv4(),
+                // "itemId" : "5",
                 "category" : item.category,
                 "qty" : item.qtyNeeded
+                // "qty" : {"amount" : 0, "unit" : "cup"}
             })
         });
 
