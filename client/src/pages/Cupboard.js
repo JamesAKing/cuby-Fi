@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CupboardDB_URL } from '../utilities/APIEndPoints';
 // import { cupboard } from '../utilities/URLs';
+import AddCupboardItem from '../components/add-cupboard-item/AddCupboardItem';
 import EditCupboardItem from '../components/edit-cupboard-item/EditCupboardItem';
 import CupboardItem from '../components/cupboard-item/CupboardItem';
 // import ObjectDetection from "../components/coco-ssd/ObjectDetection";
@@ -10,7 +11,9 @@ import CupboardItem from '../components/cupboard-item/CupboardItem';
 function CupboardPage() {
 
     const [ cupboardData, setCupboardData ] = useState([]);
-    const [ showEditModal, setShowEditModal ] = useState(true);
+    const [ showEditModal, setShowEditModal ] = useState(false);
+    const [ showAddModal, setShowAddModal ] = useState(false);
+
 
     useEffect(() => {
         axios
@@ -23,21 +26,20 @@ function CupboardPage() {
             });
     }, []);
 
-    // const editCupboardItem = (e) => {
-    //     const itemId = e.target.parentNode.parentNode.id
-
-    //     let selectedItem = cupboardData.filter(item => item.itemId === itemId)
-    //     console.log(selectedItem);
-    //     // setShowEditModal(true);
-    // }
-
     const toggleEditItemModal = () => {
         // const itemId = e.target.parentNode.parentNode.id;
         setShowEditModal(!showEditModal);
     }
 
-    const submitEdittedItem = (e) => {
+    const toggleAddItemModal = () => {
+        // const itemId = e.target.parentNode.parentNode.id;
+        console.log('click')
+        setShowAddModal(!showAddModal);
+    }
+
+    const submitItem = (e) => {
         e.preventDefault();
+        console.log('added')
         const updatedItem = e.target;
         console.log(updatedItem);
     }
@@ -50,17 +52,17 @@ function CupboardPage() {
             .catch(err => console.log(err));
     }
 
-
     return (
         <main>
-            {showEditModal && <EditCupboardItem submitEdittedItem={submitEdittedItem} toggleEditItemModal={toggleEditItemModal}/>}
+            {showAddModal && <AddCupboardItem submitItem={submitItem} toggleAddItemModal={toggleAddItemModal}/>}
+            {showEditModal && <EditCupboardItem submitItem={submitItem} toggleEditItemModal={toggleEditItemModal}/>}
             <header className="cupboard__header">
                 <h1 className="cupboard__title">CUPBOARD</h1>
+                <nav>
+                    {/* Link to Cupboard */}
+                    {/* Link to Object Detection */}
+                </nav>
             </header>
-            <nav>
-                {/* Link to Cupboard */}
-                {/* Link to Object Detection */}
-            </nav>
             <section>
                 <ul>
                     {cupboardData.length === 0 ?
@@ -78,7 +80,7 @@ function CupboardPage() {
                     }
                 </ul>
                 <div>
-                    <button>Add Item</button>
+                    <button type="button" onClick={toggleAddItemModal}>Add Item</button>
                 </div>
             </section>
         </main>

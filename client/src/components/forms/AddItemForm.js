@@ -1,7 +1,6 @@
-import './EditItemForm.scss';
+import './AddItemForm.scss';
 
-function EditItemForm({ submitItem, toggleEditItemModal }) {
-
+function AddItemForm({ submitItem, toggleAddItemModal }) {
     return (
         <form onSubmit={submitItem}>
             <label>
@@ -28,12 +27,11 @@ function EditItemForm({ submitItem, toggleEditItemModal }) {
                 </label>
             </label>
             <div>
-                <button type="submit">UPDATE ITEM</button>
-                <button type="button" onClick={toggleEditItemModal}>X</button>
+                <button type="submit">Add ITEM</button>
+                <button type="button" onClick={toggleAddItemModal}>X</button>
             </div>
         </form>
     );
-
 }
 
-export default EditItemForm;
+export default AddItemForm;
