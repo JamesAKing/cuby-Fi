@@ -25,7 +25,7 @@ function ShoppingListPage() {
         console.log('item addedd to cart');
     }
 
-    const updateCupboard = (e) => {
+    const updateCupboardAndShopList = (e) => {
         e.preventDefault();
         const addedItems = shoppingListData.filter(item => item.inCart)
         const formattedItems = addedItems.map(item => item = createItem(item))
@@ -76,7 +76,7 @@ function ShoppingListPage() {
                 }
             </ul>
 
-            <button type="submit" onClick={updateCupboard}>ADD ITEMS TO CUPBOARD</button>
+            <button type="submit" onClick={updateCupboardAndShopList}>ADD ITEMS TO CUPBOARD</button>
         </main>
     );
 }
