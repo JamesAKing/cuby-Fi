@@ -35,7 +35,7 @@ router
         
         const formattedItems = newItems.map(item => {
             return ({
-                "item" : item.itemName,
+                "itemName" : item.itemName,
                 "itemId" : item.itemId || uuidv4(),
                 "category" : item.category,
                 "qty" : {"amount" : item.qtyAmount, "unit" : item.qtyUnit}

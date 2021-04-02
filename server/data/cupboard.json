@@ -1,32 +1,47 @@
 [
     {
-        "item" : "gravy",
+        "itemName" : "gravy",
         "itemId" : "1",
         "category" : "sauce",
-        "qty" : "500g"
+        "qty" : {
+            "amount" : 500,
+            "unit" : "ml"
+        }
     },
     {
-        "item" : "wraps",
+        "itemName" : "wraps",
         "itemId" : "2",
         "category" : "bakery",
-        "qty" : "8"
+        "qty" : {
+            "amount" : 8,
+            "unit" : "unit"
+        }
     },
     {
-        "item" : "tomato sauce",
+        "itemName" : "tomato sauce",
         "itemId" : "3",
         "category" : "sauce",
-        "qty" : "780g"
+        "qty" : {
+            "amount" : 780,
+            "unit" : "ml"
+        }
     },
     {
-        "item" : "macaroni pasta",
+        "itemName" : "macaroni pasta",
         "itemId" : "4",
         "category" : "pasta",
-        "qty" : "1kg"
+        "qty" : {
+            "amount" : 350,
+            "unit" : "gram"
+        }
     },
     {
-        "item" : "Lasagna Sheets",
+        "itemName" : "Lasagna Sheets",
         "itemId" : "5",
         "category" : "pasta",
-        "qty" : "1kg"
+        "qty" : {
+            "amount" : 7,
+            "unit" : "unit"
+        }
     }
 ]

@@ -13,9 +13,11 @@ function CupboardPage() {
 
     const [ cupboardData, setCupboardData ] = useState([]);
     const [ showEditModal, setShowEditModal ] = useState(false);
-    const [ showAddModal, setShowAddModal ] = useState(true);
+    const [ showAddModal, setShowAddModal ] = useState(false);
+    // const [ selectedItem, setSelectedItem ] = useState(null);
     const [ inputValues, setInputValues ] = useState({
         itemName : '',
+        itemId : null,
         qtyAmount : 0,
         qtyUnit : '',
         category: ''
@@ -24,27 +26,45 @@ function CupboardPage() {
     useEffect(() => {
         axios
             .get(CupboardDB_URL)
-            .then(resp => {
-                setCupboardData(resp.data)
-            })
-            .catch(err => {
-                console.log(err);
-            });
+            .then(resp => setCupboardData(resp.data))
+            .catch(err => console.log(err));
     }, []);
 
-    const toggleEditItemModal = () => {
-        // const itemId = e.target.parentNode.parentNode.id;
+    const toggleEditItemModal = (e) => {
+        const itemId = e.target.parentNode.parentNode.id;
+        const item = cupboardData.filter(item => item.itemId === itemId)
+        console.log(item[0]);
+
+        if (!formValid(inputValues)) {
+            setInputValues({
+                itemName : item[0].itemName,
+                itemId : item[0].itemId,
+                qtyAmount : item[0].qty.amount,
+                qtyUnit : item[0].qty.unit,
+                category: item[0].category
+            })
+        } else {
+            setInputValues({
+                itemName : '',
+                itemId : null,
+                qtyAmount : 0,
+                qtyUnit : '',
+                category: ''
+            })
+        }
+
         setShowEditModal(!showEditModal);
     }
 
     const toggleAddItemModal = () => {
         // const itemId = e.target.parentNode.parentNode.id;
-        console.log('click')
         setShowAddModal(!showAddModal);
     }
 
     const handleFormChange =(e) => {
         const item = e.target;
+        // console.log(item.parentNode)
+        console.log(item.value)
         setInputValues({...inputValues, [item.name] : item.value})
     }
 
@@ -57,7 +77,6 @@ function CupboardPage() {
                 .then(resp => console.log(resp))
                 .catch(err => console.log(err));
         }
-        
     }
 
     const formValid = (formObj) => {
@@ -84,7 +103,8 @@ function CupboardPage() {
     return (
         <main>
             {showAddModal && <AddCupboardItem submitItem={submitItem} handleFormChange={handleFormChange} toggleAddItemModal={toggleAddItemModal}/>}
-            {showEditModal && <EditCupboardItem submitItem={submitItem} toggleEditItemModal={toggleEditItemModal}/>}
+            {showEditModal && <EditCupboardItem submitItem={submitItem} handleFormChange={handleFormChange} toggleEditItemModal={toggleEditItemModal} inputValues={inputValues}/>}
+
             <header className="cupboard__header">
                 <h1 className="cupboard__title">CUPBOARD</h1>
                 <nav>
@@ -100,7 +120,7 @@ function CupboardPage() {
                             return (
                                 <CupboardItem 
                                     itemId={item.itemId}
-                                    itemName={item.item}
+                                    itemName={item.itemName}
                                     toggleEditItemModal={toggleEditItemModal}
                                     deleteCupboardItem={deleteCupboardItem}
                                 />
