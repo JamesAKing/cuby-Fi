@@ -15,20 +15,20 @@ function AddItemForm({ submitItem, toggleAddItemModal, handleFormChange }) {
                     </label>
                     <label htmlFor="qtyUnit">
                         <select name="qtyUnit">
-                            <option selected disabled value="cup">---Please Select One---</option>
-                            <option value="cup">cup(s)</option>
-                            <option value="gram">gram(s)</option>
-                            <option value="unit">unit(s)</option>
+                            <option selected disabled defaultValue="cup">---Please Select One---</option>
+                            <option defaultValue="cup">cup(s)</option>
+                            <option defaultValue="gram">gram(s)</option>
+                            <option defaultValue="unit">unit(s)</option>
                         </select>
                     </label>
                 </div>
                 <label htmlFor="category">
                     <h3>CATEGORY</h3>
                     <select name="category">
-                        <option selected disabled value="cup">---Please Select One---</option>
-                        <option value="meat">MEAT</option>
-                        <option value="vegetable">VEGETABLE</option>
-                        <option value="sauce">SAUCE</option>
+                        <option selected disabled defaultValue="cup">---Please Select One---</option>
+                        <option defaultValue="meat">MEAT</option>
+                        <option defaultValue="vegetable">VEGETABLE</option>
+                        <option defaultValue="sauce">SAUCE</option>
                     </select>
                 </label>
             </div>

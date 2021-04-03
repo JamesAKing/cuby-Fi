@@ -119,8 +119,6 @@ function CupboardPage() {
             .catch(err => console.log(err));
     }
 
-    console.log(inputValues);
-
     return (
         <main>
             {showAddModal && <AddCupboardItem submitItem={submitItem} handleFormChange={handleFormChange} toggleAddItemModal={toggleAddItemModal}/>}
@@ -139,7 +137,8 @@ function CupboardPage() {
                         <li><p>Checking the contents of your Cupboard</p></li>:
                         cupboardData.map(item => {
                             return (
-                                <CupboardItem 
+                                <CupboardItem
+                                    key={item.itemId} 
                                     itemId={item.itemId}
                                     itemName={item.itemName}
                                     toggleEditItemModal={toggleEditItemModal}

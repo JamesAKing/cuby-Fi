@@ -21,8 +21,16 @@ function ShoppingListPage() {
             });
     }, []);
 
-    const itemInCart = (e) => {
-        console.log('item addedd to cart');
+    const addTocart = (e) => {
+        const itemId = e.target.id;
+        const updatedShoppingList = shoppingListData.map(item => {
+            // console.log(item.cartId === itemId);
+            if (item.cartId === itemId) {
+                item.inCart = true;
+            };
+            return item;
+        }) ;
+        setShoppingListData(updatedShoppingList);
     }
 
     const updateCupboardAndShopList = (e) => {
@@ -50,6 +58,8 @@ function ShoppingListPage() {
         }
     }
 
+    console.log(shoppingListData);
+
     return (
         <main className="shopping-list">
             <header className="shopping-list__header">
@@ -69,13 +79,12 @@ function ShoppingListPage() {
                             <ShoppingListItem
                                 key={item.cartId}
                                 item={item}
-                                itemInCart={itemInCart}
+                                addTocart={addTocart}
                             />
                         )
                     })
                 }
             </ul>
-
             <button type="submit" onClick={updateCupboardAndShopList}>ADD ITEMS TO CUPBOARD</button>
         </main>
     );

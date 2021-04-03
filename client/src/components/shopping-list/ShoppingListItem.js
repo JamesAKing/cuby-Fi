@@ -1,8 +1,7 @@
 import './ShoppingListItem.scss';
 
-function ShoppingListItem({ item, itemInCart }) {
+function ShoppingListItem({ item, addTocart }) {
 
-    // const { itemId, itemName, qtyNeeded, recipeName, inCart} = item;
     const { cartId, itemName, qtyNeeded, qtyUnit, recipeName } = item;    
 
     return (
@@ -21,7 +20,7 @@ function ShoppingListItem({ item, itemInCart }) {
             </div>
             <div className="shopping__column">
                 <h3 className="shopping__heading">ACTIONS</h3>
-                <button id={cartId} type="button" onClick={itemInCart}>IN CART</button>
+                <button id={cartId} type="button" onClick={addTocart}>IN CART</button>
             </div>               
         </li>
     );
