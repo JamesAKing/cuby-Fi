@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
+const { MealPlanDB_URL } = require('../../client/src/utilities/APIEndPoints');
 
 // FUNCTIONS
 const getData = (url) => {
@@ -92,7 +93,8 @@ router
     })
     // Clear all meals for the week
     .delete((req, res) => {
-        res.json('Removed all meals');
+        // writeData(MealPlanDB_URL, [])
+        res.status(204).json('Removed all meals');
     })
 
 router
