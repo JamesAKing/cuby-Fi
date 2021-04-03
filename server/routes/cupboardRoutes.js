@@ -27,11 +27,9 @@ router
     // Add item(s) to the cupboard
     .post((req, res) => {
         let cupboardItems = getData(cupboardURL);
-
+        let newItems = req.body
         // DEPRECIATED
         // let newItems = req.body.newItems;
-
-        let newItems = req.body
         
         const formattedItems = newItems.map(item => {
             return ({

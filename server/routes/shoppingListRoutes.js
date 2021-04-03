@@ -50,15 +50,27 @@ router
     .delete((req, res) => {
         const shoppingListData = getData(shoppingListURL);
         const addedItems = req.body;
-        let updatedShoppingList = []
+        let updatedShoppingList = [];
 
-        addedItems.forEach(addedItem => {
-            shoppingListData.forEach(shoppingListItem => {
-                if (addedItem.itemName !== shoppingListItem.itemName) {
-                    updatedShoppingList.push(shoppingListItem)
-                }
+        // addedItems.forEach(addedItem => {
+        //     shoppingListData.forEach(shoppingListItem => {
+        //         console.log(addedItem.itemName)
+        //         console.log(shoppingListItem.itemName)
+        //         console.log(addedItem.itemName !== shoppingListItem.itemName)
+
+        //         if (addedItem.itemName !== shoppingListItem.itemName) {
+        //             updatedShoppingList.push(shoppingListItem);
+        //         }
+        //     });
+        // });
+
+        while (addedItems.length > 0) {
+            const addedItem = addedItems.pop();
+            shoppingListData.forEach((item, i) => {
+                console.log();
+                if (item.itemName === addedItem.itemName) shoppingListData.splice(i, 1)
             })
-        });
+        }
 
         // writeData(shoppingListURL, updatedShoppingList);
         updatedShoppingList.length < shoppingListData.length ?

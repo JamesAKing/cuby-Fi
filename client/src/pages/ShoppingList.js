@@ -9,6 +9,7 @@ import ShoppingListItem from "../components/shopping-list/ShoppingListItem";
 function ShoppingListPage() {
 
     const [ shoppingListData, setShoppingListData ] = useState([]);
+    const [ axiosGotData, setAxiosGotData ] = useState("Getting your shopping list...");
 
     useEffect(() => {
         axios
@@ -16,6 +17,7 @@ function ShoppingListPage() {
             .then(resp => {
                 setShoppingListData(resp.data);
             })
+            .then(() => setAxiosGotData("Your shopping list is empty"))
             .catch(err => {
                 console.log(err);
             });
@@ -58,8 +60,6 @@ function ShoppingListPage() {
         }
     }
 
-    console.log(shoppingListData);
-
     return (
         <main className="shopping-list">
             <header className="shopping-list__header">
@@ -73,7 +73,7 @@ function ShoppingListPage() {
             />
             <ul className="shopping-list__items">
                 {shoppingListData.length === 0 ?
-                    <p>Loading your Shopping List</p>:
+                    <p>{axiosGotData}</p>:
                     shoppingListData.map(item => {
                         return(
                             <ShoppingListItem
