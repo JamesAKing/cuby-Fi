@@ -1,4 +1,6 @@
 import './Recipes.scss';
+import { Link } from 'react-router-dom';
+import { recipeBook } from '../../utilities/URLs';
 import RecipeCard from '../recipe-card/RecipeCard';
 
 function Recipes({ recipesData }) {
@@ -7,6 +9,8 @@ function Recipes({ recipesData }) {
         console.log("Recipe added");
     }
 
+    // console.log(recipesData);
+
     return (
         <>
             <ul className="recipe-list">
@@ -14,10 +18,12 @@ function Recipes({ recipesData }) {
                     <p>Getting your Recipes...</p>:
                     recipesData.map(recipe => {
                         return (
-                            <RecipeCard
-                                recipeId={recipe.recipeId}
-                                recipeName={recipe.recipeName}
-                            />
+                            <Link key={recipe.recipeId} to={`${recipeBook}/${recipe.recipeId}`} >
+                                <RecipeCard
+                                    recipeId={recipe.recipeId}
+                                    recipeName={recipe.recipeName}
+                                />
+                            </Link>
                         )
                     })
                 }

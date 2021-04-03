@@ -1,58 +1,42 @@
 [
     {
-        "recipeName" : "string", 
-        "recipeId" : "1",
+        "recipeName" : "Sausage and Mash", 
+        "recipeId" : "917445a8-6508-4152-b016-28affa2030c0",
         "image" : "URL",
         "imageType" : "string",
-        "userRating" : "string - maybe int?"
-    },
-    {
-        "recipeName" : "string", 
-        "recipeId" : "2",
-        "image" : "URL",
-        "imageType" : "string",
-        "userRating" : "string - maybe int?"
+        "ingredients" : ["sausages", "potatos", "gravy", "mushrooms", "onions"],
+        "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
     },
     {
         "recipeName" : "string", 
         "recipeId" : "3",
         "image" : "URL",
         "imageType" : "string",
-        "userRating" : "string - maybe int?"
+        "ingredients" : ["sausages", "potatos", "gravy", "mushrooms", "onions"],
+        "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
     },
     {
         "recipeName" : "string", 
         "recipeId" : "4",
         "image" : "URL",
         "imageType" : "string",
-        "userRating" : "string - maybe int?"
+        "ingredients" : ["sausages", "potatos", "gravy", "mushrooms", "onions"],
+        "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
     },
     {
         "recipeName" : "string", 
         "recipeId" : "5",
         "image" : "URL",
         "imageType" : "string",
-        "userRating" : "string - maybe int?"
+        "ingredients" : ["sausages", "potatos", "gravy", "mushrooms", "onions"],
+        "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
     },
     {
         "recipeName" : "string", 
         "recipeId" : "6",
         "image" : "URL",
         "imageType" : "string",
-        "userRating" : "string - maybe int?"
-    },
-    {
-        "recipeName" : "string", 
-        "recipeId" : "7",
-        "image" : "URL",
-        "imageType" : "string",
-        "userRating" : "string - maybe int?"
-    },
-    {
-        "recipeName" : "string", 
-        "recipeId" : "8",
-        "image" : "URL",
-        "imageType" : "string",
-        "userRating" : "string - maybe int?"
+        "ingredients" : ["sausages", "potatos", "gravy", "mushrooms", "onions"],
+        "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
     }
 ]

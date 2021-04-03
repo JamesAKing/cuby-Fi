@@ -17,7 +17,7 @@ const writeData = (url, data) => {
 
 // VARIABLES
 const recipesURL = './data/recipes.json';
-const recipesDetailedURL = './data/recipesDetailed.json';
+// const recipesURL = './data/recipesDetailed.json';
 
 // ROUTES
 
@@ -30,7 +30,7 @@ router
     })
     // Add a recipe to recipe Book - must add to both detailed and non-detailed
     .post((req, res) => {
-        const recipeData = getData(recipesDetailedURL);
+        const recipeData = getData(recipesURL);
         const recipeId = uuidv4();
         const { recipeName, image, ingredients, instructions } = req.body;
 
@@ -49,7 +49,7 @@ router
         }
 
         recipeData.push(newRecipe);
-        // writeData(recipesDetailedURL, recipeData);
+        // writeData(recipesURL, recipeData);
 
         res.status(200).json(newRecipe);
     })

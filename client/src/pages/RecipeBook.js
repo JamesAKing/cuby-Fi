@@ -18,12 +18,13 @@ function RecipeBook() {
                 console.log(err)
             });  
     }, []);
-    // Image, imageType, recipeId, recipeName, userRating
+
+    // Image, imageType, recipeId, recipeName, Ingredients, Instructions, userRating
 
     return (
         <main className="recipes">
             <header className="recipes__header">
-                <h1>RECIPE BOOK</h1>
+                <h1 className="recipes__title">RECIPE BOOK</h1>
             </header>
             <Recipes recipesData={recipesData} />
         </main>

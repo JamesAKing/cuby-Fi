@@ -2,6 +2,7 @@ import './RecipeCard.scss';
 import MeatBalls from '../../assets/dummy-data-DELETE/meatballs.jpg';
 
 function RecipeCard({ recipeId, recipeName }) {
+
     return (
         <li id={recipeId} className="recipe-card__list">
             <div className="recipe-card">
@@ -14,6 +15,7 @@ function RecipeCard({ recipeId, recipeName }) {
             </div>
         </li>
     );
+    
 }
 
 export default RecipeCard;
