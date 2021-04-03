@@ -1,8 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const router = express.Router();
-
-// Consider condensing deatiled and quick view JSON
+const { v4: uuidv4 } = require('uuid');
 
 // FUNCTIONS
 const getData = (url) => {
@@ -13,8 +12,25 @@ const writeData = (url, data) => {
     fs.writeFileSync(url, JSON.stringify(data));
 };
 
+const createShoppingListObj = itemObj => {
+    itemId = itemObj.itemId || uuidv4();
+
+    return {
+        "cartId" : uuidv4(),
+        "itemName" : itemObj.itemName,
+        "itemId" : itemId,
+        // "category" : itemObj.category,
+        "qtyNeeded" : itemObj.amount,
+        "qtyUnit" : itemObj.units,
+        "inCart" : false
+    }
+}
+
 // VARIABLES
-const scheduleURL = './data/mealPlan.json';
+const mealPlanURL = './data/mealPlan.json';
+const cupboardURL = './data/cupboard.json';
+const shoppingListURL = './data/shoppingList.json';
+
 
 // ROUTES
 
@@ -22,17 +38,57 @@ router
     .route('/')
     // get meal plan for the week
     .get((req, res) => {
-        const result = getData(scheduleURL);
+        const result = getData(mealPlanURL);
         res.json(result);
     })
     .post((req, res) => {
+        const inCupboard = getData(cupboardURL);
+        const inShoppingList = getData(shoppingListURL)
         const requiredIngredientsObj = req.body
         const requiredIngredientsKeys = Object.keys(requiredIngredientsObj);
-        console.log(requiredIngredientsKeys)
 
-        
+        let shoppingListItems = [];
 
-        res.send("connected")
+        requiredIngredientsKeys.forEach(itemName => {
+            const item = itemName;
+            let amount = requiredIngredientsObj[itemName].amount;
+            const units = requiredIngredientsObj[itemName].units
+
+            inCupboard.forEach(cupboardItem => {
+                if (cupboardItem.itemName === itemName) {
+                    amount -= cupboardItem.qty.amount
+                }
+            })
+            
+            // Create an array of items to add to shopping list
+            shoppingListItems.push({
+                itemName : item,
+                amount : amount,
+                units : units
+            })
+        })
+
+        // Convert data to shoppinglist DB format
+        const formattedShoppingList = shoppingListItems.map(item => {
+            return createShoppingListObj(item);
+        })
+
+        // Update Shopping list
+        formattedShoppingList.forEach(newItem => {
+            let uniqueItem = true;
+
+            inShoppingList.forEach(item => {
+                if( item.itemName.toLowerCase() === newItem.itemName.toLowerCase()) {
+                    item.qtyNeeded += newItem.qtyNeeded
+                }        
+            })
+
+            if (uniqueItem) inShoppingList.push(newItem);
+
+        })
+
+        // writeData(shoppingListURL, inShoppingList)
+        res.status(200).json("Shopping List has been updated");
     })
     // Clear all meals for the week
     .delete((req, res) => {

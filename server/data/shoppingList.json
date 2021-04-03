@@ -2,11 +2,7 @@
     {
         "cartId" : "100",
         "itemName" : "Sausages",
-        "itemId" : null,
-        "recipeName" : "Sausage and Mash", 
-        "recipeId" : "917445a8-6508-4152-b016-28affa2030c0",
-        "category" : "Meat",
-        "recipeQty" : 7,
+        "itemId" : null, 
         "qtyNeeded" : 5,
         "qtyUnit" : "unit",
         "inCart" : false
@@ -14,11 +10,7 @@
     {
         "cartId" : "101",
         "itemName" : "Mash",
-        "itemId" : null,
-        "recipeName" : "Sausage and Mash", 
-        "recipeId" : "917445a8-6508-4152-b016-28affa2030c0",
-        "category" : "Carbohydrates",
-        "recipeQty" : 2,
+        "itemId" : null, 
         "qtyNeeded" : 2,
         "qtyUnit" : "unit",
         "inCart" : false
@@ -27,10 +19,6 @@
         "cartId" : "102",
         "itemName" : "Lasagna Sheets",
         "itemId" : null,
-        "recipeName" : "Lasagna",
-        "recipeId" : "200",
-        "category" : "Pasta",
-        "recipeQty" : 6,
         "qtyNeeded" : 4,
         "qtyUnit" : "unit",
         "inCart" : false
