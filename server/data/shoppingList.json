@@ -33,6 +33,6 @@
         "recipeQty" : 6,
         "qtyNeeded" : 4,
         "qtyUnit" : "unit",
-        "inCart" : true
+        "inCart" : false
     }
 ]
