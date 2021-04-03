@@ -12,7 +12,7 @@ const writeData = (url, data) => {
     fs.writeFileSync(url, JSON.stringify(data));
 };
 
-const createShoppingListObj = itemObj => {
+const formatShoppingListObj = itemObj => {
     itemId = itemObj.itemId || uuidv4();
 
     return {
@@ -70,7 +70,7 @@ router
 
         // Convert data to shoppinglist DB format
         const formattedShoppingList = shoppingListItems.map(item => {
-            return createShoppingListObj(item);
+            return formatShoppingListObj(item);
         })
 
         // Update Shopping list
