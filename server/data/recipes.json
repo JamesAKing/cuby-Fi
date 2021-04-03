@@ -4,7 +4,13 @@
         "recipeId" : "917445a8-6508-4152-b016-28affa2030c0",
         "image" : "URL",
         "imageType" : "string",
-        "ingredients" : ["sausages", "potatos", "gravy", "mushrooms", "onions"],
+        "ingredients" : [
+            {"sausages" : 4, "units" : "unit" },
+            {"potatos" : 2 , "units" : "unit"},
+            {"gravy" : 500, "units" : "ml"},
+            {"mushrooms": 300, "units" : "g"},
+            {"onions" : 0.5, "units": "unit"}
+        ],
         "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
     },
     {
@@ -12,7 +18,13 @@
         "recipeId" : "3",
         "image" : "URL",
         "imageType" : "string",
-        "ingredients" : ["sausages", "potatos", "gravy", "mushrooms", "onions"],
+        "ingredients" : [
+            {"sausages" : 4, "units" : "unit" },
+            {"potatos" : 2 , "units" : "unit"},
+            {"gravy" : 500, "units" : "ml"},
+            {"mushrooms": 300, "units" : "g"},
+            {"onions" : 0.5, "units": "unit"}
+        ],
         "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
     },
     {
@@ -20,7 +32,13 @@
         "recipeId" : "4",
         "image" : "URL",
         "imageType" : "string",
-        "ingredients" : ["sausages", "potatos", "gravy", "mushrooms", "onions"],
+        "ingredients" : [
+            {"sausages" : 4, "units" : "unit" },
+            {"potatos" : 2 , "units" : "unit"},
+            {"gravy" : 500, "units" : "ml"},
+            {"mushrooms": 300, "units" : "g"},
+            {"onions" : 0.5, "units": "unit"}
+        ],
         "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
     },
     {
@@ -28,7 +46,13 @@
         "recipeId" : "5",
         "image" : "URL",
         "imageType" : "string",
-        "ingredients" : ["sausages", "potatos", "gravy", "mushrooms", "onions"],
+        "ingredients" : [
+            {"sausages" : 4, "units" : "unit" },
+            {"potatos" : 2 , "units" : "unit"},
+            {"gravy" : 500, "units" : "ml"},
+            {"mushrooms": 300, "units" : "g"},
+            {"onions" : 0.5, "units": "unit"}
+        ],
         "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
     },
     {
@@ -36,7 +60,13 @@
         "recipeId" : "6",
         "image" : "URL",
         "imageType" : "string",
-        "ingredients" : ["sausages", "potatos", "gravy", "mushrooms", "onions"],
+        "ingredients" : [
+            {"sausages" : 4, "units" : "unit" },
+            {"potatos" : 2 , "units" : "unit"},
+            {"gravy" : 500, "units" : "ml"},
+            {"mushrooms": 300, "units" : "g"},
+            {"onions" : 0.5, "units": "unit"}
+        ],
         "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
     }
 ]

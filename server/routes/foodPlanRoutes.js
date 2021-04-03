@@ -25,6 +25,15 @@ router
         const result = getData(scheduleURL);
         res.json(result);
     })
+    .post((req, res) => {
+        const requiredIngredientsObj = req.body
+        const requiredIngredientsKeys = Object.keys(requiredIngredientsObj);
+        console.log(requiredIngredientsKeys)
+
+        
+
+        res.send("connected")
+    })
     // Clear all meals for the week
     .delete((req, res) => {
         res.json('Removed all meals');

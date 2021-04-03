@@ -22,19 +22,43 @@ function MealPlan() {
             });
     }, []);
 
+    const createShoppingList = () => {
+
+        let ingredientsObj = {}
+
+        // Iterate through mealPlan
+        mealPlan.forEach(meal => {
+            // Get Recipe Ingredeints
+            meal.ingredients.forEach(ingredient => {
+                const ingredientKeys = Object.keys(ingredient)
+                const amount = ingredient[ingredientKeys[0]]
+                const units = ingredient[ingredientKeys[1]]
+                // Combine Recipe Ingredients in ingredient : {amount, unit} format
+                ingredientsObj[ingredientKeys[0]] ?
+                    ingredientsObj[ingredientKeys[0]].amount += amount : 
+                    ingredientsObj[ingredientKeys[0]] = {"amount" : amount, "units" : units}
+            })
+        })
+
+        axios
+            .post(MealPlanDB_URL, ingredientsObj)
+            .then(resp => console.log(resp))
+            .catch(err => console.log(err));
+    }
+
     return (
         <main className="food-plan">
             <header className="food-plan__header">
-                <h1>Weekly Meal Plan</h1>
+                <h1 className="food-plan__title">WEEKLY MEAL PLAN</h1>
             </header>
+            <button type="button" onClick={createShoppingList}>CREATE SHOPPING LIST</button>
             <ul className="food-plan__meals">
                 {!mealPlan ?
                     <li>Getting your Meal Plan...</li> :
                     mealPlan.map((meal, i) => {
                         return (
-                            <Link className="food-plan__link" to={`${recipeBook}/${meal.recipeId}`} >
+                            <Link key={meal.recipeId} className="food-plan__link" to={`${recipeBook}/${meal.recipeId}`} >
                                 <MealCard
-                                    key={meal.recipeId}
                                     day={days[i].toUpperCase()}
                                     recipeName={meal.recipeName}
                                 />
