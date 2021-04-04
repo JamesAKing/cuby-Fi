@@ -2,7 +2,7 @@ import './Cupboard.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CupboardDB_URL } from '../utilities/APIEndPoints';
-import { createItem } from '../utilities/functions';
+import { createItem, formValid } from '../utilities/functions';
 // import { cupboard } from '../utilities/URLs';
 import AddCupboardItem from '../components/add-cupboard-item/AddCupboardItem';
 import EditCupboardItem from '../components/edit-cupboard-item/EditCupboardItem';
@@ -14,7 +14,6 @@ function CupboardPage() {
     const [ cupboardData, setCupboardData ] = useState([]);
     const [ showEditModal, setShowEditModal ] = useState(false);
     const [ showAddModal, setShowAddModal ] = useState(false);
-    // const [ selectedItem, setSelectedItem ] = useState(null);
     const [ inputValues, setInputValues ] = useState({
         itemName : '',
         itemId : null,
@@ -89,17 +88,17 @@ function CupboardPage() {
         }
     }
 
-    const formValid = (formObj) => {
-        let objKeys = Object.keys(formObj)
+    // const formValid = (formObj) => {
+    //     let objKeys = Object.keys(formObj)
         
-        for (let i = 0; i < objKeys.length; i++ ) {
-            if (!formObj[objKeys[i]] && objKeys[i] !== 'itemId') {
-                console.log('Error with ', objKeys[i])
-                return false
-            }
-        }
-        return true 
-    }
+    //     for (let i = 0; i < objKeys.length; i++ ) {
+    //         if (!formObj[objKeys[i]] && objKeys[i] !== 'itemId') {
+    //             console.log('Error with ', objKeys[i])
+    //             return false
+    //         }
+    //     }
+    //     return true 
+    // }
 
     const clearInputValues = () => {
         setInputValues({

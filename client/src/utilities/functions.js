@@ -62,3 +62,15 @@ export const getIngredients = (recipeObj) => {
 
     return ingredients
 }
+
+export const formValid = (formObj) => {
+    let objKeys = Object.keys(formObj)
+    
+    for (let i = 0; i < objKeys.length; i++ ) {
+        if (!formObj[objKeys[i]] && objKeys[i] !== 'itemId') {
+            console.log('Error with ', objKeys[i])
+            return false
+        }
+    }
+    return true 
+}

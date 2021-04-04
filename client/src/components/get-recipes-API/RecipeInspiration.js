@@ -15,7 +15,6 @@ function RecipeInspiration() {
     const [ recipeIdea, setRecipeIdea ] = useState(null);
 
     const getRandomMeal = () => {
-
         axios
             .get(randomMealDB_URL)
             .then(resp=> {
@@ -31,8 +30,6 @@ function RecipeInspiration() {
             .then(resp => console.log(resp))
             .catch(err => console.log(err));
     }
-
-    console.log(recipeIdea);
 
     return (
         <div>
