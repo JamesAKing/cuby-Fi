@@ -5,12 +5,12 @@ import * as tf from "@tensorflow/tfjs";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 
 import { createItem } from '../../utilities/functions';
+import { CupboardDB_URL } from '../../utilities/APIEndPoints';
 
 import Webcam from 'react-webcam';
 
 function ObjectDetection(props) {
 
-  const [ videoPaused, setVideoPaused ] = useState(true)
   const [ items, setItems ] = useState(null);
   const [ scanning, setScanning ] = useState(false)
 
@@ -19,23 +19,13 @@ function ObjectDetection(props) {
   const scanItem = () => {
     // Add check to ensure only food items are scanned (no person/chair/etc.)
     resetItems();
-    // if (!videoPaused) {
-    //   console.log('Playing')
-    //   runCoco()
-    // };
-    // if (videoPaused) {
-    //   console.log('paused');
-    // };
-    // setVideoPaused(!videoPaused);
     if (!scanning) {
       setScanning(true);
-      runCoco();
+      scanImage();
     }
   }
 
-  const resetItems = () => {
-    setItems(null);
-  }
+  const resetItems = () => setItems(null)
 
   const addToCupboard = (e) => {
     e.preventDefault();
@@ -49,31 +39,24 @@ function ObjectDetection(props) {
           qtyNeeded : "1"
         })
       });
-      // Add Quantity have/needed
-      console.log(newItems);
+      // Add Quantity have
       axios
-        .post('http://localhost:8080/cupboard', newItems)
-        .then(resp => {
-          console.log(resp);
-          resetItems();
-        })
-        .catch(err => {
-          console.log(err);
-        })
+        .post(CupboardDB_URL, newItems)
+        .then(resp => console.log(resp))
+        .then(() => resetItems())
+        .catch(err => console.log(err))
     }
   }
 
-  const runCoco = async () => {
-    console.log('scanning')
+  const scanImage = async () => {
     const model = await cocoSsd.load();
-    // detect(model);
     await detect(model);
-    console.log("not scanning")
     setScanning(false)
     // Is one image enough for accurate results?
   };
 
   const detect = async (model) => {
+    // Confirm Access to webcam
     if (
       typeof webCamRef.current !== "undefined" &&
       webCamRef.current !== null &&
@@ -81,7 +64,7 @@ function ObjectDetection(props) {
     ) {
       const video = webCamRef.current.video;
 
-      // Make Detections
+      // Detect Objects in Image
       await model.detect(video)
       .then(resp => {
         setItems(resp);

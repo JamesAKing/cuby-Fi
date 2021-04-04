@@ -6,7 +6,7 @@ function RecipeCard({ recipeId, recipeName, recipeImg }) {
     const image = recipeImg || MeatBalls;
 
     return (
-        <li id={recipeId} className="recipe-card__list">
+        <li id={recipeId} className="recipe-card__item">
             <div className="recipe-card">
                 <div>
                     <img className="recipe-card__img" src={image} alt="meatballs" />
