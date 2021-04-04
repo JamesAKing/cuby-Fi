@@ -4,11 +4,12 @@ function SingleRecipe(props) {
     
     const recipeId = props.match.params.recipeId
 
-    // Move this check to App.js
-    let recipeData = props.recipeData.data || [];
+    // // Move this check to App.js
+    let recipeData = props.recipeData || [];
     const recipe = recipeData.filter(recipe => recipe.recipeId === recipeId).pop()
 
     const { recipeName, ingredients, instructions } = recipe
+
 
     return !recipe ? 
         <p>Getting Recipe...</p>:
@@ -23,13 +24,22 @@ function SingleRecipe(props) {
                 <div>
                     <h2>Ingredients</h2>
                     <ul>
-                        {ingredients.map(ingredient => <li>{ingredient}</li>)}
+                        {/* {ingredients.map(ingredient => <li>{ingredient}</li>)} */}
+                        {ingredients.map((ingredient, i) => {
+                            return (
+                                <li key={i}>
+                                    <p>{ingredient.itemName}</p>
+                                    <p>{`${ingredient.amount} ${ingredient.units}(s)`}</p>
+                                </li>
+                            )
+                        })}
+                        
                     </ul>
                 </div>
                 <div>
                     <h2>Instructions</h2>
                     <ul>
-                        {instructions.map(instruction => <li>{instruction}</li>)}
+                        {instructions.map((instruction, i) => <li key={i}>{instruction}</li>)}
                     </ul>
                 </div>
             </section>   

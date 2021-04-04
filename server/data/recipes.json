@@ -5,11 +5,11 @@
         "image" : "URL",
         "imageType" : "string",
         "ingredients" : [
-            {"sausages" : 4, "units" : "unit" },
-            {"potatos" : 2 , "units" : "unit"},
-            {"gravy" : 500, "units" : "ml"},
-            {"mushrooms": 300, "units" : "g"},
-            {"onions" : 0.5, "units": "unit"}
+            {"itemName" : "sausages", "amount" : 4, "units" : "unit" },
+            {"itemName" :"potatos","amount" :  2, "units" : "unit"},
+            {"itemName" :"gravy" ,"amount" : 500, "units" : "ml"},
+            {"itemName" :"mushrooms","amount" : 300, "units" : "g"},
+            {"itemName" :"onions","amount" : 0.5, "units": "unit"}
         ],
         "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
     },
@@ -19,11 +19,11 @@
         "image" : "URL",
         "imageType" : "string",
         "ingredients" : [
-            {"sausages" : 4, "units" : "unit" },
-            {"potatos" : 2 , "units" : "unit"},
-            {"gravy" : 500, "units" : "ml"},
-            {"mushrooms": 300, "units" : "g"},
-            {"onions" : 0.5, "units": "unit"}
+            {"itemName" : "sausages", "amount" : 4, "units" : "unit" },
+            {"itemName" :"potatos","amount" :  2, "units" : "unit"},
+            {"itemName" :"gravy" ,"amount" : 500, "units" : "ml"},
+            {"itemName" :"mushrooms","amount" : 300, "units" : "g"},
+            {"itemName" :"onions","amount" : 0.5, "units": "unit"}
         ],
         "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
     },
@@ -33,11 +33,11 @@
         "image" : "URL",
         "imageType" : "string",
         "ingredients" : [
-            {"sausages" : 4, "units" : "unit" },
-            {"potatos" : 2 , "units" : "unit"},
-            {"gravy" : 500, "units" : "ml"},
-            {"mushrooms": 300, "units" : "g"},
-            {"onions" : 0.5, "units": "unit"}
+            {"itemName" : "sausages", "amount" : 4, "units" : "unit" },
+            {"itemName" :"potatos","amount" :  2, "units" : "unit"},
+            {"itemName" :"gravy" ,"amount" : 500, "units" : "ml"},
+            {"itemName" :"mushrooms","amount" : 300, "units" : "g"},
+            {"itemName" :"onions","amount" : 0.5, "units": "unit"}
         ],
         "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
     },
@@ -47,11 +47,11 @@
         "image" : "URL",
         "imageType" : "string",
         "ingredients" : [
-            {"sausages" : 4, "units" : "unit" },
-            {"potatos" : 2 , "units" : "unit"},
-            {"gravy" : 500, "units" : "ml"},
-            {"mushrooms": 300, "units" : "g"},
-            {"onions" : 0.5, "units": "unit"}
+            {"itemName" : "sausages", "amount" : 4, "units" : "unit" },
+            {"itemName" :"potatos","amount" :  2, "units" : "unit"},
+            {"itemName" :"gravy" ,"amount" : 500, "units" : "ml"},
+            {"itemName" :"mushrooms","amount" : 300, "units" : "g"},
+            {"itemName" :"onions","amount" : 0.5, "units": "unit"}
         ],
         "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
     },
@@ -61,11 +61,11 @@
         "image" : "URL",
         "imageType" : "string",
         "ingredients" : [
-            {"sausages" : 4, "units" : "unit" },
-            {"potatos" : 2 , "units" : "unit"},
-            {"gravy" : 500, "units" : "ml"},
-            {"mushrooms": 300, "units" : "g"},
-            {"onions" : 0.5, "units": "unit"}
+            {"itemName" : "sausages", "amount" : 4, "units" : "unit" },
+            {"itemName" :"potatos","amount" :  2, "units" : "unit"},
+            {"itemName" :"gravy" ,"amount" : 500, "units" : "ml"},
+            {"itemName" :"mushrooms","amount" : 300, "units" : "g"},
+            {"itemName" :"onions","amount" : 0.5, "units": "unit"}
         ],
         "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
     }

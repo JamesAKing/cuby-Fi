@@ -2,7 +2,6 @@ const express = require('express');
 const fs = require('fs');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
-const { MealPlanDB_URL } = require('../../client/src/utilities/APIEndPoints');
 
 // FUNCTIONS
 const getData = (url) => {
@@ -81,6 +80,7 @@ router
             inShoppingList.forEach(item => {
                 if( item.itemName.toLowerCase() === newItem.itemName.toLowerCase()) {
                     item.qtyNeeded += newItem.qtyNeeded
+                    uniqueItem = false;
                 }        
             })
 
@@ -93,8 +93,8 @@ router
     })
     // Clear all meals for the week
     .delete((req, res) => {
-        // writeData(MealPlanDB_URL, [])
-        res.status(204).json('Removed all meals');
+        // writeData(mealPlanURL, []);
+        res.json('Removed all meals');
     })
 
 router

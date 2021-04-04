@@ -1,18 +1,20 @@
 import './Recipes.scss';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { recipeBook } from '../../utilities/URLs';
+import AddRecipeForm from './AddRecipeForm';
 import RecipeCard from '../recipe-card/RecipeCard';
 
 function Recipes({ recipesData }) {
 
-    const addRecipe = () => {
-        console.log("Recipe added");
+    const [ showAddRecipe, setShowAddRecipe ] = useState(false);
+
+    const toggleAddRecipe = () => {
+        setShowAddRecipe(!showAddRecipe);
     }
 
-    // console.log(recipesData);
-
     return (
-        <>
+        <>  {showAddRecipe && <AddRecipeForm toggleAddRecipe={toggleAddRecipe} />}
             <ul className="recipe-list">
                 {recipesData.length === 0?
                     <p>Getting your Recipes...</p>:
@@ -29,8 +31,7 @@ function Recipes({ recipesData }) {
                 }
             </ul>
             <div>
-                <button type="button" onClick={addRecipe}>ADD NEW RECIPE</button>
-                {/* decide if MODAL or LINK */}
+                <button type="button" onClick={toggleAddRecipe}>ADD NEW RECIPE</button>
             </div>
         </>
     );

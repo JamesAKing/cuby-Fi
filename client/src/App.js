@@ -9,7 +9,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Home from './pages/Home';
 import ShoppingList from "./pages/ShoppingList";
-import mealPlanPage from "./pages/MealPlan";
+import MealPlanPage from "./pages/MealPlan";
 import RecipeBookPage from "./pages/RecipeBook";
 import SingleRecipe from "./pages/SingleRecipe";
 import AddRecipeForm from './components/recipes/AddRecipeForm';
@@ -19,14 +19,16 @@ import CupboardPage from "./pages/Cupboard";
 
 function App() {
 
-  const [ recipeData, setRecipeData ] = useState([]);
+  const [ recipeData, setRecipeData ] = useState(null);
 
   useEffect(() => {
     axios
       .get(RecipesDB_URL)
-      .then(resp => setRecipeData(resp))
+      .then(resp => setRecipeData(resp.data))
       .catch(err => console.log(err));
   }, [])
+
+  if(!recipeData) return <p>Loading...</p>
 
   return (
     <div className="App">
@@ -43,7 +45,8 @@ function App() {
         <Route path={recipeBook} exact component={RecipeBookPage}/>
         <Route path={`${recipeBook}/add-recipe`} component={AddRecipeForm}/>
         <Route path={`${recipeBook}/:recipeId`} render={routeProps => <SingleRecipe {...routeProps} recipeData={recipeData}/>} />
-        <Route path={mealPlan} component={mealPlanPage}/>
+        <Route path={mealPlan} render={() => <MealPlanPage recipeData={recipeData}/>}/>
+        {/* <Route path={mealPlan} component={mealPlanPage}/> */}
         <Route path={shoppingList} component={ShoppingList}/>
       </Switch>
 

@@ -1,10 +1,9 @@
 @use "../../styles/mixins" as *;
 
-.add-recipe {
+.select-meal {
     @include modal;
 
-    &__form {
+    &__card {
         @include modal-card;
     }
-    
 }

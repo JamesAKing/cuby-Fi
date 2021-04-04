@@ -15,9 +15,30 @@ const writeData = (url, data) => {
     fs.writeFileSync(url, JSON.stringify(data));
 };
 
+const createRecipe = recipeObj => {
+
+    const recipeIngredientsArr = recipeObj.ingredients.map(ingredient => {
+        return {
+            "itemName" : ingredient.itemName,
+            "amount" : ingredient.amount,
+            "units" : ingredient.unit
+        };
+    });
+
+    const instructionsArr = recipeObj.instructions.map(instruction => instruction);
+
+    return {
+        "recipeName" : recipeName, 
+        "recipeId" : uuidv4(),
+        "image" : imageURL,
+        "imageType" : imageType,
+        "ingredients" : recipeIngredientsArr,
+        "instructions" : instructionsArr
+    }
+}
+
 // VARIABLES
 const recipesURL = './data/recipes.json';
-// const recipesURL = './data/recipesDetailed.json';
 
 // ROUTES
 
@@ -28,7 +49,7 @@ router
         const result = getData(recipesURL);
         res.json(result);
     })
-    // Add a recipe to recipe Book - must add to both detailed and non-detailed
+    // Add a recipe to recipe Book
     .post((req, res) => {
         const recipeData = getData(recipesURL);
         const recipeId = uuidv4();
@@ -47,6 +68,8 @@ router
             "ingredients" : ingredients,
             "instructions" : instructions,
         }
+
+        console.log(newRecipe);
 
         recipeData.push(newRecipe);
         // writeData(recipesURL, recipeData);
