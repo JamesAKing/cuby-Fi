@@ -13,7 +13,8 @@ function MealPlan({ recipeData }) {
     const [mealPlan, setMealPlan] = useState(null);
     const [ days ] = useState(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])
     const [ loading, setLoading ] = useState(true);
-    const [ showSelectMeal, setShowSelectMeal ] = useState(true);
+    const [ showSelectMeal, setShowSelectMeal ] = useState(false);
+    const [ selectedDay, setSelectedDay ] = useState(null);
 
     useEffect(() => {
         axios
@@ -23,25 +24,22 @@ function MealPlan({ recipeData }) {
             .catch(err => console.log(err));
     }, []);
 
-    const toggleSelectMealModal = () => {
+    const toggleSelectMealModal = (e) => {
         setShowSelectMeal(!showSelectMeal);
+        !selectedDay ? setSelectedDay(e.target.id) : setSelectedDay(null);
     }
 
     const addToMealPlan = (e) => {
         const selectedMeal = recipeData.filter(recipe => recipe.recipeId === e.target.id)
-        const selectedDay = 2; // get this from link
+        // const selectedDay = 2; // get this from link
         const formattedNewMeal = formatMealPlanObj(selectedMeal[0], selectedDay)
-        const updatedMealPlan = mealPlan.map(meal => {
-            if (meal.dayId === selectedDay) {
-                return formattedNewMeal;
-            }
-            return meal
-        })
+
+        console.log(selectedDay);
 
         axios
             .post(`${MealPlanDB_URL}/${selectedDay}`, formattedNewMeal)
-            // .then(resp => setMealPlan(resp.data))
-            .then(resp => console.log(resp.data))
+            .then(resp => setMealPlan(resp.data))
+            // .then(resp => console.log(resp.data))
             .catch(err => console.log(err));
     }
 
@@ -78,6 +76,7 @@ function MealPlan({ recipeData }) {
 
     // console.log(recipeData);
     // console.log(mealPlan);
+    console.log(selectedDay)
 
 
     return (
@@ -94,12 +93,19 @@ function MealPlan({ recipeData }) {
                     <li>{loading ? "Getting your Meal Plan..." : "Create a new meal plan"}</li> :
                     mealPlan.map((meal, i) => {
                         return (
-                            <Link key={meal.recipeId} className="food-plan__link" to={`${recipeBook}/${meal.recipeId}`} >
-                                <MealCard
-                                    day={days[i].toUpperCase()}
-                                    recipeName={meal.recipeName}
-                                />
-                            </Link>
+                            // <Link key={meal.recipeId} className="food-plan__link" to={`${recipeBook}/${meal.recipeId}`} >
+                            //     <MealCard
+                            //         day={days[i].toUpperCase()}
+                            //         recipeName={meal.recipeName}
+                            //     />
+                            // </Link>
+                            <MealCard
+                                key={meal.recipeId}
+                                dayId={meal.dayId}
+                                day={days[i].toUpperCase()}
+                                recipeName={meal.recipeName}
+                                toggleSelectMealModal={toggleSelectMealModal}
+                            />
                         )
                     })
                 }
