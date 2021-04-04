@@ -39,8 +39,9 @@ function MealPlan({ recipeData }) {
         })
 
         axios
-            .post(MealPlanDB_URL, updatedMealPlan)
-            .then(resp => setMealPlan(resp.data))
+            .post(`${MealPlanDB_URL}/${selectedDay}`, formattedNewMeal)
+            // .then(resp => setMealPlan(resp.data))
+            .then(resp => console.log(resp.data))
             .catch(err => console.log(err));
     }
 

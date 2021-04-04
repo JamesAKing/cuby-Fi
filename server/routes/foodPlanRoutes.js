@@ -106,7 +106,22 @@ router
     })
     // add meal on a specific day
     .post((req, res) => {
-        console.log(req.params.day);
+        const mealPlan = getData(mealPlanURL);
+        // const selectedDay = req.params.day
+        const selectedDay = 6;
+        const selectedMealObj = req.body
+
+        console.log(selectedDay);
+
+        const newMealPlan = mealPlan.map(meal => {
+            if (meal.dayId === selectedDay) {
+                return selectedMealObj;
+            }
+            return meal
+        })
+
+        console.log(newMealPlan);
+
         res.json('added meal on this day');
     })
     // Confirm this meal has been eaten
