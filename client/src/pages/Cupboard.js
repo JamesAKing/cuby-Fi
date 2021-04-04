@@ -7,7 +7,7 @@ import { createItem, formValid } from '../utilities/functions';
 import AddCupboardItem from '../components/add-cupboard-item/AddCupboardItem';
 import EditCupboardItem from '../components/edit-cupboard-item/EditCupboardItem';
 import CupboardItem from '../components/cupboard-item/CupboardItem';
-// import ObjectDetection from "../components/coco-ssd/ObjectDetection";
+import ObjectDetection from "../components/coco-ssd/ObjectDetection";
 
 function CupboardPage() {
 
@@ -32,7 +32,6 @@ function CupboardPage() {
     const toggleEditItemModal = (e) => {
         const itemId = e.target.parentNode.parentNode.id;
         const item = cupboardData.filter(item => item.itemId === itemId)
-        console.log(item[0]);
 
         if (!formValid(inputValues)) {
             setInputValues({
@@ -55,8 +54,6 @@ function CupboardPage() {
 
     const handleFormChange =(e) => {
         const item = e.target;
-        // console.log(item.parentNode)
-        console.log(item.value)
         setInputValues({...inputValues, [item.name] : item.value})
     }
 
@@ -80,25 +77,12 @@ function CupboardPage() {
         const itemId = e.target.id
         if (formValid(inputValues)) {
             const newItems = [createItem(inputValues)];
-            console.log(newItems);
             axios
                 .put(`${CupboardDB_URL}/${itemId}`, newItems)
                 .then(resp => console.log(resp))
                 .catch(err => console.log(err));
         }
     }
-
-    // const formValid = (formObj) => {
-    //     let objKeys = Object.keys(formObj)
-        
-    //     for (let i = 0; i < objKeys.length; i++ ) {
-    //         if (!formObj[objKeys[i]] && objKeys[i] !== 'itemId') {
-    //             console.log('Error with ', objKeys[i])
-    //             return false
-    //         }
-    //     }
-    //     return true 
-    // }
 
     const clearInputValues = () => {
         setInputValues({
@@ -115,6 +99,7 @@ function CupboardPage() {
         axios
             .delete(`${CupboardDB_URL}/${itemId}`)
             .then(resp => console.log(resp))
+            // Send back updated cupboardItem Array and use this to setCupboardData so page updates
             .catch(err => console.log(err));
     }
 
@@ -130,6 +115,7 @@ function CupboardPage() {
                     {/* Link to Object Detection */}
                 </nav>
             </header>
+            <ObjectDetection />
             <section>
                 <ul>
                     {cupboardData.length === 0 ?

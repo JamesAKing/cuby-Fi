@@ -4,26 +4,33 @@ import axios from 'axios';
 import * as tf from "@tensorflow/tfjs";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 
+import { createItem } from '../../utilities/functions';
+
 import Webcam from 'react-webcam';
 
 function ObjectDetection(props) {
 
-  const [videoPaused, setVideoPaused] = useState(true)
-  const [items, setItems] = useState(null);
+  const [ videoPaused, setVideoPaused ] = useState(true)
+  const [ items, setItems ] = useState(null);
+  const [ scanning, setScanning ] = useState(false)
 
   const webCamRef = useRef(null);
   
   const scanItem = () => {
     // Add check to ensure only food items are scanned (no person/chair/etc.)
     resetItems();
-    if (!videoPaused) {
-      console.log('Playing')
-      runCoco()
-    };
-    if (videoPaused) {
-      console.log('paused');
-    };
-    setVideoPaused(!videoPaused);
+    // if (!videoPaused) {
+    //   console.log('Playing')
+    //   runCoco()
+    // };
+    // if (videoPaused) {
+    //   console.log('paused');
+    // };
+    // setVideoPaused(!videoPaused);
+    if (!scanning) {
+      setScanning(true);
+      runCoco();
+    }
   }
 
   const resetItems = () => {
@@ -37,7 +44,7 @@ function ObjectDetection(props) {
     } else {
       const newItems = items.map(item => {
         return ({
-          itemName : "item.class",
+          itemName : item.class,
           category : "Human",
           qtyNeeded : "1"
         })
@@ -45,7 +52,7 @@ function ObjectDetection(props) {
       // Add Quantity have/needed
       console.log(newItems);
       axios
-        .post('http://localhost:8080/cupboard', {newItems})
+        .post('http://localhost:8080/cupboard', newItems)
         .then(resp => {
           console.log(resp);
           resetItems();
@@ -57,10 +64,12 @@ function ObjectDetection(props) {
   }
 
   const runCoco = async () => {
-
+    console.log('scanning')
     const model = await cocoSsd.load();
-
-    detect(model);
+    // detect(model);
+    await detect(model);
+    console.log("not scanning")
+    setScanning(false)
     // Is one image enough for accurate results?
   };
 
@@ -74,8 +83,8 @@ function ObjectDetection(props) {
 
       // Make Detections
       await model.detect(video)
-      .then(response => {
-        setItems(response);
+      .then(resp => {
+        setItems(resp);
       })
     };
   };
@@ -98,7 +107,7 @@ function ObjectDetection(props) {
         <button type="button" className="web-cam__button-mobile" onClick={scanItem}></button>
       </div>
       <div className="web-cam__buttons">
-        <button className="web-cam__button" type="button" onClick={scanItem}>SCAN ITEM</button>
+        <button className="web-cam__button" type="button" onClick={scanItem}>{scanning ? "SCANNING" : "CLICK TO SCAN"}</button>
         <button className="web-cam__button" type="button" onClick={resetItems}>RESET ITEM</button>
         <button className="web-cam__button" type="submit" onClick={addToCupboard}>ADD ITEM TO CUPBOARD</button>
       </div>
