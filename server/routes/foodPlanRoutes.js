@@ -106,28 +106,31 @@ router
     })
     // add meal on a specific day
     .post((req, res) => {
-        const mealPlan = getData(mealPlanURL);
+        const mealPlanData = getData(mealPlanURL);
         const selectedDay = req.params.day
         const selectedMealObj = req.body
-        console.log(typeof selectedDay);
-        // console.log(selectedMealObj);
 
-        const newMealPlan = mealPlan.map(meal => {
+        const newMealPlan = mealPlanData.map(meal => {
             if (meal.dayId == selectedDay) {
                 return selectedMealObj;
             }
             return meal
         })
 
-        // console.log(newMealPlan);
-
         // writeData(mealPlanURL, newMealPlan)
         res.status(200).json(newMealPlan);
     })
     // Confirm this meal has been eaten
     .put((req, res) => {
-        console.log(req.params.day);
-        res.json("meal eaten");
+        const mealPlanData = getData(mealPlanURL);
+        const selectedDay = req.params.day
+
+        mealPlanData.forEach(meal => {
+            if (meal.dayId == selectedDay) meal.recipeCooked = !meal.recipeCooked;
+        });
+
+        // writeData(mealPlanURL, mealPlanData)
+        res.status(200).json(mealPlanData);
     } )
     // remove recipe on a specific day.
     .delete((req, res) => {
