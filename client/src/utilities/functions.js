@@ -31,8 +31,7 @@ export const createRecipeObj = recipeObj => {
     return {
             "recipeName" : recipeObj.strMeal, 
             "recipeId" : recipeObj.idMeal,
-            "image" : "URL",
-            "imageType" : "string",
+            "image" : recipeObj.strMealThumb,
             "ingredients" : getIngredients(recipeObj),
             "instructions" : recipeObj.strInstructions.split('.')
         };
