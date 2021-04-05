@@ -135,8 +135,8 @@ function CupboardPage(routerProps) {
                         })
                     }
                 </ul>
-                <div>
-                    <button type="button" onClick={toggleAddItemModal}>Add Item</button>
+                <div className="cupboard__add-item-container">
+                    <button type="button" className="btn" onClick={toggleAddItemModal}>Add Item</button>
                 </div>
             </section>
         </main>
