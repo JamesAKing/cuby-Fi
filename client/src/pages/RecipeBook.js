@@ -6,16 +6,16 @@ import axios from 'axios';
 import Recipes from "../components/recipes/Recipes";
 import RecipeInspiration from "../components/get-recipes-API/RecipeInspiration";
 import RecipeInspirationModal from "../components/recipes/RecipeInspirationModal";
+import GoBackIcon from '../components/global/GoBackIcon';
 
 const theMealDB_URL = 'https://www.themealdb.com';
 const randomMealDB_URL = `${theMealDB_URL}/api/json/v1/1/random.php`;
 
-function RecipeBook() {
+function RecipeBook(routerProps) {
 
     const [recipesData, setRecipesData] = useState([]);
     const [ showModal, setShowModal ] = useState(true);
     const [ inspiration, setInspiration ] = useState(null);
-
 
     useEffect(() => {
         axios
@@ -53,6 +53,7 @@ function RecipeBook() {
 
     return (
         <main className="recipes">
+            <GoBackIcon routerProps={routerProps} />
             {showModal && inspiration && <RecipeInspirationModal inspiration={inspiration} addNewMealToDB={addNewMealToDB}/>}
             <header className="recipes__header">
                 <h1 className="recipes__title">RECIPE BOOK</h1>

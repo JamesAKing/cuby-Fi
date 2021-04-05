@@ -43,6 +43,7 @@ function App() {
         <Route path={cupboard} exact component={CupboardPage}/>
         {/* <Route path={`${cupboard}/scan-item`} component={ObjectDetection}/> */}
         <Route path={recipeBook} exact component={RecipeBookPage}/>
+        {/* <Route path={recipeBook} exact render={routerProps => <RecipeBookPage {...routerProps} />}/> */}
         <Route path={`${recipeBook}/add-recipe`} component={AddRecipeForm}/>
         <Route path={`${recipeBook}/:recipeId`} render={routeProps => <SingleRecipe {...routeProps} recipeData={recipeData}/>} />
         <Route path={mealPlan} render={() => <MealPlanPage recipeData={recipeData}/>}/>
