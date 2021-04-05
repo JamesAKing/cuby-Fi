@@ -10,32 +10,32 @@ const theMealDB_URL = 'https://www.themealdb.com';
 const randomMealDB_URL = `${theMealDB_URL}/api/json/v1/1/random.php`;
 
 
-function RecipeInspiration() {
+function RecipeInspiration({ getRandomMeal, inspiration }) {
 
-    const [ recipeIdea, setRecipeIdea ] = useState(null);
+    // const [ inspiration, setInspiration ] = useState(null);
 
-    const getRandomMeal = () => {
-        axios
-            .get(randomMealDB_URL)
-            .then(resp=> {
-                const randomRecipeObj = resp.data.meals[0];
-                setRecipeIdea(createRecipeObj(randomRecipeObj));
-            })
-            .catch(err => console.log(err))
-    }
+    // const getRandomMeal = () => {
+    //     axios
+    //         .get(randomMealDB_URL)
+    //         .then(resp=> {
+    //             const randomRecipeObj = resp.data.meals[0];
+    //             setInspiration(createRecipeObj(randomRecipeObj));
+    //         })
+    //         .catch(err => console.log(err))
+    // }
 
-    const addNewMealToDB = () => {
-        axios
-            .post(RecipesDB_URL, recipeIdea)
-            .then(resp => console.log(resp))
-            .catch(err => console.log(err));
-    }
+    // const addNewMealToDB = () => {
+    //     axios
+    //         .post(RecipesDB_URL, inspiration)
+    //         .then(resp => console.log(resp))
+    //         .catch(err => console.log(err));
+    // }
 
     return (
-        <div>
-            <button type="button" onClick={getRandomMeal}>{recipeIdea ? "Get another Random Meal" : "Get Random Meal"}</button>
-            {recipeIdea && <RecipeCard recipeId={recipeIdea.recipeId} recipeName={recipeIdea.recipeName} recipeImg={recipeIdea.image}/>}
-            {recipeIdea && <button type="button" onClick={addNewMealToDB}>Add Meal</button>}
+        <div className="recipe-inspiration">
+            <button className="btn" type="button" onClick={getRandomMeal}>{inspiration ? "Try Again" : "Need Some Inspiration?"}</button>
+            {/* {inspiration && <RecipeCard recipeId={inspiration.recipeId} recipeName={inspiration.recipeName} recipeImg={inspiration.image}/>} */}
+            {/* {inspiration && <button type="button" onClick={addNewMealToDB}>Add Meal</button>} */}
         </div>
     );
 }

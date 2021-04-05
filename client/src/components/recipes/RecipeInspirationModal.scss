@@ -1,0 +1,29 @@
+@use "../../styles/mixins" as *;
+
+.inspiration {
+    @include modal;
+    @include content-padding;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__btns {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        @include tablet {
+            width: 40vw;
+        }
+
+        @include desktop {
+            width: 375px;
+        }
+    }
+
+    &__btn {
+        position: relative;
+        top: -30px;
+        width: 49%;
+    }
+}

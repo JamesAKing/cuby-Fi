@@ -1,23 +1,7 @@
 @use "../../styles/mixins" as *;
 
 .recipe-card {
-    width: 100%;
-    height: 350px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 1px 3px 0 rgb(0, 0, 0, 0.1);
-    overflow: hidden;
-
-    @include tablet {
-        width: 40vw;
-        height: 400px;
-        margin-bottom: 2rem;
-    }
-
-    @include desktop {
-        width: 375px;
-        height: 375px;
-        margin-bottom: 2.5rem;
-    }
+    @include recipe-card;
 
     &__item {
         list-style: none;
@@ -27,7 +11,7 @@
         min-width: 280px;
         width: 100%;
         height: 250px;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
         object-fit: cover;
         object-position: 50% 50%;
 

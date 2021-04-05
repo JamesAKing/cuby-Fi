@@ -20,7 +20,7 @@ function Recipes({ recipesData }) {
                     <p>Getting your Recipes...</p>:
                     recipesData.map(recipe => {
                         return (
-                            <Link key={recipe.recipeId} to={`${recipeBook}/${recipe.recipeId}`} >
+                            <Link className="recipe-list__link" key={recipe.recipeId} to={`${recipeBook}/${recipe.recipeId}`} >
                                 <RecipeCard
                                     recipeId={recipe.recipeId}
                                     recipeName={recipe.recipeName}
