@@ -14,7 +14,7 @@ const randomMealDB_URL = `${theMealDB_URL}/api/json/v1/1/random.php`;
 function RecipeBook(routerProps) {
 
     const [recipesData, setRecipesData] = useState([]);
-    const [ showModal, setShowModal ] = useState(true);
+    const [ showModal, setShowModal ] = useState(false);
     const [ inspiration, setInspiration ] = useState(null);
 
     useEffect(() => {
@@ -30,13 +30,13 @@ function RecipeBook(routerProps) {
 
 
     const getRandomMeal = () => {
-        console.log(1)
         axios
             .get(randomMealDB_URL)
             .then(resp=> {
                 const randomRecipeObj = resp.data.meals[0];
                 setInspiration(createRecipeObj(randomRecipeObj));
             })
+            .then(setShowModal(true))
             .catch(err => console.log(err))
     }
 
@@ -49,17 +49,20 @@ function RecipeBook(routerProps) {
         setInspiration(null);
     }
 
-    console.log(inspiration);
+    const toggleModal = () => {
+        setInspiration(null);
+        setShowModal(!showModal);
+    };
 
     return (
         <main className="recipes">
-            <GoBackIcon routerProps={routerProps} />
-            {showModal && inspiration && <RecipeInspirationModal inspiration={inspiration} addNewMealToDB={addNewMealToDB}/>}
+            {showModal && inspiration && <RecipeInspirationModal inspiration={inspiration} addNewMealToDB={addNewMealToDB} toggleModal={toggleModal}/>}
             <header className="recipes__header">
+                <GoBackIcon routerProps={routerProps} />
                 <h1 className="recipes__title">RECIPE BOOK</h1>
             </header>
             <Recipes recipesData={recipesData} />
-            <RecipeInspiration getRandomMeal={getRandomMeal} inspiration={inspiration}/>
+            <RecipeInspiration getRandomMeal={getRandomMeal}  inspiration={inspiration}/>
             <div className="spacer"></div>
         </main>
     )     

@@ -3,10 +3,11 @@ import { MealPlanDB_URL } from '../utilities/APIEndPoints';
 import { formatMealPlanObj } from '../utilities/functions';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import GoBackIcon from '../components/global/GoBackIcon';
 import SelectMealModal from "../components/select-meal/SelectMealModal";
 import MealCard from "../components/meal-card/MealCard";
 
-function MealPlan({ recipeData }) {
+function MealPlan(routerProps, { recipeData }) {
 
     const [mealPlan, setMealPlan] = useState(null);
     const [ days ] = useState(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])
@@ -79,6 +80,7 @@ function MealPlan({ recipeData }) {
     return (
         <main className="food-plan">
             <header className="food-plan__header">
+                <GoBackIcon routerProps={routerProps} />
                 <h1 className="food-plan__title">WEEKLY MEAL PLAN</h1>
             </header>
             {showSelectMeal && <SelectMealModal recipeData={recipeData} toggleSelectMealModal={toggleSelectMealModal} addToMealPlan={addToMealPlan}/>}

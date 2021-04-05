@@ -9,7 +9,7 @@ function RecipeInspirationModal({ inspiration, addNewMealToDB, toggleModal }) {
             <RecipeCard recipeId={recipeId} recipeName={recipeName} recipeImg={image}/>
             <div className="inspiration__btns">
                 {inspiration && <button className="btn inspiration__btn" type="button" onClick={addNewMealToDB}>Add Meal</button>}
-                <button className="btn inspiration__btn" type="button">Go Back</button>
+                <button className="btn inspiration__btn" type="button" onClick={toggleModal}>Go Back</button>
             </div>
         </div>
     );

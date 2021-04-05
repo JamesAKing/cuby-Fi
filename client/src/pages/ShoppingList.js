@@ -3,10 +3,11 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ShoppingListDB_URL, CupboardDB_URL } from '../utilities/APIEndPoints';
 import { createItem } from '../utilities/functions';
+import GoBackIcon from '../components/global/GoBackIcon';
 import ColumnHeader from "../components/global/ColumnHeader";
 import ShoppingListItem from "../components/shopping-list/ShoppingListItem";
 
-function ShoppingListPage() {
+function ShoppingListPage(routerProps) {
 
     const [ shoppingListData, setShoppingListData ] = useState([]);
     const [ axiosGotData, setAxiosGotData ] = useState("Getting your shopping list...");
@@ -63,6 +64,7 @@ function ShoppingListPage() {
     return (
         <main className="shopping-list">
             <header className="shopping-list__header">
+                <GoBackIcon routerProps={routerProps} />
                 <h1 className="shopping-list__title">SHOPPING LIST</h1>
             </header>
             <ColumnHeader

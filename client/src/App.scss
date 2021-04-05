@@ -1,3 +1,5 @@
+@use './styles/fonts' as *;
+
 *, *::before, *::after {
   box-sizing: border-box;
   padding: 0;
@@ -7,4 +9,6 @@
 body {
   width: 100%;
   min-width: 280px;
+  font-family: 'Quicksand';
+  color: #323232;
 }

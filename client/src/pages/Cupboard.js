@@ -3,13 +3,14 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CupboardDB_URL } from '../utilities/APIEndPoints';
 import { createItem, formValid } from '../utilities/functions';
+import GoBackIcon from '../components/global/GoBackIcon';
 // import { cupboard } from '../utilities/URLs';
 import AddCupboardItem from '../components/add-cupboard-item/AddCupboardItem';
 import EditCupboardItem from '../components/edit-cupboard-item/EditCupboardItem';
 import CupboardItem from '../components/cupboard-item/CupboardItem';
 import ObjectDetection from "../components/coco-ssd/ObjectDetection";
 
-function CupboardPage() {
+function CupboardPage(routerProps) {
 
     const [ cupboardData, setCupboardData ] = useState([]);
     const [ showEditModal, setShowEditModal ] = useState(false);
@@ -109,13 +110,14 @@ function CupboardPage() {
             {showEditModal && <EditCupboardItem updateItem={updateItem} handleFormChange={handleFormChange} toggleEditItemModal={toggleEditItemModal} inputValues={inputValues}/>}
 
             <header className="cupboard__header">
+                <GoBackIcon routerProps={routerProps} />
                 <h1 className="cupboard__title">CUPBOARD</h1>
                 <nav>
                     {/* Link to Cupboard */}
                     {/* Link to Object Detection */}
                 </nav>
             </header>
-            <ObjectDetection />
+            {false && <ObjectDetection />}
             <section>
                 <ul>
                     {cupboardData.length === 0 ?

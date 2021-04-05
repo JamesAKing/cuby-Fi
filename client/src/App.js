@@ -46,7 +46,7 @@ function App() {
         {/* <Route path={recipeBook} exact render={routerProps => <RecipeBookPage {...routerProps} />}/> */}
         <Route path={`${recipeBook}/add-recipe`} component={AddRecipeForm}/>
         <Route path={`${recipeBook}/:recipeId`} render={routeProps => <SingleRecipe {...routeProps} recipeData={recipeData}/>} />
-        <Route path={mealPlan} render={() => <MealPlanPage recipeData={recipeData}/>}/>
+        <Route path={mealPlan} render={(routerProps) => <MealPlanPage {...routerProps} recipeData={recipeData}/>}/>
         {/* <Route path={mealPlan} component={mealPlanPage}/> */}
         <Route path={shoppingList} component={ShoppingList}/>
       </Switch>
