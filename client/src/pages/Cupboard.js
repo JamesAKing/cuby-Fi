@@ -5,6 +5,7 @@ import { CupboardDB_URL } from '../utilities/APIEndPoints';
 import { createItem, formValid } from '../utilities/functions';
 import GoBackIcon from '../components/global/GoBackIcon';
 // import { cupboard } from '../utilities/URLs';
+import ColumnHeader from "../components/global/ColumnHeader";
 import AddCupboardItem from '../components/add-cupboard-item/AddCupboardItem';
 import EditCupboardItem from '../components/edit-cupboard-item/EditCupboardItem';
 import CupboardItem from '../components/cupboard-item/CupboardItem';
@@ -108,7 +109,6 @@ function CupboardPage(routerProps) {
         <main>
             {showAddModal && <AddCupboardItem submitItem={submitItem} handleFormChange={handleFormChange} toggleAddItemModal={toggleAddItemModal}/>}
             {showEditModal && <EditCupboardItem updateItem={updateItem} handleFormChange={handleFormChange} toggleEditItemModal={toggleEditItemModal} inputValues={inputValues}/>}
-
             <header className="cupboard__header">
                 <GoBackIcon routerProps={routerProps} />
                 <h1 className="cupboard__title">CUPBOARD</h1>
@@ -119,15 +119,15 @@ function CupboardPage(routerProps) {
             </header>
             {false && <ObjectDetection />}
             <section>
+                <ColumnHeader columnOne="ITEM" columnTwo="QTY" columnFour="ACTIONS"/>
                 <ul>
                     {cupboardData.length === 0 ?
                         <li><p>Checking the contents of your Cupboard</p></li>:
                         cupboardData.map(item => {
                             return (
                                 <CupboardItem
-                                    key={item.itemId} 
-                                    itemId={item.itemId}
-                                    itemName={item.itemName}
+                                    key={item.itemId}
+                                    item={item}
                                     toggleEditItemModal={toggleEditItemModal}
                                     deleteCupboardItem={deleteCupboardItem}
                                 />

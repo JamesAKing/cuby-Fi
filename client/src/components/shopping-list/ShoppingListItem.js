@@ -2,7 +2,7 @@ import './ShoppingListItem.scss';
 
 function ShoppingListItem({ item, addTocart }) {
 
-    const { cartId, itemName, qtyNeeded, qtyUnit, recipeName, inCart } = item;    
+    const { cartId, itemName, qtyNeeded, qtyUnit, inCart } = item;    
 
     return (
         <li className="shopping__item">
@@ -15,13 +15,13 @@ function ShoppingListItem({ item, addTocart }) {
                 <p className="shopping__text">{qtyNeeded} {qtyUnit}(s)</p>
             </div>
             <div className="shopping__column">
-                <h3 className="shopping__heading">RECIPE</h3>
-                <p className="shopping__text">{recipeName}</p>
+                {/* <h3 className="shopping__heading">RECIPE</h3> */}
+                {/* <p className="shopping__text">{recipeName}</p> */}
             </div>
             <div className="shopping__column">
-                <h3 className="shopping__heading">ACTIONS</h3>
-                <button id={cartId} type="button" onClick={addTocart}>
-                    {!inCart ? "ADD" : "ADDED"}
+                <h3 className="shopping__heading shopping__heading--actions">ACTIONS</h3>
+                <button id={cartId} className="btn shopping__btn" type="button" onClick={addTocart}>
+                    {!inCart ? "ADD TO CART" : "ADDED"}
                 </button>
             </div>               
         </li>

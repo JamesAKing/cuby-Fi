@@ -1,0 +1,65 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.cupboard {
+
+    &__item {
+        @include content-padding;
+        overflow: hidden;
+        width: 100%;
+        height: 160px;
+        background-color: white;
+        border-bottom: 1px solid $color-alt;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        @include tablet {
+            height: 60px;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    &__heading {
+        font-size: 0.875rem;
+        color: $color-primary;
+        margin-bottom: 0.25rem;
+
+        @include tablet {
+            display: none;
+        }
+
+        &--actions {
+            visibility: hidden;
+        }
+    }
+
+    &__text {
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+
+        @include tablet {
+            margin-bottom: 0;
+        }
+
+        &--item {
+            color: $color-primary;
+        }
+    }
+
+    &__column {
+        @include column-default;
+    }
+
+    &__btns {
+        display: flex;
+        overflow: hidden;
+    }
+}

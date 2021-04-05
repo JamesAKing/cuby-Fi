@@ -1,12 +1,14 @@
 @use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
 
 .shopping {
 
     &__item {
+        overflow: hidden;
         width: 100%;
         height: 160px;
         background-color: white;
-        border-bottom: 1px solid lightgrey;
+        border-bottom: 1px solid $color-alt;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -25,11 +27,15 @@
 
     &__heading {
         font-size: 0.875rem;
-        color: darkblue;
+        color: $color-primary;
         margin-bottom: 0.25rem;
 
         @include tablet {
             display: none;
+        }
+
+        &--actions {
+            visibility: hidden;
         }
     }
 
@@ -43,12 +49,11 @@
         }
 
         &--item {
-            color: blue;
+            color: $color-primary;
         }
     }
 
     &__column {
         @include column-default;
     }
-
 }

@@ -26,9 +26,9 @@
     &__items {
         @include content-margins;
         list-style-type: none;
-        background-color: lightgrey;
+        background-color: $color-alt;
         padding-bottom: 2rem;
-        border: 1px solid lightgrey;
+        border: 1px solid $color-alt;
         border-top: none;
         border-bottom-left-radius: 0.25rem;
         border-bottom-right-radius: 0.25rem;
@@ -36,7 +36,7 @@
 
 
         @include tablet {
-            border: 1px solid lightgrey;
+            border: 1px solid $color-alt;
             border-top: none;
             border-bottom: none;
             padding-bottom: 2.5rem;

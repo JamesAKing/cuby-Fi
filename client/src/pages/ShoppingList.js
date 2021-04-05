@@ -70,7 +70,6 @@ function ShoppingListPage(routerProps) {
             <ColumnHeader
                 columnOne ="ITEM"
                 columnTwo ="QTY"
-                columnThree ="RECIPE"
                 columnFour ="ACTIONS"
             />
             <ul className="shopping-list__items">

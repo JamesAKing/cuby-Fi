@@ -7,7 +7,7 @@ function ColumnHeader({ columnOne, columnTwo, columnThree, columnFour}) {
             <p className="column-header__text column-header__column">{columnOne}</p>
             <p className="column-header__text column-header__column">{columnTwo}</p>
             <p className="column-header__text column-header__column">{columnThree}</p>
-            <p className="column-header__text column-header__column">{columnFour}</p>
+            {columnFour && <p className="column-header__text column-header__column">{columnFour}</p>}
         </div>
     );
 

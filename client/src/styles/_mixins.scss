@@ -47,6 +47,7 @@
 
 // Default Table Column
 @mixin column-default {
+    @include content-padding;
     @include tablet {
         width: 25%;
     }
