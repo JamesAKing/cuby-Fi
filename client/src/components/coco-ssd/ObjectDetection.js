@@ -27,12 +27,44 @@ function ObjectDetection(props) {
   useEffect(() => {
     initModel();
   }, [])
+
+  const initModel = async () => {
+    // load model
+    const model = await tmImage.load(modelURL, metaDataURL);
+    // load number of classes in model
+    const maxPredictions = model.getTotalClasses();
+
+    setModel(model);
+    setPredictions(maxPredictions);
+  }
+
+  const predict = async () => {
+    const video = webCamRef.current.video;
+    const prediction = await model.predict(video)
+
+    let highestProbablity = 0;
+    let bestGuess;
+
+    for (let i = 0; i < predictions; i++) {
+      if (prediction[i].probability > highestProbablity) {
+        bestGuess = prediction[i].className
+        highestProbablity = prediction[i].probability
+      }      
+    }
+
+    highestProbablity > 0 ? setItems(bestGuess) : setItems("Unable to determine Item - please try again");
+  }
+
+  
+  const scanImage = async () => {
+    await predict();
+    setScanning(false);
+  }
   
   const scanItem = () => {
-    // Add check to ensure only food items are scanned (no person/chair/etc.)
     resetItems();
+    setScanning(true);
     if (!scanning) {
-      setScanning(true);
       scanImage();
     }
   }
@@ -60,72 +92,23 @@ function ObjectDetection(props) {
     }
   }
 
-  // const scanImage = async () => {
-  //   const model = await cocoSsd.load();
-  //   await detect(model);
-  //   setScanning(false)
-  //   // Is one image enough for accurate results?
+  // DEPRECATED
+  // const detect = async (model) => {
+  //   // Confirm Access to webcam
+  //   if (
+  //     typeof webCamRef.current !== "undefined" &&
+  //     webCamRef.current !== null &&
+  //     webCamRef.current.video.readyState === 4
+  //   ) {
+  //     const video = webCamRef.current.video;
+
+  //     // Detect Objects in Image
+  //     await model.detect(video)
+  //     .then(resp => {
+  //       setItems(resp);
+  //     })
+  //   };
   // };
-
-  const initModel = async () => {
-    // load model
-    const model = await tmImage.load(modelURL, metaDataURL);
-    // load number of classes in model
-    const maxPredictions = model.getTotalClasses();
-
-    setModel(model);
-    setPredictions(maxPredictions);
-  }
-
-  const scanImage = async () => {
-    // const prediction = await model;
-    setScanning(true);
-    await predict();
-    setScanning(false);
-  }
-
-  const predict = async () => {
-
-    const video = webCamRef.current.video;
-
-    const prediction = await model.predict(video)
-
-    let highestProbablity = 0;
-
-    let bestGuess;
-
-    for (let i = 0; i < predictions; i++) {
-      if (prediction[i].probability > highestProbablity) {
-        bestGuess = prediction[i].className
-        highestProbablity = prediction[i].probability
-      }      
-    }
-
-    console.log(bestGuess);
-
-    setItems(bestGuess);
-
-  }
-
-
-  const detect = async (model) => {
-    // Confirm Access to webcam
-    if (
-      typeof webCamRef.current !== "undefined" &&
-      webCamRef.current !== null &&
-      webCamRef.current.video.readyState === 4
-    ) {
-      const video = webCamRef.current.video;
-
-      // Detect Objects in Image
-      await model.detect(video)
-      .then(resp => {
-        setItems(resp);
-      })
-    };
-  };
-
-  console.log(model);
 
   return (
 
