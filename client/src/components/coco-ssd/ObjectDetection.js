@@ -15,19 +15,18 @@ function ObjectDetection(props) {
 
   const [ items, setItems ] = useState(null);
   const [ scanning, setScanning ] = useState(false)
-  const [ tmModels, setTmModels ] = useState(null)
-  const modelsURL = "../../assets/object-detection";
-  const modelURL = `${modelsURL}/model.json`;
-  const metaDataURL = `${modelsURL}/metadata.json`;
+  const [ model, setModel ] = useState(null)
+  const [ predictions, setPredictions ] = useState(0)
+
+  const URL = "https://teachablemachine.withgoogle.com/models/zss-bTFVJ";
+  const modelURL = `${URL}/model.json`;
+  const metaDataURL = `${URL}/metadata.json`;
 
   const webCamRef = useRef(null);
 
-  useEffect(()=>{
-    axios
-      .get('http://localhost:8080/object-detection')
-      .then(resp=> setTmModels(resp.data))
-      .catch(err => console.log(err));
-  },[])
+  useEffect(() => {
+    initModel();
+  }, [])
   
   const scanItem = () => {
     // Add check to ensure only food items are scanned (no person/chair/etc.)
@@ -52,7 +51,7 @@ function ObjectDetection(props) {
           qtyNeeded : "1"
         })
       });
-      // Add Quantity have
+      // Add Quantity + category
       axios
         .post(CupboardDB_URL, newItems)
         .then(resp => console.log(resp))
@@ -68,15 +67,46 @@ function ObjectDetection(props) {
   //   // Is one image enough for accurate results?
   // };
 
+  const initModel = async () => {
+    // load model
+    const model = await tmImage.load(modelURL, metaDataURL);
+    // load number of classes in model
+    const maxPredictions = model.getTotalClasses();
+
+    setModel(model);
+    setPredictions(maxPredictions);
+  }
+
   const scanImage = async () => {
+    // const prediction = await model;
+    setScanning(true);
+    await predict();
+    setScanning(false);
+  }
 
-    const uploadWeights = document.getElementById('upload-weights');
-    // const model = await tmImage.loadFromFiles(tmModels[0], uploadWeights.files[0], tmModels[1]);
+  const predict = async () => {
 
-    console.log("model loaded")
+    const video = webCamRef.current.video;
 
+    const prediction = await model.predict(video)
+
+    let highestProbablity = 0;
+
+    let bestGuess;
+
+    for (let i = 0; i < predictions; i++) {
+      if (prediction[i].probability > highestProbablity) {
+        bestGuess = prediction[i].className
+        highestProbablity = prediction[i].probability
+      }      
+    }
+
+    console.log(bestGuess);
+
+    setItems(bestGuess);
 
   }
+
 
   const detect = async (model) => {
     // Confirm Access to webcam
@@ -95,16 +125,15 @@ function ObjectDetection(props) {
     };
   };
 
-  console.log(tmModels);
+  console.log(model);
 
   return (
 
     <div className="web-cam__page">
-      <input id="upload-weights" type="file" />
       <ul>
           {!items ?
             <li><h2>READY TO SCAN</h2></li> :
-            items.map(object => <li><h2>{object.class}</h2></li>)    
+            <li>{items}</li>
         } 
       </ul>
       <div className="web-cam__container">
