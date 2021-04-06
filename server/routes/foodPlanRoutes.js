@@ -88,7 +88,7 @@ router
 
         })
 
-        // writeData(shoppingListURL, inShoppingList)
+        writeData(shoppingListURL, inShoppingList)
         res.status(200).json("Shopping List has been updated");
     })
     // Clear all meals for the week

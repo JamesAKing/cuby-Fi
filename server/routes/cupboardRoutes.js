@@ -75,6 +75,8 @@ router
             return res.status(204).send('deleted');
         }
 
+        console.log('deleted');
+
         res.status(404).json('Item not found');
     })
 

@@ -97,6 +97,7 @@ function CupboardPage(routerProps) {
     }
 
     const deleteCupboardItem = (e) => {
+        console.log('inner delete')
         const itemId = e.target.parentNode.parentNode.id
         axios
             .delete(`${CupboardDB_URL}/${itemId}`)
@@ -117,7 +118,7 @@ function CupboardPage(routerProps) {
                     {/* Link to Object Detection */}
                 </nav>
             </header>
-            <ObjectDetection />teac
+            {/* <ObjectDetection /> */}
             <section>
                 <ColumnHeader columnOne="ITEM" columnTwo="QTY" columnFour="ACTIONS"/>
                 <ul>

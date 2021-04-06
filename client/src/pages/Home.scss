@@ -17,7 +17,7 @@
             transform: scale(0.9);
             padding: 0.5rem;
             border-radius: 0.25rem;
-            background-color: white;
+            // background-color: white;
         }
     }
 
@@ -33,7 +33,7 @@
 
     &__item {
         @include content-padding;
-        height: 50vh;
+        height: 45vh;
         display: flex;
         justify-content: space-evenly;
         align-items: center;

@@ -2,8 +2,9 @@ import './RecipeInspirationModal.scss';
 import RecipeCard from '../recipe-card/RecipeCard';
 
 function RecipeInspirationModal({ inspiration, addNewMealToDB, toggleModal }) {
-    console.log(inspiration);
+    
     const { recipeName, recipeId, image } = inspiration;
+
     return (
         <div className="inspiration">
             <RecipeCard recipeId={recipeId} recipeName={recipeName} recipeImg={image}/>
@@ -13,6 +14,7 @@ function RecipeInspirationModal({ inspiration, addNewMealToDB, toggleModal }) {
             </div>
         </div>
     );
+    
 }
 
 export default RecipeInspirationModal;

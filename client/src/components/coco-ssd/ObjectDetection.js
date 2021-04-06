@@ -132,7 +132,6 @@ function ObjectDetection(props) {
         <button className="web-cam__button" type="button" onClick={resetItems}>RESET ITEM</button>
         <button className="web-cam__button" type="submit" onClick={addToCupboard}>ADD ITEM TO CUPBOARD</button>
       </div>
-
     </div>
   );
 }

@@ -12,7 +12,7 @@ function MealPlan(routerProps) {
     const [mealPlan, setMealPlan] = useState(null);
     const [ days ] = useState(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])
     const [ loading, setLoading ] = useState(true);
-    const [ showSelectMeal, setShowSelectMeal ] = useState(true);
+    const [ showSelectMeal, setShowSelectMeal ] = useState(false);
     const [ selectedDay, setSelectedDay ] = useState(null);
 
     const { recipeData } = routerProps;
@@ -74,7 +74,7 @@ function MealPlan(routerProps) {
     const clearMealPlan = () => {
         axios
             .delete(MealPlanDB_URL)
-            .then(resp => setMealPlan(null))
+            .then(() => setMealPlan(null))
             .catch(err => console.log(err))
     }
 
@@ -86,7 +86,7 @@ function MealPlan(routerProps) {
             </header>
             {showSelectMeal && <SelectMealModal recipeData={recipeData} selectedDay={days[selectedDay - 1]} toggleSelectMealModal={toggleSelectMealModal} addToMealPlan={addToMealPlan}/>}
             <div className="food-plan__btns">
-                <button className="btn" type="button" onClick={createShoppingList}>CREATE SHOPPING LIST</button>
+                {mealPlan && <button className="btn" type="button" onClick={createShoppingList}>CREATE SHOPPING LIST</button>}
                 <button className="btn" type="button" onClick={clearMealPlan}>CLEAR MEAL PLAN</button>
             </div>
             <ul className="food-plan__meals">
