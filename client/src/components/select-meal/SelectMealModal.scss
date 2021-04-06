@@ -1,9 +1,50 @@
 @use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
 
 .select-meal {
     @include modal;
 
     &__card {
         @include modal-card;
+        @include content-padding;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__title {
+        border-bottom: 3px solid $color-secondary;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    &__items {
+        height: 200px;
+        overflow: scroll;
+        padding: 1rem 0;
+        margin-bottom: 1rem;;
+    }
+
+    &__item {
+        list-style: none;
+        padding: 0.25rem;
+        margin-bottom: 0.25rem;
+
+        &:hover {
+            color: white;
+            background-color: $color-primary;
+        }
     }
 }
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  }

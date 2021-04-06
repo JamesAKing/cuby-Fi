@@ -7,13 +7,15 @@ import GoBackIcon from '../components/global/GoBackIcon';
 import SelectMealModal from "../components/select-meal/SelectMealModal";
 import MealCard from "../components/meal-card/MealCard";
 
-function MealPlan(routerProps, { recipeData }) {
+function MealPlan(routerProps) {
 
     const [mealPlan, setMealPlan] = useState(null);
     const [ days ] = useState(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])
     const [ loading, setLoading ] = useState(true);
-    const [ showSelectMeal, setShowSelectMeal ] = useState(false);
+    const [ showSelectMeal, setShowSelectMeal ] = useState(true);
     const [ selectedDay, setSelectedDay ] = useState(null);
+
+    const { recipeData } = routerProps;
 
     useEffect(() => {
         axios
@@ -25,7 +27,6 @@ function MealPlan(routerProps, { recipeData }) {
 
     const toggleSelectMealModal = (e) => {
         setShowSelectMeal(!showSelectMeal);
-        // !selectedDay ? setSelectedDay(e.target.id) : setSelectedDay(null);
         !selectedDay ? setSelectedDay(e.target.parentNode.id) : setSelectedDay(null);
     }
 
@@ -83,8 +84,7 @@ function MealPlan(routerProps, { recipeData }) {
                 <GoBackIcon routerProps={routerProps} />
                 <h1 className="food-plan__title">WEEKLY MEAL PLAN</h1>
             </header>
-            {showSelectMeal && <SelectMealModal recipeData={recipeData} toggleSelectMealModal={toggleSelectMealModal} addToMealPlan={addToMealPlan}/>}
-            {/* {!mealPlan && <button type="button" onClick={toggleSelectMealModal}>Create your meal plan</button>} */}
+            {showSelectMeal && <SelectMealModal recipeData={recipeData} selectedDay={days[selectedDay - 1]} toggleSelectMealModal={toggleSelectMealModal} addToMealPlan={addToMealPlan}/>}
             <div className="food-plan__btns">
                 <button className="btn" type="button" onClick={createShoppingList}>CREATE SHOPPING LIST</button>
                 <button className="btn" type="button" onClick={clearMealPlan}>CLEAR MEAL PLAN</button>
