@@ -123,13 +123,32 @@ router
     // Confirm this meal has been eaten
     .put((req, res) => {
         const mealPlanData = getData(mealPlanURL);
+        const cupboardData = getData(cupboardURL);
         const selectedDay = req.params.day
+        let selectedMealIngredients;
 
         mealPlanData.forEach(meal => {
-            if (meal.dayId == selectedDay) meal.recipeCooked = !meal.recipeCooked;
+            if (meal.dayId == selectedDay) {
+                meal.recipeCooked = !meal.recipeCooked;
+                selectedMealIngredients = meal.ingredients;
+            }
         });
+        
+        selectedMealIngredients.forEach(mealIngredient => {
+            cupboardData.forEach((cupboardItem, i) => {
+                if (cupboardItem.itemName.toLowerCase() === mealIngredient.itemName.toLowerCase()) {
+                    cupboardItem.qty.amount -= mealIngredient.amount
+                }
+            })
+        })
 
-        // writeData(mealPlanURL, mealPlanData)
+        const updatedCupboardData = cupboardData.filter(item => {
+            return item.qty.amount > 0
+        })
+
+        writeData(mealPlanURL, mealPlanData)
+        writeData(cupboardURL, updatedCupboardData)
+
         res.status(200).json(mealPlanData);
     } )
     // remove recipe on a specific day.
