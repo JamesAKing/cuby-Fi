@@ -117,7 +117,7 @@ router
             return meal
         })
 
-        // writeData(mealPlanURL, newMealPlan)
+        writeData(mealPlanURL, newMealPlan)
         res.status(200).json(newMealPlan);
     })
     // Confirm this meal has been eaten
