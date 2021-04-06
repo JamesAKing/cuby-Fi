@@ -27,6 +27,22 @@
         }
     }
 
+    &__btns {
+        @include content-padding;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 80px;
+        margin-bottom: 1rem;
+        background-color: $color-alt;
+
+        @include tablet {
+            justify-content: space-evenly;
+            margin-bottom: 2.5rem;
+        }
+    }
+
     &__meals {
         @include content-padding;
 

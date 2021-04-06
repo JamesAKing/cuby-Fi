@@ -18,14 +18,6 @@ function RecipeBook(routerProps) {
     const [ inspiration, setInspiration ] = useState(null);
 
     useEffect(() => {
-        // axios
-        //     .get(RecipesDB_URL)
-        //     .then(resp => (
-        //         setRecipesData(resp.data)
-        //     ))
-        //     .catch(err => {
-        //         console.log(err)
-        //     });  
         getRecipesFromDB();
     }, []);
 

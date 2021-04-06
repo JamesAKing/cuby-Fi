@@ -16,16 +16,12 @@ const cupboardRoutes = require('./routes/cupboardRoutes');
 const shoppingListRoutes = require('./routes/shoppingListRoutes');
 const recipeRoutes = require('./routes/recipeRoutes');
 const foodPlanRoutes = require('./routes/foodPlanRoutes');
-const objectDetectionRoutes = require('./routes/objectDetectionRoutes');
-
 
 // INITIATED ROUTES
 app.use('/cupboard', cupboardRoutes);
 app.use('/shopping-list', shoppingListRoutes);
 app.use('/recipes', recipeRoutes);
 app.use('/meal-plan', foodPlanRoutes);
-app.use('/object-detection', objectDetectionRoutes);
-
 
 // 
 app.listen(port, () => {

@@ -69,9 +69,6 @@ router
             "instructions" : instructions,
         }
 
-        console.log("cupboardRoutes");
-        console.log(newRecipe);
-
         recipeData.push(newRecipe);
         writeData(recipesURL, recipeData);
 

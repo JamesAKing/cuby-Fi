@@ -24,6 +24,7 @@ function Recipes({ recipesData }) {
                                 <RecipeCard
                                     recipeId={recipe.recipeId}
                                     recipeName={recipe.recipeName}
+                                    recipeImg={recipe.image}
                                 />
                             </Link>
                         )

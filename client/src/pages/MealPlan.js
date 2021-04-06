@@ -85,8 +85,10 @@ function MealPlan(routerProps, { recipeData }) {
             </header>
             {showSelectMeal && <SelectMealModal recipeData={recipeData} toggleSelectMealModal={toggleSelectMealModal} addToMealPlan={addToMealPlan}/>}
             {/* {!mealPlan && <button type="button" onClick={toggleSelectMealModal}>Create your meal plan</button>} */}
-            <button type="button" onClick={createShoppingList}>CREATE SHOPPING LIST</button>
-            <button type="button" onClick={clearMealPlan}>CLEAR MEAL PLAN</button>
+            <div className="food-plan__btns">
+                <button className="btn" type="button" onClick={createShoppingList}>CREATE SHOPPING LIST</button>
+                <button className="btn" type="button" onClick={clearMealPlan}>CLEAR MEAL PLAN</button>
+            </div>
             <ul className="food-plan__meals">
                 {!mealPlan ?
                     <li>{loading ? "Getting your Meal Plan..." : "Create a new meal plan"}</li> :

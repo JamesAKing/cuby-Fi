@@ -1,4 +1,5 @@
 import './SingleRecipe.scss';
+import GoBackIcon from '../components/global/GoBackIcon';
 
 function SingleRecipe(props) {
     
@@ -8,7 +9,10 @@ function SingleRecipe(props) {
     let recipeData = props.recipeData || [];
     const recipe = recipeData.filter(recipe => recipe.recipeId === recipeId).pop()
 
-    const { recipeName, ingredients, instructions } = recipe
+    console.log(props);
+
+    const { recipeName, ingredients, instructions, image } = recipe
+
 
 
     return !recipe ? 
@@ -16,20 +20,19 @@ function SingleRecipe(props) {
         <main>
             <div className="recipe__hero">
                 <div className="recipe__hero-overlay">
-                    <img src="#" alt="go back" />
+                <img className="recipe__hero-img" src={null} alt="go back" />
+                    <GoBackIcon routerProps={props}/>
                     <h1>{recipeName}</h1>
                 </div>
             </div>
-            <section>
+            <section className="recipe__info">
                 <div>
                     <h2>Ingredients</h2>
-                    <ul>
-                        {/* {ingredients.map(ingredient => <li>{ingredient}</li>)} */}
+                    <ul className="recipe__info">
                         {ingredients.map((ingredient, i) => {
                             return (
-                                <li key={i}>
-                                    <p>{ingredient.itemName}</p>
-                                    <p>{`${ingredient.amount} ${ingredient.units}(s)`}</p>
+                                <li className="recipe__items" key={i}>
+                                    <p>{ingredient.itemName} - {`${ingredient.amount} ${ingredient.units}(s)`}</p>
                                 </li>
                             )
                         })}
@@ -38,8 +41,8 @@ function SingleRecipe(props) {
                 </div>
                 <div>
                     <h2>Instructions</h2>
-                    <ul>
-                        {instructions.map((instruction, i) => <li key={i}>{instruction}</li>)}
+                    <ul className="recipe__info">
+                        {instructions.map((instruction, i) => <li className="recipe__items" key={i}>{instruction}</li>)}
                     </ul>
                 </div>
             </section>   
