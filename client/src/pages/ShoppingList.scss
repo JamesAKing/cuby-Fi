@@ -25,6 +25,7 @@
 
     &__items {
         @include content-margins;
+        // @include default-box-shadow;
         list-style-type: none;
         background-color: $color-alt;
         padding-bottom: 2rem;
@@ -42,5 +43,15 @@
             padding-bottom: 2.5rem;
 
         }
+    }
+
+    &__btn-container {
+        @include content-margins;
+        // @include default-box-shadow;
+        height: 80px;
+        background-color: $color-alt;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
     }
 }

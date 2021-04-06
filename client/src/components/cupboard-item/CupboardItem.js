@@ -4,7 +4,6 @@ function CupboardItem({ item, toggleEditItemModal, deleteCupboardItem }) {
     
     const { itemId, itemName, qty } = item
 
-    console.log(item);
     return (
         <li id={itemId} className="cupboard__item">
             <div className="cupboard__column">

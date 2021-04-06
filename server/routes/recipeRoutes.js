@@ -44,7 +44,7 @@ const recipesURL = './data/recipes.json';
 
 router
     .route('/')
-    // see all recipes - non detailed view
+    // see all recipes
     .get((req, res) => {
         const result = getData(recipesURL);
         res.json(result);

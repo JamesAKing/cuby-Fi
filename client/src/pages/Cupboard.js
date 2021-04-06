@@ -117,7 +117,7 @@ function CupboardPage(routerProps) {
                     {/* Link to Object Detection */}
                 </nav>
             </header>
-            {false && <ObjectDetection />}
+            <ObjectDetection />teac
             <section>
                 <ColumnHeader columnOne="ITEM" columnTwo="QTY" columnFour="ACTIONS"/>
                 <ul>

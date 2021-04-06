@@ -1,8 +1,10 @@
 import './ObjectDetection.scss';
-import React, {useRef, useState } from 'react';
+import React, {useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import * as tf from "@tensorflow/tfjs";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
+import * as FoodModel from "../../assets/object-detection/model.json";
+import * as tmImage from "@teachablemachine/image";
 
 import { createItem } from '../../utilities/functions';
 import { CupboardDB_URL } from '../../utilities/APIEndPoints';
@@ -13,8 +15,19 @@ function ObjectDetection(props) {
 
   const [ items, setItems ] = useState(null);
   const [ scanning, setScanning ] = useState(false)
+  const [ tmModels, setTmModels ] = useState(null)
+  const modelsURL = "../../assets/object-detection";
+  const modelURL = `${modelsURL}/model.json`;
+  const metaDataURL = `${modelsURL}/metadata.json`;
 
   const webCamRef = useRef(null);
+
+  useEffect(()=>{
+    axios
+      .get('http://localhost:8080/object-detection')
+      .then(resp=> setTmModels(resp.data))
+      .catch(err => console.log(err));
+  },[])
   
   const scanItem = () => {
     // Add check to ensure only food items are scanned (no person/chair/etc.)
@@ -48,12 +61,22 @@ function ObjectDetection(props) {
     }
   }
 
+  // const scanImage = async () => {
+  //   const model = await cocoSsd.load();
+  //   await detect(model);
+  //   setScanning(false)
+  //   // Is one image enough for accurate results?
+  // };
+
   const scanImage = async () => {
-    const model = await cocoSsd.load();
-    await detect(model);
-    setScanning(false)
-    // Is one image enough for accurate results?
-  };
+
+    const uploadWeights = document.getElementById('upload-weights');
+    // const model = await tmImage.loadFromFiles(tmModels[0], uploadWeights.files[0], tmModels[1]);
+
+    console.log("model loaded")
+
+
+  }
 
   const detect = async (model) => {
     // Confirm Access to webcam
@@ -72,12 +95,15 @@ function ObjectDetection(props) {
     };
   };
 
+  console.log(tmModels);
+
   return (
 
     <div className="web-cam__page">
+      <input id="upload-weights" type="file" />
       <ul>
           {!items ?
-            <li><h2>LOADING...</h2></li> :
+            <li><h2>READY TO SCAN</h2></li> :
             items.map(object => <li><h2>{object.class}</h2></li>)    
         } 
       </ul>

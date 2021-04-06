@@ -86,7 +86,9 @@ function ShoppingListPage(routerProps) {
                     })
                 }
             </ul>
-            <button type="submit" onClick={updateCupboardAndShopList}>ADD ITEMS TO CUPBOARD</button>
+            <div className="shopping-list__btn-container">
+                <button type="submit" className="btn" onClick={updateCupboardAndShopList}>ADD ITEMS TO CUPBOARD</button>
+            </div>
         </main>
     );
 }

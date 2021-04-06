@@ -1,9 +1,0 @@
-[
-    {
-        "recipeName" : "string", 
-        "recipeId" : "string",
-        "image" : "URL",
-        "imageType" : "string",
-        "userRating" : "string - maybe int?"
-    }
-]

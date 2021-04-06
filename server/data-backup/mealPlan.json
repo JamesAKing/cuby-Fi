@@ -1,0 +1,102 @@
+[
+    {
+        "dayId" : 1,
+        "recipeCooked" : false,
+        "recipeName" : "Sausage and Mash", 
+        "recipeId" : "917445a8-6508-4152-b016-28affa2030c0",
+        "image" : "URL",
+        "imageType" : "string",
+        "ingredients" : [
+            {"sausages" : 4, "units" : "unit" },
+            {"potatos" : 2 , "units" : "unit"},
+            {"gravy" : 500, "units" : "ml"},
+            {"mushrooms": 300, "units" : "g"},
+            {"onions" : 0.5, "units": "unit"}
+        ],
+        "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
+    },
+    {
+        "dayId" : 2,
+        "recipeCooked" : false,
+        "recipeName" : "Poke Bowl",
+        "recipeId" : "2b",
+        "ingredients" : [
+            {"sausages" : 4, "units" : "unit" },
+            {"potatos" : 2 , "units" : "unit"},
+            {"gravy" : 500, "units" : "ml"},
+            {"mushrooms": 300, "units" : "g"},
+            {"onions" : 0.5, "units": "unit"}
+        ],
+        "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
+    },
+    {
+        "dayId" : 3,
+        "recipeCooked" : false,
+        "recipeName" : "Chicken and Mushroom pasta",
+        "recipeId" : "3c",
+        "ingredients" : [
+            {"sausages" : 4, "units" : "unit" },
+            {"potatos" : 2 , "units" : "unit"},
+            {"gravy" : 500, "units" : "ml"},
+            {"mushrooms": 300, "units" : "g"},
+            {"onions" : 0.5, "units": "unit"}
+        ],
+        "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
+    },
+    {
+        "dayId" : 4,
+        "recipeCooked" : false,
+        "recipeName" : "Fish Tacos",
+        "recipeId" : "4d",
+        "ingredients" : [
+            {"sausages" : 4, "units" : "unit" },
+            {"potatos" : 2 , "units" : "unit"},
+            {"gravy" : 500, "units" : "ml"},
+            {"mushrooms": 300, "units" : "g"},
+            {"onions" : 0.5, "units": "unit"}
+        ],
+        "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
+    },
+    {
+        "dayId" : 5,
+        "recipeCooked" : false,
+        "recipeName" : "Mushroom Quesadillas",
+        "recipeId" : "5e",
+        "ingredients" : [
+            {"sausages" : 4, "units" : "unit" },
+            {"potatos" : 2 , "units" : "unit"},
+            {"gravy" : 500, "units" : "ml"},
+            {"mushrooms": 300, "units" : "g"},
+            {"onions" : 0.5, "units": "unit"}
+        ],
+        "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
+    },
+    {
+        "dayId" : 6,
+        "recipeCooked" : false,
+        "recipeName" : "Southern Fried Chicken",
+        "recipeId" : "6f",
+        "ingredients" : [
+            {"sausages" : 4, "units" : "unit" },
+            {"potatos" : 2 , "units" : "unit"},
+            {"gravy" : 500, "units" : "ml"},
+            {"mushrooms": 300, "units" : "g"},
+            {"onions" : 0.5, "units": "unit"}
+        ],
+        "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
+    },
+    {
+        "dayId" : 7,
+        "recipeCooked" : false,
+        "recipeName" : "Roast Dinner",
+        "recipeId" : "7g",
+        "ingredients" : [
+            {"sausages" : 4, "units" : "unit" },
+            {"potatos" : 2 , "units" : "unit"},
+            {"gravy" : 500, "units" : "ml"},
+            {"mushrooms": 300, "units" : "g"},
+            {"onions" : 0.5, "units": "unit"}
+        ],
+        "instructions" : ["Heat Oven", "Cook Sausages", "Mash Potatos", "Add Gravy"]
+   }
+]
