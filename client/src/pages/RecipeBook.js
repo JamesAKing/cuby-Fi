@@ -18,14 +18,15 @@ function RecipeBook(routerProps) {
     const [ inspiration, setInspiration ] = useState(null);
 
     useEffect(() => {
-        axios
-            .get(RecipesDB_URL)
-            .then(resp => (
-                setRecipesData(resp.data)
-            ))
-            .catch(err => {
-                console.log(err)
-            });  
+        // axios
+        //     .get(RecipesDB_URL)
+        //     .then(resp => (
+        //         setRecipesData(resp.data)
+        //     ))
+        //     .catch(err => {
+        //         console.log(err)
+        //     });  
+        getRecipesFromDB();
     }, []);
 
 
@@ -43,16 +44,28 @@ function RecipeBook(routerProps) {
     const addNewMealToDB = () => {
         axios
             .post(RecipesDB_URL, inspiration)
-            .then(resp => console.log(resp))
+            .then(resp => getRecipesFromDB())
             .catch(err => console.log(err));
         
         setInspiration(null);
+
     }
 
     const toggleModal = () => {
         setInspiration(null);
         setShowModal(!showModal);
     };
+
+    const getRecipesFromDB = () => {
+        axios
+            .get(RecipesDB_URL)
+            .then(resp => (
+                setRecipesData(resp.data)
+            ))
+            .catch(err => {
+                console.log(err)
+            }); 
+    }
 
     return (
         <main className="recipes">
