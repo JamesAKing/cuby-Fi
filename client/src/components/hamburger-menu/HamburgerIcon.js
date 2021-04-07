@@ -20,13 +20,13 @@ function BurgerMenuIcon() {
                 </div>
             </div>
             <div className={!active ? "pull-out pull-out__inactive" : "pull-out pull-out__active"}>
-                <nav>
-                    <ul>
-                        <li className="pull-out__link"><Link>HOME</Link></li>
-                        <li className="pull-out__link"><Link>SHOPPING LIST</Link></li>
-                        <li className="pull-out__link"><Link>MEAL PLAN</Link></li>
-                        <li className="pull-out__link"><Link>RECIPE BOOK</Link></li>
-                        <li className="pull-out__link"><Link>CUPBOARD</Link></li>
+                <nav className="pull-out__nav">
+                    <ul className="pull-out__list">
+                        <li className="pull-out__item"><Link className="pull-out__link">HOME</Link></li>
+                        <li className="pull-out__item"><Link className="pull-out__link pull-out__link--c">SHOPPING LIST</Link></li>
+                        <li className="pull-out__item"><Link className="pull-out__link pull-out__link--u">MEAL PLAN</Link></li>
+                        <li className="pull-out__item"><Link className="pull-out__link pull-out__link--b">RECIPE BOOK</Link></li>
+                        <li className="pull-out__item"><Link className="pull-out__link pull-out__link--y">CUPBOARD</Link></li>
                     </ul>
                 </nav>
             </div>
