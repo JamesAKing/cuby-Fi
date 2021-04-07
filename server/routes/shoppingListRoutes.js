@@ -61,15 +61,12 @@ router
         const shoppingListData = getData(shoppingListURL);
         const cupboardData = getData(cupboardURL)
         const addedItems = req.body;
-        let updatedShoppingList = [];
 
         // REFACTOR THIS FUNCTION
         while (addedItems.length > 0) {
             const addedItem = addedItems.pop();
             let itemAdded = false
             shoppingListData.forEach((shoppingListItem, i) => {
-                console.log(shoppingListItem.itemName.toLowerCase())
-                console.log(addedItem.itemName.toLowerCase())
                 if (shoppingListItem.itemName.toLowerCase() === addedItem.itemName.toLowerCase()) {
                     shoppingListData.splice(i, 1)
                     cupboardData.forEach(cupboardItem => {
@@ -79,19 +76,17 @@ router
                         }
                     })
                 }
-                if (!itemAdded) {
-                    cupboardData.push(createCupboardItem(addedItem))
-                    itemAdded = true;
-                };
-            })  
+            }) 
+            
+            if (!itemAdded) {
+                cupboardData.push(createCupboardItem(addedItem))
+                itemAdded = true;
+            };
         }
 
-        console.log(cupboardData);
-
-        // writeData(shoppingListURL, updatedShoppingList);
-        updatedShoppingList.length < shoppingListData.length ?
-            res.status(204).send():
-            res.status(400).json('No items removd from shopping list');
+        writeData(cupboardURL, cupboardData);
+        writeData(shoppingListURL, shoppingListData);
+        res.status(204).send();
     })
 
 router
