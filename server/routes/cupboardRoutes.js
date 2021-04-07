@@ -22,12 +22,13 @@ router
     // get items in the cupboard
     .get((req, res) => {
         const result = getData(cupboardURL);
-        res.json(result);
+        res.status(200).json(result);
     })
     // Add item(s) to the cupboard
     .post((req, res) => {
         let cupboardItems = getData(cupboardURL);
         let newItems = req.body
+
         // DEPRECIATED
         // let newItems = req.body.newItems;
         
@@ -56,10 +57,6 @@ router
 
 router
     .route('/:itemId')
-    // check if specific item is in the cupboard
-    .get((req, res) => {
-        res.json("connected");
-    })
     // Edit an item in the cupboard
     .put((req, res) => {
         res.json('updated');

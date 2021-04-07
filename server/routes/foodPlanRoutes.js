@@ -39,7 +39,7 @@ router
     // get meal plan for the week
     .get((req, res) => {
         const result = getData(mealPlanURL);
-        res.json(result);
+        res.status(200).json(result);
     })
     .post((req, res) => {
         const inCupboard = getData(cupboardURL);
@@ -93,8 +93,8 @@ router
     })
     // Clear all meals for the week
     .delete((req, res) => {
-        // writeData(mealPlanURL, []);
-        res.json('Removed all meals');
+        writeData(mealPlanURL, []);
+        res.status(204).json('Removed all meals');
     })
 
 router
