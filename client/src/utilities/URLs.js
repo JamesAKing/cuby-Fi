@@ -1,3 +1,4 @@
+export const home = "/";
 export const about = "/about";
 export const contactUs = "/contact-us";
 export const cupboard = "/cupboard";
