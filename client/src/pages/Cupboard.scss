@@ -3,7 +3,6 @@
 
 
 .cupboard {
-
     &__header {
         @include content-padding;
         width: 100%;
@@ -31,5 +30,9 @@
         justify-content: center;
         align-items: center;
     }
+}
 
+.beta {
+    font-size: 0.5rem;
+    margin-left: 0.5rem;
 }

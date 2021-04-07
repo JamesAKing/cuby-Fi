@@ -6,8 +6,6 @@ import FoodItemsIcon from "../assets/icons/food-items.png";
 import RecipeBookIcon from "../assets/icons/recipe-book.png";
 import ShoppingListIcon from "../assets/icons/shopping-list.png";
 
-
-
 function Home(props) {
     return (
         <nav>

@@ -16,6 +16,7 @@ function CupboardPage(routerProps) {
     const [ cupboardData, setCupboardData ] = useState([]);
     const [ showEditModal, setShowEditModal ] = useState(false);
     const [ showAddModal, setShowAddModal ] = useState(false);
+    const [ showObjectDetectionModal, setShowObjectDetectionModal ] = useState(false);
     const [ inputValues, setInputValues ] = useState({
         itemName : '',
         itemId : null,
@@ -25,10 +26,6 @@ function CupboardPage(routerProps) {
     });
 
     useEffect(() => {
-        // axios
-        //     .get(CupboardDB_URL)
-        //     .then(resp => setCupboardData(resp.data))
-        //     .catch(err => console.log(err));
         renderCupboardData()
     }, []);
 
@@ -48,6 +45,10 @@ function CupboardPage(routerProps) {
             clearInputValues();
         }
         setShowEditModal(!showEditModal);
+    }
+
+    const toggleObjectDetectionModel = () => {
+        setShowObjectDetectionModal(!showObjectDetectionModal);
     }
 
     const toggleAddItemModal = () => {
@@ -122,12 +123,8 @@ function CupboardPage(routerProps) {
             <header className="cupboard__header">
                 <GoBackIcon routerProps={routerProps} />
                 <h1 className="cupboard__title">CUPBOARD</h1>
-                <nav>
-                    {/* Link to Cupboard */}
-                    {/* Link to Object Detection */}
-                </nav>
             </header>
-            {/* <ObjectDetection /> */}
+           {showObjectDetectionModal && <ObjectDetection />}
             <section>
                 <ColumnHeader columnOne="ITEM" columnTwo="QTY" columnFour="ACTIONS"/>
                 <ul>
@@ -147,6 +144,7 @@ function CupboardPage(routerProps) {
                 </ul>
                 <div className="cupboard__add-item-container">
                     <button type="button" className="btn" onClick={toggleAddItemModal}>Add Item</button>
+                    <button type="button" className="btn" onClick={toggleObjectDetectionModel}>Scan Item <span className="beta">beta</span></button>
                 </div>
             </section>
         </main>

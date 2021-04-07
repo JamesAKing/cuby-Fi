@@ -5,7 +5,7 @@ import { home, cupboard, recipeBook, mealPlan, shoppingList } from '../../utilit
 
 function BurgerMenuIcon() {
 
-    const [ active, setActive ] = useState(true)
+    const [ active, setActive ] = useState(false)
 
     const rotateIcon = () => {
         setActive(!active)
