@@ -1,0 +1,22 @@
+@use "../../styles/variables" as *;
+
+.logo {
+    &__text {
+        font-size: 3rem;
+        margin-right: 0.1rem;
+        color: white;
+    }
+   
+    &__c {
+        color: $color-secondary;
+    }    
+    &__u{
+        color: $color-three;
+    }
+    &__b{
+        color: $color-four;
+    }
+    &__y{
+        color: $color-five;
+    }
+}

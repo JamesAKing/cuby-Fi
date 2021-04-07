@@ -1,6 +1,7 @@
 import './Header.scss';
 import SquirrelLogo from "../../assets/logos/squirrel-white.png";
 import { Link } from 'react-router-dom';
+import Logo from '../global/Logo';
 import HamburgerIcon from '../hamburger-menu/HamburgerIcon';
 
 function Header() {
@@ -9,9 +10,9 @@ function Header() {
             <Link to="/">
                 <img className="header__logo" src={SquirrelLogo} alt="inFridge logo" />
             </Link>
-            <h2>inFridge</h2>
+            <Logo />
             <nav>
-                {/* consider changing the below to images */}
+                <HamburgerIcon />
                 {/* <ul className="header__links">
                     <li><Link className="header__link" to="/about">About</Link></li>
                     <li><Link className="header__link" to="/contact-us">Contact Us</Link></li>
@@ -21,7 +22,6 @@ function Header() {
                     <li><Link className="header__link" to="/shopping-list">Shopping List</Link></li>
                 </ul> */}
             </nav>
-            <HamburgerIcon />
         </header>
     );
 }
