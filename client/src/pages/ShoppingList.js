@@ -27,7 +27,6 @@ function ShoppingListPage(routerProps) {
     const addTocart = (e) => {
         const itemId = e.target.id;
         const updatedShoppingList = shoppingListData.map(item => {
-            // console.log(item.cartId === itemId);
             if (item.cartId === itemId) {
                 item.inCart = true;
             };

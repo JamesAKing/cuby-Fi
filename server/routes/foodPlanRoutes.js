@@ -33,7 +33,6 @@ const shoppingListURL = './data/shoppingList.json';
 
 
 // ROUTES
-
 router
     .route('/')
     // get meal plan for the week
@@ -99,11 +98,6 @@ router
 
 router
     .route('/:day')
-    // get meal for a specific day
-    .get((req, res) => {
-        console.log(req.params.day);
-        res.json("today we are eating");
-    })
     // add meal on a specific day
     .post((req, res) => {
         const mealPlanData = getData(mealPlanURL);

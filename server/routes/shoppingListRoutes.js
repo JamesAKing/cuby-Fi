@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const router = express.Router();
+const { v4: uuidv4 } = require('uuid');
 
 // FUNCTIONS
 const getData = (url) => {
@@ -26,17 +27,26 @@ const createShoppingListItem = (req) => {
         }
 }
 
+const createCupboardItem = (item) => {
+    return ({
+        "itemName" : item.itemName,
+        "itemId" : item.itemId || uuidv4(),
+        "category" : item.category || null,
+        "qty" : {"amount" : item.qtyNeeded, "unit" : item.qtyUnit}
+    })
+}
+
 // VARIABLES
 const shoppingListURL = './data/shoppingList.json';
+const cupboardURL = './data/cupboard.json';
 
 // ROUTES
-
 router
     .route('/')
     // see all items in the shoppingList
     .get((req, res) => {
         const result = getData(shoppingListURL);
-        res.json(result);
+        res.status(200).json(result);
     })
     // Add/Remove an item(s) to/from the shoppingList
     .post((req, res) => {
@@ -49,28 +59,34 @@ router
     })
     .delete((req, res) => {
         const shoppingListData = getData(shoppingListURL);
+        const cupboardData = getData(cupboardURL)
         const addedItems = req.body;
         let updatedShoppingList = [];
 
-        // addedItems.forEach(addedItem => {
-        //     shoppingListData.forEach(shoppingListItem => {
-        //         console.log(addedItem.itemName)
-        //         console.log(shoppingListItem.itemName)
-        //         console.log(addedItem.itemName !== shoppingListItem.itemName)
-
-        //         if (addedItem.itemName !== shoppingListItem.itemName) {
-        //             updatedShoppingList.push(shoppingListItem);
-        //         }
-        //     });
-        // });
-
+        // REFACTOR THIS FUNCTION
         while (addedItems.length > 0) {
             const addedItem = addedItems.pop();
-            shoppingListData.forEach((item, i) => {
-                console.log();
-                if (item.itemName === addedItem.itemName) shoppingListData.splice(i, 1)
-            })
+            let itemAdded = false
+            shoppingListData.forEach((shoppingListItem, i) => {
+                console.log(shoppingListItem.itemName.toLowerCase())
+                console.log(addedItem.itemName.toLowerCase())
+                if (shoppingListItem.itemName.toLowerCase() === addedItem.itemName.toLowerCase()) {
+                    shoppingListData.splice(i, 1)
+                    cupboardData.forEach(cupboardItem => {
+                        if (addedItem.itemName.toLowerCase() === cupboardItem.itemName.toLowerCase()) {
+                            cupboardItem.qty.amount += addedItem.qtyNeeded;
+                            itemAdded = true;                            
+                        }
+                    })
+                }
+                if (!itemAdded) {
+                    cupboardData.push(createCupboardItem(addedItem))
+                    itemAdded = true;
+                };
+            })  
         }
+
+        console.log(cupboardData);
 
         // writeData(shoppingListURL, updatedShoppingList);
         updatedShoppingList.length < shoppingListData.length ?

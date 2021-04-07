@@ -3,9 +3,6 @@ const fs = require('fs');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 
-
-// Consider condensing deatiled and quick view JSON
-
 // FUNCTIONS
 const getData = (url) => {
     return JSON.parse(fs.readFileSync(url))
@@ -41,13 +38,12 @@ const createRecipe = recipeObj => {
 const recipesURL = './data/recipes.json';
 
 // ROUTES
-
 router
     .route('/')
     // see all recipes
     .get((req, res) => {
         const result = getData(recipesURL);
-        res.json(result);
+        res.status(200).json(result);
     })
     // Add a recipe to recipe Book
     .post((req, res) => {
@@ -90,7 +86,6 @@ router
     .delete((req, res) => {
         res.json("deleted");
     })
-
 
 // EXPORTS
 module.exports = router;
