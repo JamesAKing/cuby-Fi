@@ -25,10 +25,11 @@ function CupboardPage(routerProps) {
     });
 
     useEffect(() => {
-        axios
-            .get(CupboardDB_URL)
-            .then(resp => setCupboardData(resp.data))
-            .catch(err => console.log(err));
+        // axios
+        //     .get(CupboardDB_URL)
+        //     .then(resp => setCupboardData(resp.data))
+        //     .catch(err => console.log(err));
+        renderCupboardData()
     }, []);
 
     const toggleEditItemModal = (e) => {
@@ -69,6 +70,7 @@ function CupboardPage(routerProps) {
                 .then(() => {
                     clearInputValues();
                     toggleAddItemModal();
+                    renderCupboardData();
                 })
                 .catch(err => console.log(err));
         }
@@ -82,6 +84,7 @@ function CupboardPage(routerProps) {
             axios
                 .put(`${CupboardDB_URL}/${itemId}`, newItems)
                 .then(resp => console.log(resp))
+                .then(() => renderCupboardData())
                 .catch(err => console.log(err));
         }
     }
@@ -101,7 +104,14 @@ function CupboardPage(routerProps) {
         axios
             .delete(`${CupboardDB_URL}/${itemId}`)
             .then(resp => console.log(resp))
-            // Send back updated cupboardItem Array and use this to setCupboardData so page updates
+            .then(() => renderCupboardData())
+            .catch(err => console.log(err));
+    }
+
+    const renderCupboardData = () => {
+        axios
+            .get(CupboardDB_URL)
+            .then(resp => setCupboardData(resp.data))
             .catch(err => console.log(err));
     }
 

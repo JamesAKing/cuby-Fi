@@ -71,11 +71,9 @@ router
         const updatedCupboardData = cupboardData.filter(item => item.itemId !== itemId);
 
         if (updatedCupboardData.length === (cupboardData.length - 1)) {
-            // writeData(cupboardURL, updatedCupboardData);
+            writeData(cupboardURL, updatedCupboardData);
             return res.status(204).send('deleted');
         }
-
-        console.log('deleted');
 
         res.status(404).json('Item not found');
     })
