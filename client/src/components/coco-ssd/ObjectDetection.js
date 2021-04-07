@@ -2,13 +2,9 @@ import './ObjectDetection.scss';
 import React, {useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import * as tf from "@tensorflow/tfjs";
-// import * as cocoSsd from "@tensorflow-models/coco-ssd";
-// import * as FoodModel from "../../assets/object-detection/model.json";
 import * as tmImage from "@teachablemachine/image";
-
-import { createItem } from '../../utilities/functions';
+// import { createItem } from '../../utilities/functions';
 import { CupboardDB_URL } from '../../utilities/APIEndPoints';
-
 import Webcam from 'react-webcam';
 
 function ObjectDetection(props) {
@@ -52,7 +48,6 @@ function ObjectDetection(props) {
     highestProbablity > 0 ? setItems(bestGuess) : setItems("Unable to determine Item - please try again");
   }
 
-  
   const scanImage = async () => {
     await predict();
     setScanning(false);
@@ -89,31 +84,17 @@ function ObjectDetection(props) {
     }
   }
 
-  // DEPRECATED
-  // const detect = async (model) => {
-  //   // Confirm Access to webcam
-  //   if (
-  //     typeof webCamRef.current !== "undefined" &&
-  //     webCamRef.current !== null &&
-  //     webCamRef.current.video.readyState === 4
-  //   ) {
-  //     const video = webCamRef.current.video;
-
-  //     // Detect Objects in Image
-  //     await model.detect(video)
-  //     .then(resp => {
-  //       setItems(resp);
-  //     })
-  //   };
-  // };
-
   return (
 
     <div className="web-cam__page">
-      <ul>
+      <ul className="object-detection__items">
           {!items ?
-            <li><h2>READY TO SCAN</h2></li> :
-            <li>{items}</li>
+            <li className="object-detection__item">
+              <h2>
+                {!scanning ? "READY TO SCAN" : "SCANNING ITEM"}
+              </h2>
+            </li> :
+            <li className="object-detection__item"><h2>{items}</h2></li>
         } 
       </ul>
       <div className="web-cam__container">

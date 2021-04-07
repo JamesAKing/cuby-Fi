@@ -144,7 +144,7 @@ function CupboardPage(routerProps) {
                 </ul>
                 <div className="cupboard__add-item-container">
                     <button type="button" className="btn" onClick={toggleAddItemModal}>Add Item</button>
-                    <button type="button" className="btn" onClick={toggleObjectDetectionModel}>Scan Item <span className="beta">beta</span></button>
+                    <button type="button" className="btn" onClick={toggleObjectDetectionModel}>{!showObjectDetectionModal ? "Activate" : "Disable"} Scan Item <span className="beta">beta</span></button>
                 </div>
             </section>
         </main>
