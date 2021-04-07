@@ -2,10 +2,15 @@ import './MealCard.scss';
 import { Link } from 'react-router-dom';
 import { recipeBook } from "../../utilities/URLs";
 
-function MealCard({ day, dayId, recipeName, recipeId, imgURL, toggleSelectMealModal, confirmMealEaten, recipeCooked }) {
+function MealCard({ day, dayId, recipeName, recipeId, recipeImg, toggleSelectMealModal, confirmMealEaten, recipeCooked }) {
     
+    if (recipeCooked) {
+        recipeName = "ADD NEW RECIPE";
+        recipeImg = null;
+    }
+
     return (
-        <li className="meal">
+        <li className="meal" style={{backgroundImage: `url(${recipeImg})`}}>
             <div className="meal__overlay">
                 <h4 className="meal__text">{day}</h4>
                 {/* <h3 className="meal__text">{recipeName}</h3> */}

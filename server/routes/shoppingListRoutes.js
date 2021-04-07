@@ -46,6 +46,7 @@ router
     // see all items in the shoppingList
     .get((req, res) => {
         const result = getData(shoppingListURL);
+        console.log(result);
         res.status(200).json(result);
     })
     // Add/Remove an item(s) to/from the shoppingList

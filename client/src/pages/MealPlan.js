@@ -44,23 +44,50 @@ function MealPlan(routerProps) {
     const createShoppingList = () => {
         let ingredientsObj = {}
         // Iterate through mealPlan
+        // mealPlan.forEach(meal => {
+        //     console.log(meal)
+        //     // Get Recipe Ingredeints
+        //     meal.ingredients.forEach(ingredient => {
+        //         const ingredientKeys = Object.keys(ingredient)
+        //         const amount = ingredient[ingredientKeys[0]]
+        //         const units = ingredient[ingredientKeys[1]]
+        //         // Combine Recipe Ingredients in ingredient : {amount, unit} format
+        //         ingredientsObj[ingredientKeys[0]] ?
+        //             ingredientsObj[ingredientKeys[0]].amount += amount : 
+        //             ingredientsObj[ingredientKeys[0]] = {"amount" : amount, "units" : units}
+        //     })
+        // })
+
+        let ingredientArr = [];
+
         mealPlan.forEach(meal => {
             // Get Recipe Ingredeints
             meal.ingredients.forEach(ingredient => {
-                const ingredientKeys = Object.keys(ingredient)
-                const amount = ingredient[ingredientKeys[0]]
-                const units = ingredient[ingredientKeys[1]]
+                console.log(ingredient);
+                const itemName = ingredient.itemName
+                const amount = ingredient.amount
+                const units = ingredient.units
                 // Combine Recipe Ingredients in ingredient : {amount, unit} format
-                ingredientsObj[ingredientKeys[0]] ?
-                    ingredientsObj[ingredientKeys[0]].amount += amount : 
-                    ingredientsObj[ingredientKeys[0]] = {"amount" : amount, "units" : units}
+                ingredientArr.push({
+                   itemName : itemName,
+                   amount : amount,
+                   units : units 
+                })
+                
             })
         })
 
+        console.log(ingredientArr);
+
+        // axios
+        //     .post(MealPlanDB_URL, ingredientsObj)
+        //     .then(resp => console.log(resp))
+        //     .catch(err => console.log(err));
+
         axios
-            .post(MealPlanDB_URL, ingredientsObj)
-            .then(resp => console.log(resp))
-            .catch(err => console.log(err));
+        .post(MealPlanDB_URL, ingredientArr)
+        .then(resp => console.log(resp))
+        .catch(err => console.log(err));
     };
 
     const confirmMealEaten = (e) => {
@@ -99,6 +126,7 @@ function MealPlan(routerProps) {
                                 dayId={meal.dayId}
                                 day={days[i].toUpperCase()}
                                 recipeName={meal.recipeName}
+                                recipeImg={meal.image}
                                 recipeCooked={meal.recipeCooked}
                                 toggleSelectMealModal={toggleSelectMealModal}
                                 confirmMealEaten={confirmMealEaten}

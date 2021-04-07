@@ -8,11 +8,10 @@
     border-radius: 1.25rem;
     overflow: hidden;
     list-style: none;
-    background-image: url("../../assets/dummy-data-DELETE/meatballs.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    cursor: pointer;
+    // cursor: pointer;
 
     @include tablet {
         width: 250px;

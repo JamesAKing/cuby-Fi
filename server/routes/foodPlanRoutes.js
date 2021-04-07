@@ -43,15 +43,14 @@ router
     .post((req, res) => {
         const inCupboard = getData(cupboardURL);
         const inShoppingList = getData(shoppingListURL)
-        const requiredIngredientsObj = req.body
-        const requiredIngredientsKeys = Object.keys(requiredIngredientsObj);
+        const requiredIngredientsArr = req.body;
 
         let shoppingListItems = [];
 
-        requiredIngredientsKeys.forEach(itemName => {
-            const item = itemName;
-            let amount = requiredIngredientsObj[itemName].amount;
-            const units = requiredIngredientsObj[itemName].units
+        requiredIngredientsArr.forEach(ingredient => {
+            const itemName = ingredient.itemName;
+            let amount = ingredient.amount;
+            const units = ingredient.units
 
             inCupboard.forEach(cupboardItem => {
                 if (cupboardItem.itemName === itemName) {
@@ -61,7 +60,7 @@ router
             
             // Create an array of items to add to shopping list
             shoppingListItems.push({
-                itemName : item,
+                itemName : itemName,
                 amount : amount,
                 units : units
             })
@@ -82,9 +81,7 @@ router
                     uniqueItem = false;
                 }        
             })
-
             if (uniqueItem) inShoppingList.push(newItem);
-
         })
 
         writeData(shoppingListURL, inShoppingList)

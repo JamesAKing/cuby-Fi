@@ -3,6 +3,7 @@ import './ShoppingListItem.scss';
 function ShoppingListItem({ item, addTocart }) {
 
     const { cartId, itemName, qtyNeeded, qtyUnit, inCart } = item;    
+    // console.log(item);
 
     return (
         <li className="shopping__item">
