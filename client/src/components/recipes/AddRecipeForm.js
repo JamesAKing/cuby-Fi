@@ -1,12 +1,8 @@
 import './AddRecipeForm.scss';
 import { useState } from 'react';
-// import axios from 'axios';
-// import { RecipesDB_URL } from '../../utilities/APIEndPoints';
 
 function AddRecipeForm({ toggleAddRecipe }) {
     
-    // const [ingredients , _setIngredients] = useState([]);
-
     const [ingredients, setIngredients ] = useState([]);
     const [instructions, setInstructions ] = useState([]);
 
@@ -18,32 +14,8 @@ function AddRecipeForm({ toggleAddRecipe }) {
         const recipeName = form.recipeName.value;
         const recipeInstructions = form.recipeInstructions.value;
 
-        // const recipe = e.target
-        // const recipeName = recipe.recipeName.value;
-        // const recipeIngredients = recipe.recipeIngredients.value;
-        // const recipeInstructions = recipe.recipeInstructions.value;
-
         if (recipeName && recipeInstructions) {
             setInstructions(recipeInstructions.split('\n'))
-
-            // axios
-            //     .post(RecipesDB_URL, {
-            //         recipeName : recipeName, 
-            //         image : "an image URL",
-            //         ingredients : recipeIngredients.split('\n'),
-            //         instructions : recipeInstructions.split('\n'),
-            //     })
-            //     .then(resp => {
-            //         console.log(resp);
-            //     })
-            //     .catch(err => {
-            //         console.log(err);
-            //     })
-
-            
-            // e.target.recipeName.value = "";
-            // e.target.recipeIngredients.value = "";
-            // e.target.recipeInstructions.value = ""; 
         } else {
             console.log('Fill in form')
         };
@@ -52,7 +24,6 @@ function AddRecipeForm({ toggleAddRecipe }) {
     const addIngredient = (e) => {
         e.preventDefault();
         const form = e.target;
-        // console.log(form[1].value);
 
         const ingredientName = form[0].value
         const ingredientAmount = form[1].value
@@ -71,13 +42,6 @@ function AddRecipeForm({ toggleAddRecipe }) {
             form.reset();
         }
     }
-
-
-    // const resetState = () => {
-    //     setIngredients([])
-    //     setInstructions([])
-    // }
-    console.log("ingredeints", ingredients)
 
     return (
         <aside className="add-recipe">

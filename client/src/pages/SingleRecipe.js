@@ -1,6 +1,5 @@
 import './SingleRecipe.scss';
 import GoBackIcon from '../components/global/GoBackIcon';
-import { useEffect } from 'react';
 
 function SingleRecipe(props) {
     
@@ -11,10 +10,6 @@ function SingleRecipe(props) {
     const recipe = recipeData.filter(recipe => recipe.recipeId === recipeId).pop()
 
     const { recipeName, ingredients, instructions, image } = recipe
-
-    // console.log(document.querySelector('.recipe__hero'));
-    const heroEl = document.querySelector('.recipe__hero')
-    console.log(heroEl);
 
     return !recipe ? 
         <p>Getting Recipe...</p>:
@@ -48,6 +43,7 @@ function SingleRecipe(props) {
                             if (instruction.length > 0) {
                                 return <li className="recipe__item" key={i}>{instruction}</li>
                             }
+                            return <span key={i}></span>
                         })}
                     </ol>
                 </div>
