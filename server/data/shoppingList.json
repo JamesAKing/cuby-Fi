@@ -1,1 +1,26 @@
-[{"cartId":"100","itemName":"Sausages","itemId":null,"qtyNeeded":5,"qtyUnit":"unit","inCart":false},{"cartId":"101","itemName":"Mash","itemId":null,"qtyNeeded":2,"qtyUnit":"unit","inCart":false}]
+[
+    {
+        "cartId" : "100",
+        "itemName" : "Sausages",
+        "itemId" : null, 
+        "qtyNeeded" : 5,
+        "qtyUnit" : "unit",
+        "inCart" : false
+    },
+    {
+        "cartId" : "101",
+        "itemName" : "Mash",
+        "itemId" : null, 
+        "qtyNeeded" : 2,
+        "qtyUnit" : "unit",
+        "inCart" : false
+    },
+    {
+        "cartId" : "102",
+        "itemName" : "Lasagna Sheets",
+        "itemId" : null,
+        "qtyNeeded" : 4,
+        "qtyUnit" : "unit",
+        "inCart" : false
+    }
+]

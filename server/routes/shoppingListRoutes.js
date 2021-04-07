@@ -77,7 +77,7 @@ router
                     })
                 }
             }) 
-            
+
             if (!itemAdded) {
                 cupboardData.push(createCupboardItem(addedItem))
                 itemAdded = true;
@@ -109,7 +109,6 @@ router
         const { itemId } = req.params;
 
         // Ensure itemId is not modified during edit
-
         let newListItem = createShoppingListItem(req)
         let newShoppingList = shoppingListData.map(item => {
             return itemId === item.itemId ? newListItem : item
