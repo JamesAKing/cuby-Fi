@@ -153,10 +153,8 @@ router
     } )
     // remove recipe on a specific day.
     .delete((req, res) => {
-        console.log(req.params.day);
         res.json("deleted");
     });
-
 
 // EXPORTS
 module.exports = router;

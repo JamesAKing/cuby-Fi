@@ -1,5 +1,6 @@
 import './SingleRecipe.scss';
 import GoBackIcon from '../components/global/GoBackIcon';
+import { useEffect } from 'react';
 
 function SingleRecipe(props) {
     
@@ -9,41 +10,46 @@ function SingleRecipe(props) {
     let recipeData = props.recipeData || [];
     const recipe = recipeData.filter(recipe => recipe.recipeId === recipeId).pop()
 
-    console.log(props);
-
     const { recipeName, ingredients, instructions, image } = recipe
 
-
+    // console.log(document.querySelector('.recipe__hero'));
+    const heroEl = document.querySelector('.recipe__hero')
+    console.log(heroEl);
 
     return !recipe ? 
         <p>Getting Recipe...</p>:
-        <main>
-            <div className="recipe__hero">
+        <main className="recipe">
+            <div className="recipe__hero" style={{backgroundImage: `url(${image})`}}>
                 <div className="recipe__hero-overlay">
-                <img className="recipe__hero-img" src={null} alt="go back" />
-                    <GoBackIcon routerProps={props}/>
-                    <h1>{recipeName}</h1>
+                    <div className="recipe__hero-text">
+                        <GoBackIcon routerProps={props}/>
+                        <h1 className="recipe__hero-heading">{recipeName}</h1>
+                    </div>
                 </div>
             </div>
             <section className="recipe__info">
-                <div>
-                    <h2>Ingredients</h2>
-                    <ul className="recipe__info">
+                <div className="recipe__column">
+                    <h2 className="recipe__sub-heading">Ingredients</h2>
+                    <ol className="recipe__items">
                         {ingredients.map((ingredient, i) => {
                             return (
-                                <li className="recipe__items" key={i}>
+                                <li className="recipe__item" key={i}>
                                     <p>{ingredient.itemName} - {`${ingredient.amount} ${ingredient.units}(s)`}</p>
                                 </li>
                             )
                         })}
                         
-                    </ul>
+                    </ol>
                 </div>
-                <div>
-                    <h2>Instructions</h2>
-                    <ul className="recipe__info">
-                        {instructions.map((instruction, i) => <li className="recipe__items" key={i}>{instruction}</li>)}
-                    </ul>
+                <div className="recipe__column">
+                    <h2 className="recipe__sub-heading">Instructions</h2>
+                    <ol className="recipe__items">
+                        {instructions.map((instruction, i) => {
+                            if (instruction.length > 0) {
+                                return <li className="recipe__item" key={i}>{instruction}</li>
+                            }
+                        })}
+                    </ol>
                 </div>
             </section>   
         </main>

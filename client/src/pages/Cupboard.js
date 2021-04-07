@@ -97,7 +97,6 @@ function CupboardPage(routerProps) {
     }
 
     const deleteCupboardItem = (e) => {
-        console.log('inner delete')
         const itemId = e.target.parentNode.parentNode.id
         axios
             .delete(`${CupboardDB_URL}/${itemId}`)

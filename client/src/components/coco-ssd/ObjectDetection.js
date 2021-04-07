@@ -2,8 +2,8 @@ import './ObjectDetection.scss';
 import React, {useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import * as tf from "@tensorflow/tfjs";
-import * as cocoSsd from "@tensorflow-models/coco-ssd";
-import * as FoodModel from "../../assets/object-detection/model.json";
+// import * as cocoSsd from "@tensorflow-models/coco-ssd";
+// import * as FoodModel from "../../assets/object-detection/model.json";
 import * as tmImage from "@teachablemachine/image";
 
 import { createItem } from '../../utilities/functions';
@@ -24,18 +24,15 @@ function ObjectDetection(props) {
 
   const webCamRef = useRef(null);
 
-  useEffect(() => {
-    initModel();
-  }, [])
+  useEffect(() => {initModel()}, [])
 
   const initModel = async () => {
-    // load model
+    // load model and object classes
     const model = await tmImage.load(modelURL, metaDataURL);
-    // load number of classes in model
-    const maxPredictions = model.getTotalClasses();
+    const objectClasses = model.getTotalClasses();
 
     setModel(model);
-    setPredictions(maxPredictions);
+    setPredictions(objectClasses);
   }
 
   const predict = async () => {

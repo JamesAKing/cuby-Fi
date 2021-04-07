@@ -1,25 +1,53 @@
 @use '../styles/mixins' as *;
+@use '../styles/variables' as *;
+
 
 .recipe {
+    border-top: 8px solid $color-four;
 
     &__hero {
         position: relative;
         width: 100%;
         height: 500px;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
         background-color: grey;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
         overflow: hidden;
+
+        @include tablet {
+            height: 760px;
+            margin-bottom: 1.5rem;
+        }
+
+        @include desktop {
+            @include content-margins;
+            width: auto;
+            height: 640px;
+            margin-bottom: 2.5rem;
+        }
     }
 
     &__hero-overlay {
-        // @include content-padding;
+        @include content-padding;
         width: 100%;
-        height: 100%;
+        height: inherit;
         position: absolute;
         background-color: rgba(50, 50, 50, 0.5);
-        // display: flex;
-        // align-items: center;
-        // overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
+
+    &__hero-text {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+    }
+
+    &__hero-heading {
+        padding-left: 0.5rem;
     }
 
     &__hero-img {
@@ -28,11 +56,34 @@
 
     &__info {
         @include content-padding;
+
+        @include desktop {
+            display: flex;
+        }
+    }
+
+    &__column {
+        min-width: 30%;
+        max-width: 90%;
+        margin-bottom: 2rem;
+    }
+
+    &__sub-heading {
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+        border-bottom: 3px solid $color-four;
     }
 
     &__items {
-        margin-left: 1rem;
+        @include content-padding;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
 
+    &__item {
+        padding-left: 1rem;
+        margin-bottom: 0.25rem;
+    }
 
 }

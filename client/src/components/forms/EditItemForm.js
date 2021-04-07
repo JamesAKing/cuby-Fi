@@ -7,17 +7,17 @@ function EditItemForm({ updateItem, toggleEditItemModal, inputValues, handleForm
     return (
         <form id={itemId} onSubmit={updateItem} onChange={handleFormChange}>
             <label htmlFor="itemName">
-                <h3>Item</h3>
-                <input type='text' name="itemName" defaultValue={itemName} onChange={handleFormChange}/>
+                <h3 className="edit-item__sub-heading">Item</h3>
+                <input className="edit-item__input" type='text' name="itemName" defaultValue={itemName} onChange={handleFormChange}/>
             </label>
             <div >
-                <h3>QTY</h3>
+                <h3 className="edit-item__sub-heading">QTY</h3>
                 <div>
                     <label htmlFor="qtyAmount">
-                        <input type='number' defaultValue={qtyAmount} name="qtyAmount" />
+                        <input className="edit-item__input" type='number' defaultValue={qtyAmount} name="qtyAmount" />
                     </label>
                     <label htmlFor="qtyUnit">
-                        <select name="qtyUnit">
+                        <select className="edit-item__input" name="qtyUnit">
                             <option selected disabled defaultValue={qtyUnit}>{qtyUnit}</option>
                             <option defaultValue="cup">cup(s)</option>
                             <option defaultValue="gram">gram(s)</option>
@@ -26,8 +26,8 @@ function EditItemForm({ updateItem, toggleEditItemModal, inputValues, handleForm
                     </label>
                 </div>
                 <label htmlFor="category">
-                    <h3>CATEGORY</h3>
-                    <select name="category">
+                    <h3 className="edit-item__sub-heading">CATEGORY</h3>
+                    <select className="edit-item__input" name="category">
                         <option selected disabled defaultValue={category}>{category}</option>
                         <option defaultValue="meat">MEAT</option>
                         <option defaultValue="vegetable">VEGETABLE</option>
@@ -36,8 +36,8 @@ function EditItemForm({ updateItem, toggleEditItemModal, inputValues, handleForm
                 </label>
             </div>
             <div>
-                <button type="submit">Add ITEM</button>
-                <button type="button" onClick={toggleEditItemModal}>X</button>
+                <button className="btn" type="submit">Add ITEM</button>
+                <button className="btn" type="button" onClick={toggleEditItemModal}>Back to CUPBOARD</button>
             </div>
         </form>
     );

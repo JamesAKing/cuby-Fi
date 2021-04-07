@@ -5,7 +5,7 @@ function EditCupboardItem({ updateItem, toggleEditItemModal, inputValues, handle
     return (
         <section className="edit-item">
             <div className="edit-item__card">
-                <h2>Edit Item</h2>
+                <h2 className="edit-item__title">Edit Item</h2>
                 <EditItemForm
                     updateItem={updateItem}
                     toggleEditItemModal={toggleEditItemModal}

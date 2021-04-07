@@ -15,26 +15,38 @@
 
 // Responsive Design - content-margins
 @mixin content-padding {
-    padding: 0 $margin-mobile;
+    padding-left: $margin-mobile;
+    padding-right: $margin-mobile;
+
 
     @include tablet {
-        padding: 0 $margin-tablet;
+        padding-left: $margin-tablet;
+        padding-right: $margin-tablet;
+
     }
 
     @include desktop {
-        padding: 0 $margin-desktop;
+        padding-left: $margin-desktop;
+        padding-right: $margin-desktop;
+
     }
 }
 
 @mixin content-margins {
-    margin: 0 $margin-mobile;
+    margin-left: $margin-mobile;
+    margin-right: $margin-mobile;
+
 
     @include tablet {
-        margin: 0 $margin-tablet;
+        margin-left: $margin-tablet;
+        margin-right: $margin-tablet;
+
     }
 
     @include desktop {
-        margin: 0 $margin-desktop;
+        margin-left: $margin-desktop;
+        margin-right: $margin-desktop;
+
     }
 }
 
