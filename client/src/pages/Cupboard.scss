@@ -23,7 +23,8 @@
     }
 
     &__add-item-container {
-        @include content-margins;
+        @include content-padding;
+        width: 100%;
         height: 80px;
         background-color: $color-alt;
         display: flex;

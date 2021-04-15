@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch, routerProps} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { RecipesDB_URL } from './utilities/APIEndPoints';
-// import { about, contactUs } from "./utilities/URLs"
 import { cupboard, recipeBook, mealPlan, shoppingList } from "./utilities/URLs";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
@@ -14,7 +13,6 @@ import RecipeBookPage from "./pages/RecipeBook";
 import SingleRecipe from "./pages/SingleRecipe";
 import AddRecipeForm from './components/recipes/AddRecipeForm';
 import CupboardPage from "./pages/Cupboard";
-// import ObjectDetection from './components/coco-ssd/ObjectDetection';
 
 
 function App() {
@@ -41,13 +39,10 @@ function App() {
         {/* <Route path={about} component={null}/>
         <Route path={contactUs} component={null}/> */}
         <Route path={cupboard} exact component={CupboardPage}/>
-        {/* <Route path={`${cupboard}/scan-item`} component={ObjectDetection}/> */}
         <Route path={recipeBook} exact component={RecipeBookPage}/>
-        {/* <Route path={recipeBook} exact render={routerProps => <RecipeBookPage {...routerProps} />}/> */}
         <Route path={`${recipeBook}/add-recipe`} component={AddRecipeForm}/>
         <Route path={`${recipeBook}/:recipeId`} render={routeProps => <SingleRecipe {...routeProps} recipeData={recipeData}/>} />
         <Route path={mealPlan} render={(routerProps) => <MealPlanPage {...routerProps} recipeData={recipeData}/>}/>
-        {/* <Route path={mealPlan} component={mealPlanPage}/> */}
         <Route path={shoppingList} component={ShoppingList}/>
       </Switch>
 
