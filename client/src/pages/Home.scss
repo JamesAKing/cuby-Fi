@@ -2,7 +2,7 @@
 @use "../styles/variables" as *;
 
 .home {
-    width: 100%;
+    // width: 100%;
 
     @include tablet {
         display: flex;
@@ -14,9 +14,7 @@
         transition: 0.2s;
 
         &:hover {
-            transform: scale(0.9);
-            padding: 0.5rem;
-            border-radius: 0.25rem;
+            transform: scale(0.8);
         }
     }
 

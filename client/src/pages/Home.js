@@ -22,9 +22,13 @@ function Home(props) {
                     <h2 className="home__title">Recipe Book</h2>
                     <Link to={recipeBook}><img className="home__link-icons" src={RecipeBookIcon} alt="Recipe Book" /></Link>
                 </li>
-                <li className="home__item home__item--reverse home__item--four">
-                    <h2 className="home__title">Cupboard</h2>
-                    <Link to={cupboard}><img className="home__link-icons" src={FoodItemsIcon} alt="Cupboard" /></Link>
+                {/* <li className="home__item home__item--reverse home__item--four"> */}
+                <li>
+                    {/* <h2 className="home__title">Cupboard</h2> */}
+                    <Link className="home__item home__item--reverse home__item--four" to={cupboard}>
+                        <h2 className="home__title">Cupboard</h2>
+                        <img className="home__link-icons" src={FoodItemsIcon} alt="Cupboard" />
+                    </Link>
                 </li>
             </ul>
         </nav>
