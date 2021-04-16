@@ -3,8 +3,8 @@
 
 .header {
     @include content-padding;
+    @include header-height;
     width: 100%;
-    height: 160px;
     position: fixed;
     top: 0;
     left: 0;
@@ -13,10 +13,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @include tablet {
-        height: 80px;
-    }
 
     &__logo {
         width: 50px;
