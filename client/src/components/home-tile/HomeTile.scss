@@ -1,0 +1,63 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.tile {
+    width: 100%;
+    height: calc(50vh - 160px);
+    min-height: 300px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include tablet {
+        width: 50%;
+        height: calc(50vh - (80px / 2));
+    }
+
+    & img {
+        transition: 0.2s;
+    }
+
+    &:hover img {
+        transform: scale(0.8);
+    }
+
+    &__link {
+        @include content-padding;
+        width: inherit;
+        height: inherit;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: none;
+
+        @include tablet {
+            width: 100%;
+        }
+
+        &--reverse {
+            flex-direction: row-reverse;
+        }
+    }
+
+    &__content {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__text {
+        color: white;
+        text-align: center;
+        width: 80%;
+        padding: 1rem 0.75rem;
+        border: 3px solid white;
+        border-radius: 2.5rem;
+    }
+
+    &__icon {
+        width: 150px;
+    }
+}
