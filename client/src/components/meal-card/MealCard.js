@@ -9,8 +9,6 @@ function MealCard({ day, dayId, recipeName, recipeId, recipeImg, toggleSelectMea
         recipeImg = null;
     }
 
-    console.log(recipeId);
-
     // return (
     //     <li className="meal" style={{backgroundImage: `url(${recipeImg})`}}>
     //         <div className="meal__overlay">

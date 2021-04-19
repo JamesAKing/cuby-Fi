@@ -104,6 +104,7 @@ function MealPlan(routerProps) {
                                 day={days[i].toUpperCase()}
                                 recipeName={meal.recipeName}
                                 recipeImg={meal.image}
+                                recipeId={meal.recipeId}
                                 recipeCooked={meal.recipeCooked}
                                 toggleSelectMealModal={toggleSelectMealModal}
                                 confirmMealEaten={confirmMealEaten}

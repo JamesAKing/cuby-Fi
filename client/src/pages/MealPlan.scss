@@ -45,6 +45,7 @@
 
     &__items {
         width: 100%;
+        background-color: $color-alt;
 
         @include tablet {
             width: 80%;
