@@ -2,7 +2,7 @@
 @use "../styles/mixins" as *;
 
 
-.food-plan {
+.meal-plan {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,8 +43,8 @@
         }
     }
 
-    &__meals {
-        @include content-padding;
+    &__items {
+        width: 100%;
 
         @include tablet {
             width: 80%;

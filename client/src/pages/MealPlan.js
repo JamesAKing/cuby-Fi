@@ -83,17 +83,17 @@ function MealPlan(routerProps) {
     }
 
     return (
-        <main className="food-plan">
-            <header className="food-plan__header">
+        <main className="meal-plan">
+            <header className="meal-plan__header">
                 <GoBackIcon routerProps={routerProps} />
-                <h1 className="food-plan__title">WEEKLY MEAL PLAN</h1>
+                <h1 className="meal-plan__title">WEEKLY MEAL PLAN</h1>
             </header>
             {showSelectMeal && <SelectMealModal recipeData={recipeData} selectedDay={days[selectedDay - 1]} toggleSelectMealModal={toggleSelectMealModal} addToMealPlan={addToMealPlan}/>}
-            <div className="food-plan__btns">
+            <div className="meal-plan__btns">
                 {mealPlan && <button className="btn" type="button" onClick={createShoppingList}>CREATE SHOPPING LIST</button>}
                 <button className="btn" type="button" onClick={clearMealPlan}>CLEAR MEAL PLAN</button>
             </div>
-            <ul className="food-plan__meals">
+            <ul className="meal-plan__items">
                 {!mealPlan ?
                     <li>{loading ? "Getting your Meal Plan..." : "Create a new meal plan"}</li> :
                     mealPlan.map((meal, i) => {

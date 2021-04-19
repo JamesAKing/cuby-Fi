@@ -13,17 +13,18 @@
     transition: 0.2s;
 
     @include tablet {
-        width: 95%;
         top: 80px;
     }
 
     &__inactive {
         transform: translate3d(100vw, 0, 0);
     }
-    
+
+    // REDUNDANT bt EXPLICIT?
     &__active {
         transform: translate3d(0vw, 0, 0);
     }
+    // 
 
     &__nav {
         @include content-padding;
