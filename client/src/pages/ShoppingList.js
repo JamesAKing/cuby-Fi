@@ -75,7 +75,6 @@ function ShoppingListPage(routerProps) {
                 {shoppingListData.length === 0 ?
                     <p>{axiosGotData}</p>:
                     shoppingListData.map(item => {
-                        // console.log(item);
                         return(
                             <ShoppingListItem
                                 key={item.cartId}
