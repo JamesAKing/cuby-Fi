@@ -1,59 +1,5 @@
 @use "../../styles/mixins" as *;
 
-// .meal {
-//     @include default-box-shadow;
-//     width: 100%;
-//     height: 75vh;
-//     margin-bottom: 2rem;
-//     border-radius: 1.25rem;
-//     overflow: hidden;
-//     list-style: none;
-//     background-repeat: no-repeat;
-//     background-size: cover;
-//     background-position: center;
-//     // cursor: pointer;
-
-//     @include tablet {
-//         width: 250px;
-//         height: 300px;
-//     }
-
-//     &__overlay {
-//         width: 100%;
-//         height: 100%;
-//         color: white;
-//         background-color: rgba(50, 50, 50, 0.5);
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: space-between;
-//         align-items: center;
-//     }
-
-//     &__text {
-//         width: 80%;
-//         height: 40%;
-//         font-size: 2rem;
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         text-align: center;
-//     }
-
-//     &__link {
-//         width: 90%;
-//         text-decoration: none;
-//         color: white;
-//         display: flex;
-//         justify-content: center;
-//     }
-
-//     &__btns {
-//         display: flex;
-//         width: 100%;
-//         margin-bottom: 1rem;
-//     }
-// }
-
 .meal {
     @include default-box-shadow;
     width: 100%;
@@ -64,10 +10,15 @@
     }
     
     &__item {
+        @include default-box-shadow;
         list-style: none;
         background-color: white;
         margin-bottom: 1.5rem;
         overflow: hidden;
+
+        @include tablet {
+            width: 45%;
+        }
     }
 
     &__text-container {
@@ -85,6 +36,12 @@
     }
 
     &__btns {
+        width: 100%;
         display: flex;
+        justify-content: space-around;
+
+        @include tablet {
+            margin-bottom: 1rem;
+        }
     }
 }
