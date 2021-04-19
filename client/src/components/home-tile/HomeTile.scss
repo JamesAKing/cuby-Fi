@@ -5,7 +5,6 @@
     width: 100%;
     height: calc(50vh - 160px);
     min-height: 300px;
-    background-color: red;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,10 +33,16 @@
 
         @include tablet {
             width: 100%;
+            flex-direction: column;
+            justify-content: center;
         }
 
         &--reverse {
             flex-direction: row-reverse;
+
+            @include tablet {
+                flex-direction: column-reverse;
+            }
         }
     }
 
@@ -59,5 +64,25 @@
 
     &__icon {
         width: 150px;
+        
+        @include tablet {
+            margin: 1rem;
+        }
+    }
+
+    &__color-shopping-list {
+        background-color: $color-secondary;
+    }
+
+    &__color-meal-plan {
+        background-color: $color-three;
+    }
+
+    &__color-recipe-book {
+        background-color: $color-four;
+    }
+
+    &__color-cupboard {
+        background-color: $color-five;
     }
 }
