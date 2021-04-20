@@ -35,11 +35,10 @@ function RecipeBook(routerProps) {
     const addNewMealToDB = () => {
         axios
             .post(RecipesDB_URL, inspiration)
-            .then(resp => getRecipesFromDB())
+            .then(() => getRecipesFromDB())
             .catch(err => console.log(err));
         
         setInspiration(null);
-
     }
 
     const toggleModal = () => {
@@ -50,12 +49,8 @@ function RecipeBook(routerProps) {
     const getRecipesFromDB = () => {
         axios
             .get(RecipesDB_URL)
-            .then(resp => (
-                setRecipesData(resp.data)
-            ))
-            .catch(err => {
-                console.log(err)
-            }); 
+            .then(resp => setRecipesData(resp.data))
+            .catch(err => console.log(err)); 
     }
 
     return (

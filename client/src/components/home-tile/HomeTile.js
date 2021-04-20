@@ -3,26 +3,24 @@ import { Link } from 'react-router-dom';
 
 function HomeTile({ title, linkUrl, linkImg, reversed }) {
 
-    let tile = "tile "
+    let tile = "tile";
 
     switch (title) {
         case "Shopping List":
-            tile += "tile__color-shopping-list";
+            tile += " tile__color-shopping-list";
             break;
         case "Cupboard":
-            tile += "tile__color-cupboard";
+            tile += " tile__color-cupboard";
             break;
         case "Weekly Meal Plan":
-            tile += "tile__color-meal-plan";
+            tile += " tile__color-meal-plan";
             break;
         case "Recipe Book":
-            tile += "tile__color-recipe-book";
+            tile += " tile__color-recipe-book";
             break;
         default: 
-            tile += null
-    }
-
-    console.log(tile)
+            tile += null;
+    };
 
     return (
         <li className={tile}>

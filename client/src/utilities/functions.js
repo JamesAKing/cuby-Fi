@@ -1,3 +1,6 @@
+import { parse } from 'recipe-ingredient-parser-v2';
+import { ingredientMeasures } from './data';
+
 export const createItem = itemObj => {
     // INPUT: obj, from user form submission
     // OUTPUT: obj, re-formats an item for adding to DB via POST/PUT request
@@ -38,29 +41,47 @@ export const createRecipeObj = recipeObj => {
 }
 
 export const getIngredients = (recipeObj) => {
+
     const ingredients = [];
 
     for (let i = 1; i <= 20; i++ ) {
+        // parse through dynamic object keys.
         if (recipeObj[`strIngredient${i}`]) {
-            const ingredient = recipeObj[`strIngredient${i}`]
+            const ingredientName = recipeObj[`strIngredient${i}`]
             const measure = recipeObj[`strMeasure${i}`]
 
-            const regexAmounts = /(\d*)(\D*)/;
-            const parsedAmounts = measure.match(regexAmounts);
+            const ingredientString = `${measure} ${ingredientName}`;
 
-            let amount = parsedAmounts[1] || recipeObj[`strMeasure${i}`].split(' ')[0];
-            const units = parsedAmounts[2] || "unit"
-            if (units === amount) amount = null;
+            // add check for
+            // grams & bulb & tbs & cup & pinch & tblsp & combined & inch
+            // in parsedIngredientString.ingredient 
+
+            const parsedIngredientString = parse(ingredientString);
+
+            let { ingredient, maxQty, unit } = parsedIngredientString; 
+
+            if (!unit && maxQty) {
+                const potentialUnit = ingredient.toLowerCase().split(' ')[0];
+
+                ingredientMeasures.forEach(ingredientMeasure => {
+                    if (potentialUnit === ingredientMeasure.toLowerCase()) {
+                        unit = potentialUnit;
+                        ingredient = ingredient.split(' ').slice(1).join(' ');
+                    }
+                })
+            }
 
             ingredients.push({
-                itemName : ingredient,
-                amount : amount,
-                units : units
+                itemName : ingredient.trim().toLowerCase(),
+                amount : maxQty,
+                units : unit
             })
         }
     }
 
-    return ingredients
+    console.log(ingredients);
+
+    // return ingredients
 }
 
 export const formValid = (formObj) => {
