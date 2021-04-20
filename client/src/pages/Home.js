@@ -1,5 +1,4 @@
 import "./Home.scss";
-import { Link } from 'react-router-dom';
 import { cupboard, recipeBook, mealPlan, shoppingList } from "../utilities/URLs";
 import CalendarIcon from "../assets/icons/calendar.png";
 import FoodItemsIcon from "../assets/icons/food-items.png";

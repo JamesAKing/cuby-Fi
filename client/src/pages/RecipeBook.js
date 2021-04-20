@@ -21,7 +21,6 @@ function RecipeBook(routerProps) {
         getRecipesFromDB();
     }, []);
 
-
     const getRandomMeal = () => {
         axios
             .get(randomMealDB_URL)
