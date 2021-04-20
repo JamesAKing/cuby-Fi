@@ -55,6 +55,9 @@ export const getIngredients = (recipeObj) => {
 
             let { ingredient, maxQty, unit } = parsedIngredientString; 
 
+            console.log("before: ", maxQty);
+            console.log("before: ", unit);
+
             if (!unit && maxQty) {
                 const potentialUnit = ingredient.toLowerCase().split(' ')[0];
 
@@ -65,6 +68,12 @@ export const getIngredients = (recipeObj) => {
                     }
                 })
             }
+
+            if (maxQty === null) maxQty = "";
+            if (unit === null) unit = "";
+
+            console.log("after: ", maxQty);
+            console.log("after: ", unit);
 
             ingredients.push({
                 itemName : ingredient.trim().toLowerCase(),
