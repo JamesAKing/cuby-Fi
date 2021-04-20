@@ -28,6 +28,8 @@
     }
 
     &__btns {
+        position: sticky;
+        top: 160px;
         @include content-padding;
         display: flex;
         justify-content: space-between;
@@ -39,6 +41,7 @@
 
         @include tablet {
             justify-content: space-evenly;
+            top: 80px;
             margin-bottom: 2.5rem;
         }
     }
