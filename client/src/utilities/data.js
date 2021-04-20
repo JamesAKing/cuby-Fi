@@ -1,1 +1,1 @@
-export const ingredientMeasures = ['tbsp', 'tblsp', 'g', 'ml', 'l', 'kg', 'handful', 'pinch', 'pack', 'bunch', 'tbls', 'packet'];
+export const ingredientMeasures = ['tbsp', 'tblsp', 'g', 'ml', 'l', 'kg', 'handful', 'pinch', 'pack', 'bunch', 'tbls', 'packet', 'grams', 'bulb', 'tbs', ' cup', 'combined', 'inch'];

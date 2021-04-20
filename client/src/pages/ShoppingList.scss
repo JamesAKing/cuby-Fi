@@ -24,7 +24,6 @@
 
     &__items {
         @include content-margins;
-        // @include default-box-shadow;
         list-style-type: none;
         background-color: $color-alt;
         padding-bottom: 2rem;
@@ -42,6 +41,11 @@
             padding-bottom: 2.5rem;
 
         }
+    }
+
+    &__btns-spacer {
+        height: 80px;
+        width: 100%;
     }
 
     &__btn-container {

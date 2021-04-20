@@ -26,6 +26,11 @@ const formatShoppingListObj = itemObj => {
     }
 }
 
+const isNumber = str => {
+    if (typeof str != 'string') return false;
+    return !isNaN(str) && !isNaN(parseFloat(str));
+};
+
 // VARIABLES
 const mealPlanURL = './data/mealPlan.json';
 const cupboardURL = './data/cupboard.json';
@@ -77,7 +82,12 @@ router
 
             inShoppingList.forEach(item => {
                 if( item.itemName.toLowerCase() === newItem.itemName.toLowerCase()) {
-                    item.qtyNeeded += newItem.qtyNeeded
+                    if (isNumber(item.qtyNeeded) && isNumber(newItem.qtyNeeded)) {
+                        
+                        item.qtyNeeded = (parseFloat(item.qtyNeeded) + parseFloat(newItem.qtyNeeded)).toString();
+
+                        console.log(item.qtyNeeded);
+                    }
                     uniqueItem = false;
                 }        
             })

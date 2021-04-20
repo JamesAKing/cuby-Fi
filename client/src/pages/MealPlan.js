@@ -47,7 +47,6 @@ function MealPlan(routerProps) {
         mealPlan.forEach(meal => {
             // Get Recipe Ingredeints
             meal.ingredients.forEach(ingredient => {
-                console.log(ingredient);
                 const itemName = ingredient.itemName
                 const amount = ingredient.amount
                 const units = ingredient.units
@@ -58,8 +57,6 @@ function MealPlan(routerProps) {
                 })
             })
         })
-
-        console.log(ingredientArr);
 
         axios
         .post(MealPlanDB_URL, ingredientArr)

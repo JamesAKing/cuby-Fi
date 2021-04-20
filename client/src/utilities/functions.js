@@ -51,11 +51,6 @@ export const getIngredients = (recipeObj) => {
             const measure = recipeObj[`strMeasure${i}`]
 
             const ingredientString = `${measure} ${ingredientName}`;
-
-            // add check for
-            // grams & bulb & tbs & cup & pinch & tblsp & combined & inch
-            // in parsedIngredientString.ingredient 
-
             const parsedIngredientString = parse(ingredientString);
 
             let { ingredient, maxQty, unit } = parsedIngredientString; 
@@ -79,9 +74,7 @@ export const getIngredients = (recipeObj) => {
         }
     }
 
-    console.log(ingredients);
-
-    // return ingredients
+    return ingredients;
 }
 
 export const formValid = (formObj) => {
