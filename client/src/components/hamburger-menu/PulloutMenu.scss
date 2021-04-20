@@ -56,6 +56,10 @@
             font-size: 2rem;;
         }
 
+        &--selected {
+            border-bottom: 5px solid white;
+        }
+
         &:hover {
             border-bottom: 5px solid white;
         }
