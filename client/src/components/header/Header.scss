@@ -35,4 +35,20 @@
             height: 80px;
         }
     }
+
+    &__color-secondary {
+        border-bottom: 5px solid $color-secondary;
+    }
+
+    &__color-three {
+        border-bottom: 5px solid $color-three;
+    }    
+
+    &__color-four {
+        border-bottom: 5px solid $color-four;
+    }
+    
+    &__color-five {
+        border-bottom: 5px solid $color-five;
+    }
 }
