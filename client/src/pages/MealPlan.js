@@ -1,6 +1,6 @@
 import './MealPlan.scss';
 import { MealPlanDB_URL } from '../utilities/APIEndPoints';
-import { shoppingList } from "../utilities/URLs";
+import { shoppingList, cupboard } from "../utilities/URLs";
 import { formatMealPlanObj } from '../utilities/functions';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -15,7 +15,8 @@ function MealPlan(routerProps) {
     const [ days ] = useState(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])
     const [ loading, setLoading ] = useState(true);
     const [ showSelectMeal, setShowSelectMeal ] = useState(false);
-    const [ showAddedToDB, setShowAddedToDB ] = useState(false);
+    const [ shoppingListUpdated, setShoppingListUpdated ] = useState(false);
+    const [ showCupboardUpdated, setShowCupboardUpdated ] = useState(false);
     const [ selectedDay, setSelectedDay ] = useState(null);
 
     const { recipeData } = routerProps;
@@ -48,7 +49,6 @@ function MealPlan(routerProps) {
         let ingredientArr = [];
 
         mealPlan.forEach(meal => {
-            // Get Recipe Ingredeints
             meal.ingredients.forEach(ingredient => {
                 const itemName = ingredient.itemName
                 const amount = ingredient.amount
@@ -57,22 +57,23 @@ function MealPlan(routerProps) {
                    itemName : itemName,
                    amount : amount,
                    units : units 
-                })
-            })
-        })
+                });
+            });
+        });
 
         axios
-        .post(MealPlanDB_URL, ingredientArr)
-        .then(resp => console.log(resp))
-        .then(() => setShowAddedToDB(true))
-        .catch(err => console.log(err));
+            .post(MealPlanDB_URL, ingredientArr)
+            .then(resp => console.log(resp))
+            .then(() => setShoppingListUpdated(true))
+            .catch(err => console.log(err));
     };
 
     const confirmMealEaten = (e) => {
-        const dayId = e.target.parentNode.id 
+        const dayId = e.target.parentNode.id; 
         axios
             .put(`${MealPlanDB_URL}/${dayId}`)
             .then(resp => setMealPlan(resp.data))
+            .then(setShowCupboardUpdated(true))
             .catch(err => console.log(err));
     };
 
@@ -114,11 +115,19 @@ function MealPlan(routerProps) {
                     })
                 }
             </ul>
+            {/* Shopping List Updated */}
             <AddedToDBModal
                 message="View Shopping List"
-                modalActive={showAddedToDB}
+                modalActive={shoppingListUpdated}
                 linkURL={shoppingList}
-                setShowAddedToDB={setShowAddedToDB}
+                setShowAddedToDB={setShoppingListUpdated}
+            />
+            {/* Cupboard Updated */}
+            <AddedToDBModal
+                message="View Cupboard"
+                modalActive={showCupboardUpdated}
+                linkURL={cupboard}
+                setShowAddedToDB={setShowCupboardUpdated}
             />
         </main>
     );

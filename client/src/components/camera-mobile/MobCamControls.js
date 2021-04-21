@@ -4,6 +4,7 @@ import DeleteIcon from "../../assets/icons/delete.png";
 import AddIcon from "../../assets/icons/add.png";
 
 function MobCamControls({ items, scanning, scanItem, resetItems, setShowObjectDetectionModal }) {
+    
     return (
         <div className="mob-controls__container">
             <div className="mob-controls__mob-close-container" onClick={() => setShowObjectDetectionModal(false)}>
@@ -26,7 +27,7 @@ function MobCamControls({ items, scanning, scanItem, resetItems, setShowObjectDe
                         </button>
                     </div>
                     <div className="mob-controls__btn-column">
-                        <button type="button" className="mob-controls__scan-mobile" onClick={scanItem}></button>
+                        <button type="button" className="mob-controls__scan" onClick={scanItem}></button>
                     </div>
                     <div className="mob-controls__btn-column">
                         <button type="button" className="mob-controls__btn">
@@ -37,6 +38,7 @@ function MobCamControls({ items, scanning, scanItem, resetItems, setShowObjectDe
             </div>
         </div>
     );
+    
 }
 
 export default MobCamControls;

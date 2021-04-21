@@ -77,15 +77,24 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: 0.2s;
+
+        &:active {
+            transform: scale(1.2);
+        }
     }
 
-    &__scan-mobile {
+    &__scan {
         background-color: $color-alt;
         border-radius: 50%;
         outline: none;
         border: none;
-        width: 4rem;
-        height: 4rem;
+        padding: 0.5rem;
+        width: 3.5rem;
+        height: 3.5rem;
+        box-shadow: 
+            0 0 0 4px rgba(50, 50, 50, 1), 
+            0 0 0 6px $color-alt;
         z-index: 11;
 
         &:active{

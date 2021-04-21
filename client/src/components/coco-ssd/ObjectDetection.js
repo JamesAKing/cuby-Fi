@@ -101,11 +101,6 @@ function ObjectDetection({ setShowObjectDetectionModal }) {
         } 
       </ul>
       <div className="web-cam__container">
-        {/* {model && 
-        <div className="web-cam__mob-close-container" onClick={() => setShowObjectDetectionModal(false)}>
-          <img className="web-cam__mob-close-icon" src={CloseIcon} alt="close camera" />
-        </div>
-        } */}
         {model && <MobCamControls
           items={items}
           scanning={scanning}

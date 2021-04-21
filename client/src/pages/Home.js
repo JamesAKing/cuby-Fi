@@ -18,7 +18,7 @@ function Home() {
                     reversed={false}
                 />
                 <HomeTile 
-                    title="Weekly Meal Plan"
+                    title="Meal Plan"
                     linkUrl={mealPlan}
                     linkImg={CalendarIcon}
                     reversed={true}

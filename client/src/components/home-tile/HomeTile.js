@@ -12,7 +12,7 @@ function HomeTile({ title, linkUrl, linkImg, reversed }) {
         case "Cupboard":
             tile += " tile__color-cupboard";
             break;
-        case "Weekly Meal Plan":
+        case "Meal Plan":
             tile += " tile__color-meal-plan";
             break;
         case "Recipe Book":

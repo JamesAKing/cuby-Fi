@@ -120,6 +120,7 @@ function CupboardPage(routerProps) {
         <main>
             {showAddModal && <AddCupboardItem submitItem={submitItem} handleFormChange={handleFormChange} toggleAddItemModal={toggleAddItemModal}/>}
             {showEditModal && <EditCupboardItem updateItem={updateItem} handleFormChange={handleFormChange} toggleEditItemModal={toggleEditItemModal} inputValues={inputValues}/>}
+            {showObjectDetectionModal && <ObjectDetection setShowObjectDetectionModal={setShowObjectDetectionModal} />}
             <header className="cupboard__header">
                 <GoBackIcon routerProps={routerProps} />
                 <h1 className="cupboard__title">CUPBOARD</h1>
@@ -128,7 +129,6 @@ function CupboardPage(routerProps) {
                 <button type="button" className="btn" onClick={toggleAddItemModal}>Add Item</button>
                 <button type="button" className="btn" onClick={toggleObjectDetectionModel}>{!showObjectDetectionModal ? "Activate" : "Disable"} Scan Item <span className="beta">beta</span></button>
             </div>
-           {showObjectDetectionModal && <ObjectDetection setShowObjectDetectionModal={setShowObjectDetectionModal} />}
             <section>
                 <ColumnHeader columnOne="ITEM" columnTwo="QTY" columnFour="ACTIONS"/>
                 <ul>
