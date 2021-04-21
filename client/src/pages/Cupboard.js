@@ -16,7 +16,8 @@ function CupboardPage(routerProps) {
     const [ cupboardData, setCupboardData ] = useState([]);
     const [ showEditModal, setShowEditModal ] = useState(false);
     const [ showAddModal, setShowAddModal ] = useState(false);
-    const [ showObjectDetectionModal, setShowObjectDetectionModal ] = useState(false);
+    // const [ showObjectDetectionModal, setShowObjectDetectionModal ] = useState(false);
+    const [ showObjectDetectionModal, setShowObjectDetectionModal ] = useState(true);
     const [ inputValues, setInputValues ] = useState({
         itemName : '',
         itemId : null,
@@ -133,7 +134,9 @@ function CupboardPage(routerProps) {
                 <ColumnHeader columnOne="ITEM" columnTwo="QTY" columnFour="ACTIONS"/>
                 <ul>
                     {cupboardData.length === 0 ?
-                        <li><p>Checking the contents of your Cupboard</p></li>:
+                        <li>
+                            <p>Checking the contents of your Cupboard</p>
+                        </li>:
                         cupboardData.map(item => {
                             return (
                                 <CupboardItem
@@ -146,10 +149,6 @@ function CupboardPage(routerProps) {
                         })
                     }
                 </ul>
-                {/* <div className="cupboard__add-item-container">
-                    <button type="button" className="btn" onClick={toggleAddItemModal}>Add Item</button>
-                    <button type="button" className="btn" onClick={toggleObjectDetectionModel}>{!showObjectDetectionModal ? "Activate" : "Disable"} Scan Item <span className="beta">beta</span></button>
-                </div> */}
             </section>
         </main>
     );
