@@ -6,8 +6,9 @@ import * as tmImage from "@teachablemachine/image";
 // import { createItem } from '../../utilities/functions';
 import { CupboardDB_URL } from '../../utilities/APIEndPoints';
 import Webcam from 'react-webcam';
+import CloseIcon from "../../assets/icons/close.png";
 
-function ObjectDetection(props) {
+function ObjectDetection({ setShowObjectDetectionModal }) {
 
   const [ items, setItems ] = useState(null);
   const [ scanning, setScanning ] = useState(false)
@@ -98,12 +99,22 @@ function ObjectDetection(props) {
         } 
       </ul>
       <div className="web-cam__container">
+        {model && 
+        <div className="web-cam__mob-close-container" onClick={() => setShowObjectDetectionModal(false)}>
+          <img className="web-cam__mob-close-icon" src={CloseIcon} alt="close camera" />
+        </div>
+        }
         <Webcam
           ref={webCamRef}
           muted={true} 
           className="web-cam"
         />
-        <button type="button" className="web-cam__button-mobile" onClick={scanItem}></button>
+        {model && 
+        <div className="web-cam__mob-text-container">
+          <p className="web-cam__mob-text">Scannig Item</p>
+        </div>}
+        {model && 
+        <button type="button" className="web-cam__button-mobile" onClick={scanItem}></button>}
       </div>
       <div className="web-cam__buttons">
         <button className="web-cam__button" type="button" onClick={scanItem}>{scanning ? "SCANNING" : "CLICK TO SCAN"}</button>
