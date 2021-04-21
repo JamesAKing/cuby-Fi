@@ -124,6 +124,10 @@ function CupboardPage(routerProps) {
                 <GoBackIcon routerProps={routerProps} />
                 <h1 className="cupboard__title">CUPBOARD</h1>
             </header>
+            <div className="cupboard__add-item-container">
+                <button type="button" className="btn" onClick={toggleAddItemModal}>Add Item</button>
+                <button type="button" className="btn" onClick={toggleObjectDetectionModel}>{!showObjectDetectionModal ? "Activate" : "Disable"} Scan Item <span className="beta">beta</span></button>
+            </div>
            {showObjectDetectionModal && <ObjectDetection />}
             <section>
                 <ColumnHeader columnOne="ITEM" columnTwo="QTY" columnFour="ACTIONS"/>
@@ -142,10 +146,10 @@ function CupboardPage(routerProps) {
                         })
                     }
                 </ul>
-                <div className="cupboard__add-item-container">
+                {/* <div className="cupboard__add-item-container">
                     <button type="button" className="btn" onClick={toggleAddItemModal}>Add Item</button>
                     <button type="button" className="btn" onClick={toggleObjectDetectionModel}>{!showObjectDetectionModal ? "Activate" : "Disable"} Scan Item <span className="beta">beta</span></button>
-                </div>
+                </div> */}
             </section>
         </main>
     );
