@@ -4,7 +4,6 @@ import CloseIcon from '../../assets/icons/close.png';
 
 function AddedToDBModal({ message, modalActive, linkURL, setShowAddedToDB }) {
 
-    console.log(modalActive);
     return (
         <div className={modalActive ? "added__modal" : "added__modal added__modal--inactive"}>
             <div className="added">

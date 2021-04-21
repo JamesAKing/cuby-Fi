@@ -1,5 +1,6 @@
 import './MealPlan.scss';
 import { MealPlanDB_URL } from '../utilities/APIEndPoints';
+import { shoppingList } from "../utilities/URLs";
 import { formatMealPlanObj } from '../utilities/functions';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -116,7 +117,7 @@ function MealPlan(routerProps) {
             <AddedToDBModal
                 message="View Shopping List"
                 modalActive={showAddedToDB}
-                linkURL={null}
+                linkURL={shoppingList}
                 setShowAddedToDB={setShowAddedToDB}
             />
         </main>

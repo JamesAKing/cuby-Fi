@@ -2,15 +2,18 @@ import './ShoppingList.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ShoppingListDB_URL, CupboardDB_URL } from '../utilities/APIEndPoints';
+import { cupboard } from '../utilities/URLs';
 import { createItem } from '../utilities/functions';
 import GoBackIcon from '../components/global/GoBackIcon';
 import ColumnHeader from "../components/global/ColumnHeader";
 import ShoppingListItem from "../components/shopping-list/ShoppingListItem";
+import AddedToDBModal from "../components/added-to-db/AddedToDBModal";
 
 function ShoppingListPage(routerProps) {
 
     const [ shoppingListData, setShoppingListData ] = useState([]);
     const [ axiosGotData, setAxiosGotData ] = useState("Getting your shopping list...");
+    const [ showAddedToDB, setShowAddedToDB ] = useState(false);
 
     useEffect(() => {
         axios
@@ -44,6 +47,7 @@ function ShoppingListPage(routerProps) {
             axios
                 .post(CupboardDB_URL, formattedItems)
                 .then(resp => console.log(resp))
+                .then(() => setShowAddedToDB(true))
                 .catch(err =>  console.log(err));
             
             axios
@@ -89,6 +93,12 @@ function ShoppingListPage(routerProps) {
             <div className="shopping-list__btn-container">
                 <button type="submit" className="btn" onClick={updateCupboardAndShopList}>ADD ITEMS TO CUPBOARD</button>
             </div>
+            <AddedToDBModal
+                message="View Cupboard"
+                modalActive={showAddedToDB}
+                linkURL={cupboard}
+                setShowAddedToDB={setShowAddedToDB}
+            />
         </main>
     );
 }
