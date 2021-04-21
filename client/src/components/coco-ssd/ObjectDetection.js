@@ -5,8 +5,10 @@ import * as tf from "@tensorflow/tfjs";
 import * as tmImage from "@teachablemachine/image";
 // import { createItem } from '../../utilities/functions';
 import { CupboardDB_URL } from '../../utilities/APIEndPoints';
+import MobCamControls from "../camera-mobile/MobCamControls";
 import Webcam from 'react-webcam';
 import CloseIcon from "../../assets/icons/close.png";
+import DeleteIcon from "../../assets/icons/delete.png";
 
 function ObjectDetection({ setShowObjectDetectionModal }) {
 
@@ -99,22 +101,23 @@ function ObjectDetection({ setShowObjectDetectionModal }) {
         } 
       </ul>
       <div className="web-cam__container">
-        {model && 
+        {/* {model && 
         <div className="web-cam__mob-close-container" onClick={() => setShowObjectDetectionModal(false)}>
           <img className="web-cam__mob-close-icon" src={CloseIcon} alt="close camera" />
         </div>
-        }
+        } */}
+        {model && <MobCamControls
+          items={items}
+          scanning={scanning}
+          scanItem={scanItem}
+          resetItems={resetItems}
+          setShowObjectDetectionModal={setShowObjectDetectionModal}
+        />}
         <Webcam
           ref={webCamRef}
           muted={true} 
           className="web-cam"
         />
-        {model && 
-        <div className="web-cam__mob-text-container">
-          <p className="web-cam__mob-text">Scannig Item</p>
-        </div>}
-        {model && 
-        <button type="button" className="web-cam__button-mobile" onClick={scanItem}></button>}
       </div>
       <div className="web-cam__buttons">
         <button className="web-cam__button" type="button" onClick={scanItem}>{scanning ? "SCANNING" : "CLICK TO SCAN"}</button>

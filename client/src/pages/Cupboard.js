@@ -16,8 +16,7 @@ function CupboardPage(routerProps) {
     const [ cupboardData, setCupboardData ] = useState([]);
     const [ showEditModal, setShowEditModal ] = useState(false);
     const [ showAddModal, setShowAddModal ] = useState(false);
-    // const [ showObjectDetectionModal, setShowObjectDetectionModal ] = useState(false);
-    const [ showObjectDetectionModal, setShowObjectDetectionModal ] = useState(true);
+    const [ showObjectDetectionModal, setShowObjectDetectionModal ] = useState(false);
     const [ inputValues, setInputValues ] = useState({
         itemName : '',
         itemId : null,
