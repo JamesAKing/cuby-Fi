@@ -14,6 +14,7 @@ function MealPlan(routerProps) {
     const [ days ] = useState(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])
     const [ loading, setLoading ] = useState(true);
     const [ showSelectMeal, setShowSelectMeal ] = useState(false);
+    const [ showAddedToDB, setShowAddedToDB ] = useState(false);
     const [ selectedDay, setSelectedDay ] = useState(null);
 
     const { recipeData } = routerProps;
@@ -62,6 +63,7 @@ function MealPlan(routerProps) {
         axios
         .post(MealPlanDB_URL, ingredientArr)
         .then(resp => console.log(resp))
+        .then(() => setShowAddedToDB(true))
         .catch(err => console.log(err));
     };
 
@@ -111,7 +113,12 @@ function MealPlan(routerProps) {
                     })
                 }
             </ul>
-            <AddedToDBModal />
+            <AddedToDBModal
+                message="View Shopping List"
+                modalActive={showAddedToDB}
+                linkURL={null}
+                setShowAddedToDB={setShowAddedToDB}
+            />
         </main>
     );
 }
