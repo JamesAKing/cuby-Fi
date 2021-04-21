@@ -5,7 +5,7 @@ import { recipeBook } from '../../utilities/URLs';
 import AddRecipeForm from './AddRecipeForm';
 import RecipeCard from '../recipe-card/RecipeCard';
 
-function Recipes({ recipesData }) {
+function Recipes({ recipeData }) {
 
     const [ showAddRecipe, setShowAddRecipe ] = useState(false);
 
@@ -16,9 +16,9 @@ function Recipes({ recipesData }) {
     return (
         <>  {showAddRecipe && <AddRecipeForm toggleAddRecipe={toggleAddRecipe} />}
             <ul className="recipe-list">
-                {recipesData.length === 0?
+                {recipeData.length === 0?
                     <p>Getting your Recipes...</p>:
-                    recipesData.map(recipe => {
+                    recipeData.map(recipe => {
                         return (
                             <Link className="recipe-list__link" key={recipe.recipeId} to={`${recipeBook}/${recipe.recipeId}`} >
                                 <RecipeCard

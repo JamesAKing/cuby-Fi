@@ -13,13 +13,10 @@ const randomMealDB_URL = `${theMealDB_URL}/api/json/v1/1/random.php`;
 
 function RecipeBook(routerProps) {
 
-    const [recipesData, setRecipesData] = useState([]);
+    const { recipeData, setRecipeData } = routerProps;
+
     const [ showModal, setShowModal ] = useState(false);
     const [ inspiration, setInspiration ] = useState(null);
-
-    useEffect(() => {
-        getRecipesFromDB();
-    }, []);
 
     const getRandomMeal = () => {
         axios
@@ -49,7 +46,7 @@ function RecipeBook(routerProps) {
     const getRecipesFromDB = () => {
         axios
             .get(RecipesDB_URL)
-            .then(resp => setRecipesData(resp.data))
+            .then(resp => setRecipeData(resp.data))
             .catch(err => console.log(err)); 
     }
 
@@ -60,11 +57,12 @@ function RecipeBook(routerProps) {
                 <GoBackIcon routerProps={routerProps} />
                 <h1 className="recipes__title">RECIPE BOOK</h1>
             </header>
-            <Recipes recipesData={recipesData} />
+            <Recipes recipeData={recipeData} />
             <RecipeInspiration getRandomMeal={getRandomMeal}  inspiration={inspiration}/>
             <div className="spacer"></div>
         </main>
-    )     
+    )
+        
 }
 
 export default RecipeBook;

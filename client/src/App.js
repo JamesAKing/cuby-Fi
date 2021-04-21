@@ -39,8 +39,7 @@ function App() {
         {/* <Route path={about} component={null}/>
         <Route path={contactUs} component={null}/> */}
         <Route path={cupboard} exact component={CupboardPage}/>
-        <Route path={recipeBook} exact component={RecipeBookPage}/>
-        <Route path={`${recipeBook}/add-recipe`} component={AddRecipeForm}/>
+        <Route path={recipeBook} exact render={(routerProps) => <RecipeBookPage {...routerProps} recipeData={recipeData} setRecipeData={setRecipeData} />} />
         <Route path={`${recipeBook}/:recipeId`} render={routeProps => <SingleRecipe {...routeProps} recipeData={recipeData}/>} />
         <Route path={mealPlan} render={(routerProps) => <MealPlanPage {...routerProps} recipeData={recipeData}/>}/>
         <Route path={shoppingList} component={ShoppingList}/>
