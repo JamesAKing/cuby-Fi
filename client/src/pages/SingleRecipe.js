@@ -29,7 +29,11 @@ function SingleRecipe(props) {
                         {ingredients.map((ingredient, i) => {
                             return (
                                 <li className="recipe__item" key={i}>
-                                    <p>{ingredient.itemName} - {`${ingredient.amount} ${ingredient.units}(s)`}</p>
+                                    <p>
+                                        <span>{ingredient.itemName}</span>
+                                        {ingredient.amount.length > 0 && <span> - {ingredient.amount}</span>}
+                                        {ingredient.units.length > 0 && <span> {ingredient.units}{ingredient.units.length === 1 ? "" : "s"}</span>}
+                                    </p>
                                 </li>
                             )
                         })}

@@ -6,6 +6,7 @@ import axios from 'axios';
 import GoBackIcon from '../components/global/GoBackIcon';
 import SelectMealModal from "../components/select-meal/SelectMealModal";
 import MealCard from "../components/meal-card/MealCard";
+import AddedToDBModal from '../components/added-to-db/AddedToDBModal';
 
 function MealPlan(routerProps) {
 
@@ -110,6 +111,7 @@ function MealPlan(routerProps) {
                     })
                 }
             </ul>
+            <AddedToDBModal />
         </main>
     );
 }
