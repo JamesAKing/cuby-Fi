@@ -58,7 +58,7 @@ function RecipeBook(routerProps) {
                 <h1 className="recipes__title">RECIPE BOOK</h1>
             </header>
             <Recipes recipeData={recipeData} />
-            <RecipeInspiration getRandomMeal={getRandomMeal}  inspiration={inspiration}/>
+            <RecipeInspiration getRandomMeal={getRandomMeal} inspiration={inspiration}/>
             <div className="spacer"></div>
         </main>
     )

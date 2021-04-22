@@ -27,13 +27,12 @@ function SingleRecipe(props) {
                     <h2 className="recipe__sub-heading">Ingredients</h2>
                     <ol className="recipe__items">
                         {ingredients.map((ingredient, i) => {
-                            console.log(ingredient.amount)
                             return (
                                 <li className="recipe__item" key={i}>
                                     <p>
                                         <span>{ingredient.itemName}</span>
                                         {ingredient.amount.length > 0 && <span> - {ingredient.amount}</span>}
-                                        {ingredient.units.length > 0 && <span> {ingredient.units}{ingredient.amount == 1 ? "" : "s"}</span>}
+                                        {ingredient.units.length > 0 && <span> {ingredient.units}{ingredient.amount === "1" ? "" : "s"}</span>}
                                     </p>
                                 </li>
                             )
