@@ -17,10 +17,11 @@ function MealCard({ day, dayId, recipeName, recipeId, recipeImg, toggleSelectMea
                         <h2>{day}</h2>
                     </div>
                     <div>
-                        <img className="meal__img" src={recipeImg} alt={`${day}'s planned meal`} />
+                        {recipeImg &&
+                        <img className="meal__img" src={recipeImg} alt={`${day}'s planned meal`} />}
                     </div>
                     <div className="meal__text-container">
-                        <h3>{recipeName}</h3>
+                        <h3 className="meal__text">{recipeName}</h3>
 
                     </div>
                 </Link>

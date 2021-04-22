@@ -59,9 +59,7 @@ function ObjectDetection({ setShowObjectDetectionModal }) {
   const scanItem = () => {
     resetItems();
     setScanning(true);
-    if (!scanning) {
-      scanImage();
-    }
+    scanImage();
   }
 
   const resetItems = () => setItems(null)
@@ -117,7 +115,8 @@ function ObjectDetection({ setShowObjectDetectionModal }) {
       <div className="web-cam__buttons">
         <button className="web-cam__button" type="button" onClick={scanItem}>{scanning ? "SCANNING" : "CLICK TO SCAN"}</button>
         <button className="web-cam__button" type="button" onClick={resetItems}>RESET ITEM</button>
-        <button className="web-cam__button" type="submit" onClick={addToCupboard}>ADD ITEM TO CUPBOARD</button>
+        {/* <button className="web-cam__button" type="submit" onClick={addToCupboard}>ADD ITEM TO CUPBOARD</button> */}
+        <button className="web-cam__button" type="submit">{items ? "ADD ITEM TO CUPBOARD" : "SCAN ITEM FIRST"}</button>
       </div>
     </div>
   );

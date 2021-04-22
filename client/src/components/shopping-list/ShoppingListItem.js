@@ -13,7 +13,7 @@ function ShoppingListItem({ item, addTocart }) {
             </div>
             <div className="shopping__column">
                 <h3 className="shopping__heading">QTY</h3>
-                <p className="shopping__text">{qtyNeeded} {qtyUnit}(s)</p>
+                <p className="shopping__text">{qtyNeeded} {qtyUnit} (s)</p>
             </div>
             <div className="shopping__column">
                 {/* <h3 className="shopping__heading">RECIPE</h3> */}

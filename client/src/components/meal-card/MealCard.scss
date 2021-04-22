@@ -25,10 +25,15 @@
     }
 
     &__text-container {
-        padding: 0 1rem;
+        padding: 1rem;
         height: 3.5rem;
         display: flex;
         align-items: center;
+    }
+
+    &__text {
+        overflow: hidden;
+        text-overflow: clip;
     }
 
     &__img {
