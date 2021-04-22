@@ -7,8 +7,6 @@ import * as tmImage from "@teachablemachine/image";
 import { CupboardDB_URL } from '../../utilities/APIEndPoints';
 import MobCamControls from "../camera-mobile/MobCamControls";
 import Webcam from 'react-webcam';
-import CloseIcon from "../../assets/icons/close.png";
-import DeleteIcon from "../../assets/icons/delete.png";
 
 function ObjectDetection({ setShowObjectDetectionModal }) {
 
@@ -23,7 +21,9 @@ function ObjectDetection({ setShowObjectDetectionModal }) {
 
   const webCamRef = useRef(null);
 
-  useEffect(() => {initModel()}, [])
+  // useEffect(() => initModel(), [])
+  useEffect(() => initModel())
+
 
   const initModel = async () => {
     // load model and object classes

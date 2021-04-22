@@ -5,13 +5,11 @@ import axios from 'axios';
 import { RecipesDB_URL } from './utilities/APIEndPoints';
 import { cupboard, recipeBook, mealPlan, shoppingList } from "./utilities/URLs";
 import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
 import Home from './pages/Home';
 import ShoppingList from "./pages/ShoppingList";
 import MealPlanPage from "./pages/MealPlan";
 import RecipeBookPage from "./pages/RecipeBook";
 import SingleRecipe from "./pages/SingleRecipe";
-import AddRecipeForm from './components/recipes/AddRecipeForm';
 import CupboardPage from "./pages/Cupboard";
 
 
@@ -44,8 +42,6 @@ function App() {
         <Route path={mealPlan} render={(routerProps) => <MealPlanPage {...routerProps} recipeData={recipeData}/>}/>
         <Route path={shoppingList} component={ShoppingList}/>
       </Switch>
-
-      <Footer />
       
       </BrowserRouter>
     </div>

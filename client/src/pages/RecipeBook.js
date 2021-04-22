@@ -1,5 +1,5 @@
 import './RecipeBook.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { RecipesDB_URL } from "../utilities/APIEndPoints";
 import { createRecipeObj } from '../utilities/functions';
 import axios from 'axios';
