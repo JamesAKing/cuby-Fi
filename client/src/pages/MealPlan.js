@@ -117,14 +117,14 @@ function MealPlan(routerProps) {
             </ul>
             {/* Shopping List Updated */}
             <AddedToDBModal
-                message="View Shopping List"
+                message="Updated Shopping List"
                 modalActive={shoppingListUpdated}
                 linkURL={shoppingList}
                 setShowAddedToDB={setShoppingListUpdated}
             />
             {/* Cupboard Updated */}
             <AddedToDBModal
-                message="View Cupboard"
+                message="Updated Cupboard and Meal Plan"
                 modalActive={showCupboardUpdated}
                 linkURL={cupboard}
                 setShowAddedToDB={setShowCupboardUpdated}

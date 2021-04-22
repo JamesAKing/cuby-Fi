@@ -24,6 +24,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: 0.2s;
 
         @include tablet {
             height: 80px;
@@ -31,7 +32,6 @@
 
         &--inactive {
             transform: translate3d(0, 100vh, 0);
-
         }
     }
 
