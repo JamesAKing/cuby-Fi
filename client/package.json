@@ -16,6 +16,7 @@
     "react-scripts": "4.0.3",
     "react-webcam": "^5.2.3",
     "recipe-ingredient-parser-v2": "^1.1.1",
+    "sass": "^1.32.13",
     "web-vitals": "^1.1.1"
   },
   "scripts": {
@@ -41,6 +42,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }, 
-  "proxy" : "https://protected-woodland-30642.herokuapp.com:5000"
+  },
+  "proxy": "https://protected-woodland-30642.herokuapp.com:5000"
 }
