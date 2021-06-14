@@ -1,0 +1,20 @@
+{
+  "name": "in-the-fridge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build" : "cd client && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesAKing/in-the-fridge.git"
+  },
+  "author": "James King",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamesAKing/in-the-fridge/issues"
+  },
+  "homepage": "https://github.com/JamesAKing/in-the-fridge#readme"
+}
