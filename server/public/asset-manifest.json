@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d06dc3a5.chunk.css",
+    "main.js": "/static/js/main.d0ffb9a9.chunk.js",
+    "main.js.map": "/static/js/main.d0ffb9a9.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.03887cff.js",
+    "runtime-main.js.map": "/static/js/runtime-main.03887cff.js.map",
+    "static/js/2.6daa90ac.chunk.js": "/static/js/2.6daa90ac.chunk.js",
+    "static/js/2.6daa90ac.chunk.js.map": "/static/js/2.6daa90ac.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.d06dc3a5.chunk.css.map": "/static/css/main.d06dc3a5.chunk.css.map",
+    "static/js/2.6daa90ac.chunk.js.LICENSE.txt": "/static/js/2.6daa90ac.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/static/media/Quicksand-SemiBold.2cda79c0.woff",
+    "static/media/add.b2025e58.png": "/static/media/add.b2025e58.png",
+    "static/media/calendar.3f0cdf4f.png": "/static/media/calendar.3f0cdf4f.png",
+    "static/media/close.804dbf0b.png": "/static/media/close.804dbf0b.png",
+    "static/media/delete.ebd69dd9.png": "/static/media/delete.ebd69dd9.png",
+    "static/media/food-items.68166718.png": "/static/media/food-items.68166718.png",
+    "static/media/go-back.07eca73c.svg": "/static/media/go-back.07eca73c.svg",
+    "static/media/meatballs.204cd80b.jpg": "/static/media/meatballs.204cd80b.jpg",
+    "static/media/recipe-book.7384c464.png": "/static/media/recipe-book.7384c464.png",
+    "static/media/squirrel-white.657eac4b.png": "/static/media/squirrel-white.657eac4b.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.03887cff.js",
+    "static/js/2.6daa90ac.chunk.js",
+    "static/css/main.d06dc3a5.chunk.css",
+    "static/js/main.d0ffb9a9.chunk.js"
+  ]
+}

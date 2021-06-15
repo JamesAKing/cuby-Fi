@@ -1,6 +1,6 @@
 // DEFAULT API URL
-// const API_URL = 'http://localhost:8080';
-const API_URL = 'http://cuby-fi.herokuapp.com';
+const API_URL = 'http://localhost:8080';
+// const API_URL = 'http://cuby-fi.herokuapp.com';
 
 // API ENDPOINTS
 export const MealPlanDB_URL = `${API_URL}/meal-plan`;

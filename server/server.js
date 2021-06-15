@@ -7,6 +7,7 @@ const app = (express());
 app.use(cors());
 app.use(express.json());
 // app.use("/static", express.static("public"));
+app.use(express.static("public"))
 
 // Variables
 const port = process.env.PORT || 8080;
