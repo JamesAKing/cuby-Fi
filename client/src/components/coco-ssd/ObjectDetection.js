@@ -21,8 +21,7 @@ function ObjectDetection({ setShowObjectDetectionModal }) {
 
   const webCamRef = useRef(null);
 
-  // useEffect(() => initModel(), [])
-  useEffect(() => initModel())
+  useEffect(() => initModel());
 
 
   const initModel = async () => {
@@ -38,17 +37,17 @@ function ObjectDetection({ setShowObjectDetectionModal }) {
     const video = webCamRef.current.video;
     const prediction = await model.predict(video)
 
-    let highestProbablity = 0;
+    let highestProbability = 0;
     let bestGuess;
 
     for (let i = 0; i < predictions; i++) {
-      if (prediction[i].probability > highestProbablity) {
-        bestGuess = prediction[i].className
-        highestProbablity = prediction[i].probability
+      if (prediction[i].probability > highestProbability) {
+        bestGuess = prediction[i].className;
+        highestProbability = prediction[i].probability;
       }      
     }
 
-    highestProbablity > 0 ? setItems(bestGuess) : setItems("Unable to determine Item - please try again");
+    highestProbability > 0 ? setItems(bestGuess) : setItems("Unable to determine Item - please try again");
   }
 
   const scanImage = async () => {
@@ -86,7 +85,6 @@ function ObjectDetection({ setShowObjectDetectionModal }) {
   }
 
   return (
-
     <div className="web-cam__page">
       <ul className="object-detection__items">
           {!items ?
@@ -115,7 +113,6 @@ function ObjectDetection({ setShowObjectDetectionModal }) {
       <div className="web-cam__buttons">
         <button className="web-cam__button" type="button" onClick={scanItem}>{scanning ? "SCANNING" : "CLICK TO SCAN"}</button>
         <button className="web-cam__button" type="button" onClick={resetItems}>RESET ITEM</button>
-        {/* <button className="web-cam__button" type="submit" onClick={addToCupboard}>ADD ITEM TO CUPBOARD</button> */}
         <button className="web-cam__button" type="submit">{items ? "ADD ITEM TO CUPBOARD" : "SCAN ITEM FIRST"}</button>
       </div>
     </div>

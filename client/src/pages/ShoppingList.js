@@ -18,16 +18,12 @@ function ShoppingListPage(routerProps) {
     useEffect(() => {
         axios
             .get(ShoppingListDB_URL)
-            .then(resp => {
-                setShoppingListData(resp.data);
-            })
+            .then(resp => setShoppingListData(resp.data))
             .then(() => setAxiosGotData("Your shopping list is empty"))
-            .catch(err => {
-                console.log(err);
-            });
+            .catch(err => console.log(err));
     }, []);
 
-    const addTocart = (e) => {
+    const addToCart = e => {
         const itemId = e.target.id;
         const updatedShoppingList = shoppingListData.map(item => {
             if (item.cartId === itemId) {
@@ -35,10 +31,11 @@ function ShoppingListPage(routerProps) {
             };
             return item;
         }) ;
-        setShoppingListData(updatedShoppingList);
-    }
 
-    const updateCupboardAndShopList = (e) => {
+        setShoppingListData(updatedShoppingList);
+    };
+
+    const updateCupboardAndShopList = e => {
         e.preventDefault();
         const addedItems = shoppingListData.filter(item => item.inCart)
         const formattedItems = addedItems.map(item => item = createItem(item))
@@ -83,7 +80,7 @@ function ShoppingListPage(routerProps) {
                             <ShoppingListItem
                                 key={item.cartId}
                                 item={item}
-                                addTocart={addTocart}
+                                addToCart={addToCart}
                             />
                         )
                     })
@@ -101,6 +98,7 @@ function ShoppingListPage(routerProps) {
             />
         </main>
     );
-}
+
+};
 
 export default ShoppingListPage;

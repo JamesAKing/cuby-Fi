@@ -2,7 +2,7 @@ import './CupboardItem.scss';
 
 function CupboardItem({ item, toggleEditItemModal, deleteCupboardItem }) {
     
-    const { itemId, itemName, qty } = item
+    const { itemId, itemName, qty } = item;
 
     return (
         <li id={itemId} className="cupboard-item">
@@ -22,6 +22,7 @@ function CupboardItem({ item, toggleEditItemModal, deleteCupboardItem }) {
             </div>
         </li>
     );
+
 }
 
 export default CupboardItem;

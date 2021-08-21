@@ -7,9 +7,8 @@ function AddRecipeForm({ toggleAddRecipe }) {
     const [instructions, setInstructions ] = useState([]);
 
 
-    const submitRecipe = (e) => {
+    const submitRecipe = e => {
         e.preventDefault();
-
         const form = e.target;
         const recipeName = form.recipeName.value;
         const recipeInstructions = form.recipeInstructions.value;
@@ -21,22 +20,30 @@ function AddRecipeForm({ toggleAddRecipe }) {
         };
     };
 
-    const addIngredient = (e) => {
+    const addIngredient = e => {
         e.preventDefault();
         const form = e.target;
-
         const ingredientName = form[0].value
         const ingredientAmount = form[1].value
         const ingredientUnit = form[2].value
         
         if (ingredientName && ingredientAmount && ingredientUnit) {
-
             const newIngredients = ingredients
             newIngredients.push({
             itemName : ingredientName,
             amount : ingredientAmount,
             units : ingredientUnit
             })
+
+            // Trial below method instead
+            // const newIngredients = [
+            //     ...ingredients,
+            //     {
+            //         itemName : ingredientName,
+            //         amount : ingredientAmount,
+            //         units : ingredientUnit
+            //     }
+            // ];
 
             setIngredients(newIngredients)
             form.reset();
@@ -89,6 +96,7 @@ function AddRecipeForm({ toggleAddRecipe }) {
             </form>
         </aside>
     );
-}
+
+};
 
 export default AddRecipeForm;

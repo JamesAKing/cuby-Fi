@@ -15,6 +15,6 @@ function RecipeInspirationModal({ inspiration, addNewMealToDB, toggleModal }) {
         </div>
     );
     
-}
+};
 
 export default RecipeInspirationModal;

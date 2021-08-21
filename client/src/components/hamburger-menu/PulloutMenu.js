@@ -17,6 +17,7 @@ function PulloutMenu({ active, rotateIcon }) {
             </nav>
         </div>
     );
+    
 }
 
 export default PulloutMenu;

@@ -7,7 +7,7 @@ function MealCard({ day, dayId, recipeName, recipeId, recipeImg, toggleSelectMea
     if (recipeCooked) {
         recipeName = "ADD NEW RECIPE";
         recipeImg = null;
-    }
+    };
 
     return (
         <li className="meal__item">
@@ -26,13 +26,13 @@ function MealCard({ day, dayId, recipeName, recipeId, recipeImg, toggleSelectMea
                     </div>
                 </Link>
                 <div className="meal__btns" id={dayId}>
-                    {/* Remove repeated id and use parent container's Id */}
-                    <button className="btn" id={dayId} onClick={toggleSelectMealModal}>Select New Meal</button>
-                    <button className="btn" id={dayId} onClick={confirmMealEaten}>{recipeCooked ? "Recipe Eaten" : "Eat Recipe"}</button>
+                    <button className="btn" onClick={toggleSelectMealModal}>Select New Meal</button>
+                    <button className="btn" onClick={confirmMealEaten}>{recipeCooked ? "Recipe Eaten" : "Eat Recipe"}</button>
                 </div>
             </div>
         </li>
-    )
-}
+    );
+
+};
 
 export default MealCard;

@@ -19,6 +19,7 @@ function SelectMealModal({ recipeData, addToMealPlan, toggleSelectMealModal, sel
             </div>
         </div>
     );
-}
+
+};
 
 export default SelectMealModal;

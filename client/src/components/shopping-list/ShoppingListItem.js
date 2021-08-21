@@ -1,9 +1,8 @@
 import './ShoppingListItem.scss';
 
-function ShoppingListItem({ item, addTocart }) {
+function ShoppingListItem({ item, addToCart }) {
 
     const { cartId, itemName, qtyNeeded, qtyUnit, inCart } = item;    
-    // console.log(item);
 
     return (
         <li className="shopping__item">
@@ -15,18 +14,16 @@ function ShoppingListItem({ item, addTocart }) {
                 <h3 className="shopping__heading">QTY</h3>
                 <p className="shopping__text">{qtyNeeded} {qtyUnit} (s)</p>
             </div>
-            <div className="shopping__column">
-                {/* <h3 className="shopping__heading">RECIPE</h3> */}
-                {/* <p className="shopping__text">{recipeName}</p> */}
-            </div>
+            <div className="shopping__column"></div>
             <div className="shopping__column">
                 <h3 className="shopping__heading shopping__heading--actions">ACTIONS</h3>
-                <button id={cartId} className="btn shopping__btn" type="button" onClick={addTocart}>
+                <button id={cartId} className="btn shopping__btn" type="button" onClick={addToCart}>
                     {!inCart ? "ADD TO CART" : "ADDED"}
                 </button>
             </div>               
         </li>
     );
-}
+
+};
 
 export default ShoppingListItem;

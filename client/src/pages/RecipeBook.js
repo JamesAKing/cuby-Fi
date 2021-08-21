@@ -26,8 +26,8 @@ function RecipeBook(routerProps) {
                 setInspiration(createRecipeObj(randomRecipeObj));
             })
             .then(setShowModal(true))
-            .catch(err => console.log(err))
-    }
+            .catch(err => console.log(err));
+    };
 
     const addNewMealToDB = () => {
         axios
@@ -36,7 +36,7 @@ function RecipeBook(routerProps) {
             .catch(err => console.log(err));
         
         setInspiration(null);
-    }
+    };
 
     const toggleModal = () => {
         setInspiration(null);
@@ -48,7 +48,7 @@ function RecipeBook(routerProps) {
             .get(RecipesDB_URL)
             .then(resp => setRecipeData(resp.data))
             .catch(err => console.log(err)); 
-    }
+    };
 
     return (
         <main className="recipes">
@@ -61,8 +61,8 @@ function RecipeBook(routerProps) {
             <RecipeInspiration getRandomMeal={getRandomMeal} inspiration={inspiration}/>
             <div className="spacer"></div>
         </main>
-    )
+    );
         
-}
+};
 
 export default RecipeBook;

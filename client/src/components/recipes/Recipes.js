@@ -11,7 +11,7 @@ function Recipes({ recipeData }) {
 
     const toggleAddRecipe = () => {
         setShowAddRecipe(!showAddRecipe);
-    }
+    };
 
     return (
         <>  {showAddRecipe && <AddRecipeForm toggleAddRecipe={toggleAddRecipe} />}
@@ -36,6 +36,7 @@ function Recipes({ recipeData }) {
             </div>
         </>
     );
-}
+
+};
 
 export default Recipes;

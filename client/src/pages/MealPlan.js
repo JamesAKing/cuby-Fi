@@ -12,7 +12,7 @@ import AddedToDBModal from '../components/added-to-db/AddedToDBModal';
 function MealPlan(routerProps) {
 
     const [mealPlan, setMealPlan] = useState(null);
-    const [ days ] = useState(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])
+    const [ days ] = useState(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']);
     const [ loading, setLoading ] = useState(true);
     const [ showSelectMeal, setShowSelectMeal ] = useState(false);
     const [ shoppingListUpdated, setShoppingListUpdated ] = useState(false);
@@ -32,11 +32,11 @@ function MealPlan(routerProps) {
     const toggleSelectMealModal = (e) => {
         setShowSelectMeal(!showSelectMeal);
         !selectedDay ? setSelectedDay(e.target.parentNode.id) : setSelectedDay(null);
-    }
+    };
 
     const addToMealPlan = (e) => {
-        const selectedMeal = recipeData.filter(recipe => recipe.recipeId === e.target.id)
-        const formattedNewMeal = formatMealPlanObj(selectedMeal[0], selectedDay)
+        const selectedMeal = recipeData.filter(recipe => recipe.recipeId === e.target.id);
+        const formattedNewMeal = formatMealPlanObj(selectedMeal[0], selectedDay);
 
         axios
             .post(`${MealPlanDB_URL}/${selectedDay}`, formattedNewMeal)
@@ -81,8 +81,8 @@ function MealPlan(routerProps) {
         axios
             .delete(MealPlanDB_URL)
             .then(() => setMealPlan(null))
-            .catch(err => console.log(err))
-    }
+            .catch(err => console.log(err));
+    };
 
     return (
         <main className="meal-plan">
@@ -115,14 +115,12 @@ function MealPlan(routerProps) {
                     })
                 }
             </ul>
-            {/* Shopping List Updated */}
             <AddedToDBModal
                 message="Updated Shopping List"
                 modalActive={shoppingListUpdated}
                 linkURL={shoppingList}
                 setShowAddedToDB={setShoppingListUpdated}
             />
-            {/* Cupboard Updated */}
             <AddedToDBModal
                 message="Updated Cupboard and Meal Plan"
                 modalActive={showCupboardUpdated}
@@ -131,6 +129,7 @@ function MealPlan(routerProps) {
             />
         </main>
     );
-}
+
+};
 
 export default MealPlan;

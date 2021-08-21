@@ -24,7 +24,7 @@ function Header() {
             break;
         default:
             break;
-    }   
+    };   
 
     return (
         <>

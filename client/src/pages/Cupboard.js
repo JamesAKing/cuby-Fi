@@ -4,7 +4,6 @@ import axios from 'axios';
 import { CupboardDB_URL } from '../utilities/APIEndPoints';
 import { createItem, formValid } from '../utilities/functions';
 import GoBackIcon from '../components/global/GoBackIcon';
-// import { cupboard } from '../utilities/URLs';
 import ColumnHeader from "../components/global/ColumnHeader";
 import AddCupboardItem from '../components/add-cupboard-item/AddCupboardItem';
 import EditCupboardItem from '../components/edit-cupboard-item/EditCupboardItem';
@@ -29,7 +28,7 @@ function CupboardPage(routerProps) {
         renderCupboardData()
     }, []);
 
-    const toggleEditItemModal = (e) => {
+    const toggleEditItemModal = e => {
         const itemId = e.target.parentNode.parentNode.id;
         const item = cupboardData.filter(item => item.itemId === itemId)
 
@@ -43,25 +42,26 @@ function CupboardPage(routerProps) {
             })
         } else {
             clearInputValues();
-        }
+        };
+
         setShowEditModal(!showEditModal);
-    }
+    };
 
     const toggleObjectDetectionModel = () => {
         setShowObjectDetectionModal(!showObjectDetectionModal);
-    }
+    };
 
     const toggleAddItemModal = () => {
         clearInputValues();
         setShowAddModal(!showAddModal);
-    }
+    };
 
-    const handleFormChange =(e) => {
+    const handleFormChange = e => {
         const item = e.target;
-        setInputValues({...inputValues, [item.name] : item.value})
-    }
+        setInputValues({ ...inputValues, [item.name] : item.value })
+    };
 
-    const submitItem = (e) => {
+    const submitItem = e => {
         e.preventDefault();
         if (formValid(inputValues)) {
             const newItems = [createItem(inputValues)];
@@ -74,10 +74,10 @@ function CupboardPage(routerProps) {
                     renderCupboardData();
                 })
                 .catch(err => console.log(err));
-        }
-    }
+        };
+    };
 
-    const updateItem = (e) => {
+    const updateItem = e => {
         e.preventDefault();
         const itemId = e.target.id
         if (formValid(inputValues)) {
@@ -87,8 +87,8 @@ function CupboardPage(routerProps) {
                 .then(resp => console.log(resp))
                 .then(() => renderCupboardData())
                 .catch(err => console.log(err));
-        }
-    }
+        };
+    };
 
     const clearInputValues = () => {
         setInputValues({
@@ -97,30 +97,29 @@ function CupboardPage(routerProps) {
             qtyAmount : 0,
             qtyUnit : '',
             category: ''
-        })
-    }
+        });
+    };
 
-    const deleteCupboardItem = (e) => {
-        const itemId = e.target.parentNode.parentNode.id
+    const deleteCupboardItem = e => {
+        const itemId = e.target.parentNode.parentNode.id;
         axios
             .delete(`${CupboardDB_URL}/${itemId}`)
             .then(resp => console.log(resp))
             .then(() => renderCupboardData())
             .catch(err => console.log(err));
-    }
+    };
 
     const renderCupboardData = () => {
         axios
             .get(CupboardDB_URL)
             .then(resp => setCupboardData(resp.data))
             .catch(err => console.log(err));
-    }
+    };
 
     return (
         <main>
             {showAddModal && <AddCupboardItem submitItem={submitItem} handleFormChange={handleFormChange} toggleAddItemModal={toggleAddItemModal}/>}
             {showEditModal && <EditCupboardItem updateItem={updateItem} handleFormChange={handleFormChange} toggleEditItemModal={toggleEditItemModal} inputValues={inputValues}/>}
-            {/* {showObjectDetectionModal && <ObjectDetection setShowObjectDetectionModal={setShowObjectDetectionModal} />} */}
             <header className="cupboard__header">
                 <GoBackIcon routerProps={routerProps} />
                 <h1 className="cupboard__title">CUPBOARD</h1>
@@ -152,6 +151,7 @@ function CupboardPage(routerProps) {
             </section>
         </main>
     );
-}
+
+};
 
 export default CupboardPage;

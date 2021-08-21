@@ -7,6 +7,7 @@ function RecipeInspiration({ getRandomMeal, inspiration }) {
             <button className="btn" type="button" onClick={getRandomMeal}>{inspiration ? "Try Again" : "Need Some Inspiration?"}</button>
         </div>
     );
+    
 }
 
 export default RecipeInspiration;

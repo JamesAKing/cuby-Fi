@@ -10,6 +10,7 @@ function GoBackIcon(routerProps) {
             <img className="go-back__img" src={GoBackSVG} alt="to previous page" />
         </div>
     );
+    
 }
 
 export default GoBackIcon;

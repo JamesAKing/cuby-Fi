@@ -2,6 +2,7 @@ import './EditCupboardItem.scss';
 import EditItemForm from '../forms/EditItemForm';
 
 function EditCupboardItem({ updateItem, toggleEditItemModal, inputValues, handleFormChange }) {
+    
     return (
         <section className="edit-item">
             <div className="edit-item__card">
@@ -15,6 +16,7 @@ function EditCupboardItem({ updateItem, toggleEditItemModal, inputValues, handle
             </div>
         </section>
     );
+
 }
 
 export default EditCupboardItem;

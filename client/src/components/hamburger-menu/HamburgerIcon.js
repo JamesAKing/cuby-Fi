@@ -1,6 +1,5 @@
 import './HamburgerIcon.scss';
 import { useState } from "react";
-
 import PulloutMenu from "./PulloutMenu";
 
 function BurgerMenuIcon() {

@@ -1,6 +1,7 @@
 import './AddItemForm.scss';
 
 function AddItemForm({ submitItem, toggleAddItemModal, handleFormChange }) {
+
     return (
         <form className="modal-form" onSubmit={submitItem} onChange={handleFormChange}>
             <label htmlFor="itemName">
@@ -38,6 +39,7 @@ function AddItemForm({ submitItem, toggleAddItemModal, handleFormChange }) {
             </div>
         </form>
     );
+    
 }
 
 export default AddItemForm;
