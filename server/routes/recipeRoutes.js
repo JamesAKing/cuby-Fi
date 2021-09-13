@@ -91,17 +91,13 @@ router
     // Delete a recipe
     .delete((req, res) => {
         const recipeData = getData(recipesURL);
-
         const { recipeId } = req.params;
-
-        console.log(req.params);
 
         const updatedRecipeData = recipeData.filter(recipe => recipe.recipeId !== recipeId);
 
         if (recipeData.length === updatedRecipeData.length) return res.status(404).json("no recipe with that id found");
 
         // writeData(recipesURL, updatedRecipeData);
-
         res.status(204).json();
     })
 
