@@ -12,12 +12,13 @@ import AddedToDBModal from '../components/added-to-db/AddedToDBModal';
 function MealPlan(routerProps) {
 
     const [mealPlan, setMealPlan] = useState(null);
-    const [ days ] = useState(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']);
     const [ loading, setLoading ] = useState(true);
     const [ showSelectMeal, setShowSelectMeal ] = useState(false);
     const [ shoppingListUpdated, setShoppingListUpdated ] = useState(false);
     const [ showCupboardUpdated, setShowCupboardUpdated ] = useState(false);
     const [ selectedDay, setSelectedDay ] = useState(null);
+
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     const { recipeData } = routerProps;
 
@@ -27,7 +28,7 @@ function MealPlan(routerProps) {
             .then(resp => setMealPlan(resp.data))
             .then(() => setLoading(false))
             .catch(err => console.log(err));
-    }, []);
+    }, [mealPlan]);
 
     const toggleSelectMealModal = (e) => {
         setShowSelectMeal(!showSelectMeal);
