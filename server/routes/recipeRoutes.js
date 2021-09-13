@@ -72,9 +72,7 @@ router
     })
 
 router
-    // Specific/detailed view of Recipes will use recipesDetailed.json
     .route('/:recipeId')
-    // get a specific recipe
     .get((req, res) => {
         const recipeData = getData(recipesURL);
         const { recipeId } = req.params;
@@ -84,11 +82,10 @@ router
         
         res.status(200).json(singleRecipe.pop());
     })
-    // Edit a recipe
     .put((req, res) => {
+        // Edit a recipe
         res.json('updated');
     })
-    // Delete a recipe
     .delete((req, res) => {
         const recipeData = getData(recipesURL);
         const { recipeId } = req.params;
