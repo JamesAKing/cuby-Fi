@@ -51,9 +51,12 @@ function MealPlan(routerProps) {
 
         mealPlan.forEach(meal => {
             meal.ingredients.forEach(ingredient => {
-                const itemName = ingredient.itemName
-                const amount = ingredient.amount
-                const units = ingredient.units
+                // const itemName = ingredient.itemName
+                // const amount = ingredient.amount
+                // const units = ingredient.units
+
+                const { itemName, amount, units } = ingredient;
+
                 ingredientArr.push({
                    itemName : itemName,
                    amount : amount,

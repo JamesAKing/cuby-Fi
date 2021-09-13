@@ -13,7 +13,6 @@ import RecipeBookPage from "./pages/RecipeBook";
 import SingleRecipe from "./pages/SingleRecipe";
 import CupboardPage from "./pages/Cupboard";
 
-
 function App() {
 
   const [ recipeData, setRecipeData ] = useState(null);
@@ -23,7 +22,7 @@ function App() {
       .get(RecipesDB_URL)
       .then(resp => setRecipeData(resp.data))
       .catch(err => console.log(err));
-  }, [])
+  }, [recipeData])
 
   if(!recipeData) return <p>Loading...</p>
 
@@ -37,11 +36,9 @@ function App() {
 
       <Switch>
         <Route path="/" exact component={Home}/>
-        {/* <Route path={about} component={null}/>
-        <Route path={contactUs} component={null}/> */}
         <Route path={cupboard} exact component={CupboardPage}/>
         <Route path={recipeBook} exact render={(routerProps) => <RecipeBookPage {...routerProps} recipeData={recipeData} setRecipeData={setRecipeData} />} />
-        <Route path={`${recipeBook}/:recipeId`} render={routeProps => <SingleRecipe {...routeProps} recipeData={recipeData}/>} />
+        <Route path={`${recipeBook}/:recipeId`} render={routeProps => <SingleRecipe {...routeProps} />} />
         <Route path={mealPlan} render={(routerProps) => <MealPlanPage {...routerProps} recipeData={recipeData}/>}/>
         <Route path={shoppingList} component={ShoppingList}/>
       </Switch>
