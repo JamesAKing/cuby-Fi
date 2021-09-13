@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { RecipesDB_URL } from './utilities/APIEndPoints';
 import { cupboard, recipeBook, mealPlan, shoppingList } from "./utilities/URLs";
+import ScrollToTop from './components/scroll-to-top/ScrollToTop';
 import Header from "./components/header/Header";
 import Home from './pages/Home';
 import ShoppingList from "./pages/ShoppingList";
@@ -29,6 +30,8 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+
+      <ScrollToTop />
       
       <Header />
 
