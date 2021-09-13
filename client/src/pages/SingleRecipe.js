@@ -1,5 +1,6 @@
 import './SingleRecipe.scss';
 import GoBackIcon from '../components/global/GoBackIcon';
+import DeleteIcon from '../assets/icons/delete-trash-can.svg';
 
 function SingleRecipe(props) {
     
@@ -11,17 +12,24 @@ function SingleRecipe(props) {
 
     const { recipeName, ingredients, instructions, image } = recipe
 
+    const deleteRecipe = () => {
+        alert(recipeId, "deleted");
+    };
+
     return !recipe ? 
         <p>Getting Recipe...</p>:
         <main className="recipe">
-            <div className="recipe__hero" style={{backgroundImage: `url(${image})`}}>
+            <header className="recipe__hero" style={{backgroundImage: `url(${image})`}}>
                 <div className="recipe__hero-overlay">
                     <div className="recipe__hero-text">
                         <GoBackIcon routerProps={props}/>
                         <h1 className="recipe__hero-heading">{recipeName}</h1>
                     </div>
                 </div>
-            </div>
+                <button className="recipe__delete-btn" type="button" onClick={deleteRecipe}>
+                    <img className="recipe__delete-icon" src={DeleteIcon} alt="delete recipe" />
+                </button>
+            </header>
             <section className="recipe__info">
                 <div className="recipe__column">
                     <h2 className="recipe__sub-heading">Ingredients</h2>
