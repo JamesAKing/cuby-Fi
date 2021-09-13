@@ -1,5 +1,5 @@
 import './SingleRecipe.scss';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 import GoBackIcon from '../components/global/GoBackIcon';
 import DeleteIcon from '../assets/icons/delete-trash-can.svg';
@@ -13,7 +13,7 @@ function SingleRecipe(props) {
 
     useEffect(() => {
         getRecipe(recipeId);
-    }, []);
+    }, [recipeId]);
 
     // 
 
@@ -25,17 +25,19 @@ function SingleRecipe(props) {
     const getRecipe = async recipeId => {
         try {
             const resp = await axios.get(`${RecipesDB_URL}/${recipeId}`);
-            console.log(resp.data);
-
+            return resp.data;
         } catch (err) {
             console.log(err);
         };
     };
 
-    const deleteRecipe = () => {
-        const updatedRecipeData = recipeData.filter(recipe => recipe.recipeId !== recipeId);
-
-        console.log(updatedRecipeData);
+    const deleteRecipe = async () => {
+        try {
+            const resp = await axios.delete(`${RecipesDB_URL}/${recipeId}`);
+            console.log(resp.data);
+        } catch (err) {
+            console.log(err);
+        };
     };
 
     return !recipe ? 
