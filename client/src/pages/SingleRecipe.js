@@ -1,5 +1,5 @@
 import './SingleRecipe.scss';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import GoBackIcon from '../components/global/GoBackIcon';
 import DeleteIcon from '../assets/icons/delete-trash-can.svg';
@@ -7,25 +7,16 @@ import { RecipesDB_URL } from '../utilities/APIEndPoints';
 
 function SingleRecipe(props) {
     
-    const recipeId = props.match.params.recipeId
-
-    // TEST
-
-    useEffect(() => {
-        getRecipe(recipeId);
-    }, [recipeId]);
-
-    // 
-
-    let recipeData = props.recipeData || [];
-    const recipe = recipeData.filter(recipe => recipe.recipeId === recipeId).pop();
-
+    const { recipeId } = props.match.params
+    const [ recipe, setRecipe ] = useState({});
     const { recipeName, ingredients, instructions, image } = recipe;
+
+    useEffect(() => getRecipe(recipeId), [recipeId]);
 
     const getRecipe = async recipeId => {
         try {
             const resp = await axios.get(`${RecipesDB_URL}/${recipeId}`);
-            return resp.data;
+            setRecipe(resp.data);
         } catch (err) {
             console.log(err);
         };
@@ -34,13 +25,13 @@ function SingleRecipe(props) {
     const deleteRecipe = async () => {
         try {
             const resp = await axios.delete(`${RecipesDB_URL}/${recipeId}`);
-            console.log(resp.data);
         } catch (err) {
             console.log(err);
         };
     };
 
-    return !recipe ? 
+    return (
+        !recipe.recipeId ? 
         <p>Getting Recipe...</p>:
         <main className="recipe">
             <header className="recipe__hero" style={{backgroundImage: `url(${image})`}}>
@@ -84,7 +75,7 @@ function SingleRecipe(props) {
                     </ol>
                 </div>
             </section>   
-        </main>
+        </main>)
 
 }
 
