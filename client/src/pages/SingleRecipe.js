@@ -1,19 +1,41 @@
 import './SingleRecipe.scss';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import GoBackIcon from '../components/global/GoBackIcon';
 import DeleteIcon from '../assets/icons/delete-trash-can.svg';
+import { RecipesDB_URL } from '../utilities/APIEndPoints';
 
 function SingleRecipe(props) {
     
     const recipeId = props.match.params.recipeId
 
-    // // Move this check to App.js
-    let recipeData = props.recipeData || [];
-    const recipe = recipeData.filter(recipe => recipe.recipeId === recipeId).pop()
+    // TEST
 
-    const { recipeName, ingredients, instructions, image } = recipe
+    useEffect(() => {
+        getRecipe(recipeId);
+    }, []);
+
+    // 
+
+    let recipeData = props.recipeData || [];
+    const recipe = recipeData.filter(recipe => recipe.recipeId === recipeId).pop();
+
+    const { recipeName, ingredients, instructions, image } = recipe;
+
+    const getRecipe = async recipeId => {
+        try {
+            const resp = await axios.get(`${RecipesDB_URL}/${recipeId}`);
+            console.log(resp.data);
+
+        } catch (err) {
+            console.log(err);
+        };
+    };
 
     const deleteRecipe = () => {
-        alert(recipeId, "deleted");
+        const updatedRecipeData = recipeData.filter(recipe => recipe.recipeId !== recipeId);
+
+        console.log(updatedRecipeData);
     };
 
     return !recipe ? 

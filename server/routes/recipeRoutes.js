@@ -76,7 +76,14 @@ router
     .route('/:recipeId')
     // get a specific recipe
     .get((req, res) => {
-        res.json("connected");
+        const recipeData = getData(recipesURL);
+        const { recipeId } = req.params;
+
+        const singleRecipe = recipeData.filter(recipe => recipe.recipeId === recipeId);
+
+        if (singleRecipe.length !== 1) return res.status(404).json("no recipe with that id found");
+        
+        res.status(200).json(singleRecipe.pop());
     })
     // Edit a recipe
     .put((req, res) => {
